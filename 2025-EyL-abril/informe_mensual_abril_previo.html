@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Ejecutivo de Gestión Educativa (Completo)</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0 auto; padding: 20px; line-height: 1.6; background-color: #e6f0ff; color: #333; max-width: 1300px; } /* Aumentado max-width */
+        header { background-color: #004466; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
+        header h1 { margin: 0; font-size: 2.5em; }
+        header p { margin: 5px 0 0; font-size: 1em; color: #cceeff; }
+        section { background-color: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #005680; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 0; }
+        h3 { color: #007bff; margin-top: 25px; margin-bottom:15px; }
+        h4 { color: #1a71b5; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 0; }
+        .placeholder-text { background-color: #e9ecef; border: 1px dashed #ced4da; padding: 15px; margin: 20px 0; border-radius: 5px; font-style: italic; color: #495057; }
+        .plotly-graph-div { margin: 20px auto; border: 1px solid #eee; border-radius: 5px; padding: 10px; overflow-x: auto; } /* Reducido margen vertical */
+        table.dataframe { width: auto; max-width: 95%; margin: 20px auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.9em; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        table.dataframe th, table.dataframe td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        table.dataframe th { background-color: #007bff; color: white; font-weight: bold; }
+        table.dataframe tbody tr:nth-child(even) { background-color: #f8f9fa; }
+        footer { text-align: center; padding: 20px; font-size: 0.9em; color: #777; margin-top: 30px; }
+        .flex-container { display: flex; flex-wrap: wrap; justify-content: space-around; align-items: flex-start; } /* Para KPIs lado a lado */
+        .kpi-container { width: 48%; margin-bottom: 20px; } /* Para KPIs lado a lado */
+
+
+                /* Estilos básicos para la tabla */
+        .iframe-table {
+            width: 100%; /* La tabla ocupará todo el ancho disponible */
+            border-collapse: collapse; /* Para que los bordes de las celdas se fusionen */
+            margin-top: 20px;
+            /* Opcional: Centrar la tabla si no ocupa el 100% */
+            /* max-width: 1200px; */
+            /* margin-left: auto; */
+            /* margin-right: auto; */
+        }
+
+        .iframe-table td {
+            vertical-align: top; /* Alinea el contenido de la celda en la parte superior */
+            padding: 10px; /* Espaciado dentro de cada celda */
+            border: 1px solid #eee; /* Un borde para las celdas (opcional) */
+            width: 50%; /* Cada celda ocupará el 50% del ancho de la tabla */
+        }
+
+        iframe {
+            width: 100%; /* El iframe ocupa el 100% del ancho de su celda */
+            height: 750px; /* Altura fija para los iframes */
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        /* Media Queries para pantallas más pequeñas (recomendado, incluso con tablas) */
+        @media (max-width: 768px) {
+            .iframe-table, .iframe-table tbody, .iframe-table tr, .iframe-table td {
+                display: block; /* Hace que la tabla y sus elementos se comporten como bloques, apilándose */
+                width: 100%; /* Ocupa todo el ancho */
+            }
+            .iframe-table td {
+                margin-bottom: 20px; /* Espacio entre las "celdas" apiladas */
+            }
+        }
+    /* O puedes usar unidades relativas como 'vh' (viewport height) */
+    .otro-iframe {
+        height: 40hv; /* Ocupa el 70% de la altura de la ventana del navegador */
+        width: 100%;}
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Informe mensual de Asistencia, Matrícula, Retiros y Desvinculación Escolar</h1>
+        <p>Periodo Marzo - Abril 2025.</p>
+    </header>
+
+    <section id="resumen-ejecutivo">
+        <h2>Resumen Ejecutivo</h2>
+        <div class="placeholder-text">
+            <p><em>El mes de abril muestra un aumento neto de 150 estudiantes activos, lo que representa aproximadamente cuatro nuevos cursos, totalizando 18.322 estudiantes, impulsado principalmente por la Educación Media Humanístico-Científica de Adultos y la Enseñanza Básica.
+
+Sin embargo, la asistencia promedio cayó del 85.15% al 80.55%. Ningún nivel educativo alcanzó consistentemente el 85% de asistencia, y la educación de adultos es la más afectada, con la Educación Básica Adultos Con Oficios registrando la asistencia más baja. Se observó un alarmante aumento de ausentismo del 80% o más en el día 3 del mes, un cambio drástico respecto al mes anterior.
+
+En cuanto al flujo, hubo 685 nuevos ingresos y 535 bajas, con una tasa de retención mensual del 97.06%. Los retiros aumentaron significativamente, siendo la Educación Parvularia y la Enseñanza Básica las más impactadas, mientras que la Educación Media H-C Adultos muestra una proporción considerable de "nuevos retiros".</em></p>
+        </div>
+    </section>
+
+    <section id="matricula">
+        <h2>1. Análisis de Matrícula</h2>
+        <h3>Indicadores Clave de Matrícula (Tabla)</h3>
+        <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Mes Anterior</th>
+      <th>Mes Actual</th>
+      <th>Var. Absoluta</th>
+      <th>Var. Porcentual (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Estudiantes Activos</td>
+      <td>18172</td>
+      <td>18322</td>
+      <td>150</td>
+      <td>0.83</td>
+    </tr>
+  </tbody>
+
+     <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Matricula%20-%20Tipo%20de%20ense%C3%B1anza.html" title="Informe de Matrícula por Tipo de Enseñanza"></iframe>
+
+     <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Matricula%20-%20Comparativa%20tipo%20de%20ense%C3%B1anza.html" title="Informe de Matrícula por Tipo de Enseñanza (Antes vs Después)"></iframe>
+
+</table>
+    
+<section id="matricula">
+        <h4>Comportamiento y composición</h4>
+        <p> Durante el mes de abril, se observó un aumento en el número de matrícula de 150 de personas, con respecto del mes anterior. Esto significa que aumentó 0,83%. Al observar el comportamiento de la matrícula por tipo de enseñanza, se aprecia que el aumento más significativo fue en el nivel de Educación Media Humanístico-Científica de adultos con 65, y también en el nivel de Enseñanza Básica con 40 personas. </p>
+
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Tipo de Enseñanza</th>
+      <th>Diferencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>Educación Básica Adultos Con Oficios</td>
+
+      <td>12</td>
+    </tr>
+    <tr>
+ 
+      <td>Educación Básica Adultos Sin Oficios</td>
+
+      <td>24</td>
+    </tr>
+    <tr>
+     
+      <td>Educación Especial Discapacidad Intelectual</td>
+
+      <td>2</td>
+    </tr>
+    <tr>
+   
+      <td>Educación Media H-C Adultos</td>
+
+      <td>65</td>
+    </tr>
+    <tr>
+  
+      <td>Educación Media T-P Técnica Adultos</td>
+ 
+      <td>7</td>
+    </tr>
+    <tr>
+
+      <td>Educación Parvularia</td>
+ 
+      <td>-11</td>
+    </tr>
+    <tr>
+   
+      <td>Enseñanza Básica</td>
+
+      <td>40</td>
+    </tr>
+    <tr>
+    
+      <td>Enseñanza Media H-C niños y jóvenes</td>
+
+      <td>24</td>
+    </tr>
+    <tr>
+  
+      <td>Enseñanza Media T-P Comercial Niños y Jóvenes</td>
+
+      <td>-2</td>
+    </tr>
+    <tr>
+     
+      <td>Enseñanza Media T-P Industrial Niños y Jóvenes</td>
+
+      <td>-9</td>
+    </tr>
+    <tr>
+      
+      <td>Enseñanza Media T-P Técnica Niños y Jóvenes</td>
+
+      <td>-2</td>
+    </tr>
+  </tbody>
+</table>
+  </tbody>
+
+  </section>
+  <tbody>
+  
+     <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Matricula%20-%20Variacion%20Lolipop.html" title="Ranking de variación de matrícula"></iframe>
+
+
+<section id="matricula">
+       
+ <h4>Interpretación de los datos específicos:</h4>
+
+<p>El gráfico muestra el aumento neto de estudiantes matriculados en diversas categorías educativas. Cuanto más larga sea la línea horizontal y más a la derecha esté el punto azul, mayor será el incremento neto de estudiantes para ese tipo de educación en particular.</p>
+
+<p>De arriba a abajo, podemos observar lo siguiente:</p>
+
+<ul>
+
+<li>Educación Media H-C Adultos: Presenta el mayor aumento neto de estudiantes, con un valor superior a 60.</li>
+<li>Enseñanza Básica: Muestra el segundo mayor aumento neto, alrededor de 40 estudiantes.</li>
+<li>Educación Básica Adultos Sin Oficios y Enseñanza Media H-C niños y Jóvenes: Estas dos categorías tienen aumentos netos similares, ambos ligeramente por encima de los 20 estudiantes.</li> </ul>
+
+<p>
+Las categorías restantes, como Educación Básica Adultos Con Oficios, Educación Media T-P Técnica Adultos, Educación Especial Discapacidad Intelectual, Enseñanza Media T-P Técnica Niños y Jóvenes, Enseñanza Media T-P Comercial Niños y Jóvenes, Enseñanza Media T-P Industrial Niños y Jóvenes, y Educación Parvularia, muestran aumentos netos progresivamente menores en la matrícula de estudiantes, siendo "Educación Parvularia" la que presenta el menor aumento neto, cercano a 0.
+En resumen, este gráfico clasifica visualmente los diferentes tipos de educación según su aumento neto en la matrícula de estudiantes. "Educación Media H-C Adultos" experimentó el mayor crecimiento en el número de estudiantes, mientras que "Educación Parvularia" tuvo el menor.
+</p>
+
+
+  </tbody>
+  <tbody>
+</tbody>
+</section>
+
+        <h3>Composición de Matrícula Activa Total</h3>
+              
+       
+
+<iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Matricula%20-%20Composicion%20matricula.html"></iframe>
+
+ <section id="matricula">
+       
+ <h4>Interpretación de la composición de matrícula:</h4>
+
+<p>El gráfico muestra la caracterización de la composición de matrícula del territorio. El mayor número de estudiantes se ubica en la enseñanza básica, en todas las comunas del Servicio Local. También se observa que San Miguel es la comuna con mayor número de estudiantes en el nivel de enseñanza media humanístico-científica. Respecto de la Enseñanza Media humanístico-científica de Adultos, San Ramón es la comuna del territorio con mayor número de estudiantes con 407 personas.</p>
+  </tbody>
+  <tbody>
+</tbody>
+</section>
+
+
+        
+
+      
+        
+
+
+
+    </section>
+
+    <section id="asistencia">
+        <h2>2. Análisis de Asistencia</h2>
+        <h3>Indicadores Clave de Asistencia</h3>
+        <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Mes Anterior</th>
+      <th>Mes Actual</th>
+      <th>Variación (p.p.)</th>
+      <th>Variación (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Asistencia Promedio</td>
+      <td>85,15%</td>
+      <td>80,55%</td>
+      <td>Disminución de 4,60 p.p.</td>
+      <td>Disminución de 5,4%</td>
+    </tr>
+  </tbody>
+</table>
+
+       
+              <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia%20-%20Boxplot%20-%20Mensual.html" title="Informe de Matrícula 1" >
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+
+
+    <section id="asistencia">
+        <h2>Explicación del diagrama de caja y bigotes</h2>
+
+        <h3>¿Qué muestra este gráfico?</h3>
+        <p>Este gráfico es un <strong class="highlight">diagrama de caja y bigotes (boxplot)</strong>. Sirve para visualizar la distribución de los datos de asistencia (en porcentaje) para dos períodos distintos: "Mes Anterior" (Marzo) y "Mes Actual" (Mes Abril).</p>
+
+        <h3>Elementos Clave del Diagrama de Caja y Bigotes:</h3>
+        <p>Cada "caja" en el gráfico representa un conjunto de datos (Mes Anterior o Mes Actual) y nos da información sobre cómo se distribuyen los porcentajes de asistencia:</p>
+
+        <h3>1. La Caja:</h3>
+        <ul>
+            <li><strong class="highlight">Línea del medio de la caja (rojo o naranja):</strong> Esta es la <span class="highlight">mediana</span>. La mediana es el valor central de los datos. Esto significa que el 50% de los datos están por debajo de este valor y el 50% están por encima.
+                <ul>
+                    <li><strong>Mes Anterior (azul):</strong> Mediana de asistencia = 94.73684%</li>
+                    <li><strong>Mes Actual (naranja):</strong> Mediana de asistencia = 90%</li>
+                </ul>
+            </li>
+            <li><strong class="highlight">Parte inferior de la caja (Q1 - Primer Cuartil):</strong> Indica que el 25% de los datos de asistencia están por debajo de este valor.
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Q1 = 81.81818%</li>
+                    <li><strong>Mes Actual:</strong> Q1 = 76.19048%</li>
+                </ul>
+            </li>
+            <li><strong class="highlight">Parte superior de la caja (Q3 - Tercer Cuartil):</strong> Indica que el 75% de los datos de asistencia están por debajo de este valor (o el 25% están por encima).
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Q3 = 100%</li>
+                    <li><strong>Mes Actual:</strong> Q3 = 95.2381%</li>
+                </ul>
+            </li>
+            <li><strong class="highlight">La longitud de la caja (de Q1 a Q3) es el Rango Intercuartílico (RIC o IQR):</strong> Muestra dónde se encuentra el 50% central de los datos. Una caja más estrecha indica que los datos están más agrupados; una caja más ancha indica mayor dispersión.</li>
+        </ul>
+
+        <h3>2. Los "Bigotes" (Líneas que salen de la caja):</h3>
+        <ul>
+            <li><strong class="highlight">Bigote Superior (upper fence):</strong> Representa el valor máximo "razonable" de los datos, excluyendo valores atípicos extremos.
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Límite superior = 100%</li>
+                    <li><strong>Mes Actual:</strong> Límite superior = 100%</li>
+                </ul>
+            </li>
+            <li><strong class="highlight">Bigote Inferior (lower fence):</strong> Representa el valor mínimo "razonable" de los datos, excluyendo valores atípicos extremos.
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Límite inferior = 54.54545%</li>
+                    <li><strong>Mes Actual:</strong> Límite inferior = 47.61905%</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>3. Puntos Fuera de los Bigotes (Outliers):</h3>
+        <ul>
+            <li>Son los puntos individuales dispersos fuera de los bigotes (los muchos puntos azules y naranjas en la parte inferior). Estos representan valores de asistencia que son <strong class="highlight">atípicos</strong> o excepcionalmente bajos en comparación con la mayoría de los datos.</li>
+            <li><strong class="highlight">Mínimo de los datos:</strong>
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Mínimo = 0%</li>
+                    <li><strong>Mes Actual:</strong> Mínimo = 0%</li>
+                </ul>
+            </li>
+            <li><strong class="highlight">Máximo de los datos:</strong>
+                <ul>
+                    <li><strong>Mes Anterior:</strong> Máximo = 100%</li>
+                    <li><strong>Mes Actual:</strong> Máximo = 100%</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>4. Diamante Rojo/Naranja:</h3>
+        <ul>
+            <li>Representa el <strong class="highlight">promedio (media)</strong> de la asistencia para cada período.</li>
+            <li>Es útil para comparar la tendencia central con la mediana, ya que la media puede ser más sensible a los valores atípicos.</li>
+        </ul>
+
+        <h2>Interpretación de los resultados</h2>
+        <p>Al comparar el "Mes Anterior" con el "Mes Actual", podemos observar lo siguiente:</p>
+        <ul>
+            <li><strong class="highlight">Tendencia Central de Asistencia (Mediana):</strong>
+                <p>La mediana de asistencia del <strong>Mes Anterior (aproximadamente 94.7%)</strong> fue <span class="highlight">más alta</span> que la del <strong>Mes Actual (90%)</strong>. Esto significa que el 50% de los estudiantes logró una asistencia superior al 94.7% en el Mes Anterior, mientras que en el Mes Actual, ese 50% estuvo por encima del 90%. <span class="highlight">Esto indica una ligera disminución en la asistencia general del grupo en el Mes Actual.</span></p>
+            </li>
+            <li><strong class="highlight">Dispersión de la Asistencia (Rango Intercuartílico):</strong>
+                <p>La caja del <strong>Mes Anterior</strong> (azul) es un poco más estrecha que la del <strong>Mes Actual</strong> (naranja). Esto sugiere que las asistencias en el Mes Anterior estuvieron un poco más agrupadas alrededor de la mediana, mientras que en el Mes Actual hubo una mayor variación en los porcentajes de asistencia del 50% central de los estudiantes. Es decir, los porcentajes de asistencia en el Mes Actual son un poco más diversos.</p>
+            </li>
+            <li><strong class="highlight">Asistencia Superior:</strong>
+                <p>En ambos meses, el 75% de los estudiantes (hasta Q3) tuvo una asistencia muy alta (100% en el Mes Anterior y aproximadamente 95.2% en el Mes Actual). Esto es muy positivo y sugiere que una gran parte de los estudiantes mantiene una excelente asistencia.</p>
+            </li>
+            <li><strong class="highlight">Asistencia Inferior y Valores Atípicos:</strong>
+                <p>Los bigotes inferiores y los numerosos puntos atípicos (individuales) en la parte baja del gráfico son cruciales. Indican que hay una proporción de estudiantes que tienen porcentajes de asistencia muy bajos, incluso llegando al 0%. Esto es una preocupación consistente en ambos meses.</p>
+                <ul>
+                    <li>El límite inferior del bigote es un poco más bajo en el Mes Actual (aprox. 47.6%) que en el Mes Anterior (aprox. 54.5%). Esto significa que los valores más bajos "razonables" de asistencia (antes de considerarse atípicos extremos) fueron un poco más bajos en el Mes Actual.</li>
+                </ul>
+                <br>
+            </li>
+            <li><strong class="highlight">Promedio vs. Mediana:</strong>
+                <p>En ambos casos, el diamante del promedio está por debajo de la línea de la mediana. Esto es un indicador de que los valores atípicos bajos (las asistencias del 0% o muy bajas) están "tirando" el promedio hacia abajo, haciéndolo menor que la mediana. Esto refuerza la idea de que hay un grupo de estudiantes con asistencia significativamente más baja que afecta la media general.</p>
+            </li>
+        </ul>
+
+            <p>En resumen, este gráfico proporciona una visión detallada de la distribución de la asistencia. Si bien la mayoría de los estudiantes muestra un excelente nivel de asistencia, la ligera disminución en la mediana y la persistencia de casos de asistencia muy baja en ambos períodos son áreas clave que la comunidad educativa debe monitorear y abordar activamente para asegurar el bienestar y el éxito académico de todos los estudiantes.</p>
+        </div>
+    </section>
+
+
+
+
+        <h3>Diagrama de Caja y Bigotes de asistencia por comuna</h3>
+       
+    <table class="iframe-table">
+        <tr>
+            <td>
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia_Boxplot_LA_CISTERNA.html" title="Informe de Matrícula 1" height="300px" width="100%" class="otro-iframe">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+            </td>
+            <td>
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia_Boxplot_LO_ESPEJO.html" title="Contenido de Ejemplo 2" height="300px" width="100%" class="otro-iframe">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+            </td>
+        </tr>
+           <tr>
+            <td>
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia_Boxplot_PEDRO_AGUIRRE_CERDA.html" class="otro-iframe" title="Informe de Matrícula 1" height="300px" width="100%">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+            </td>
+            <td>
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia_Boxplot_SAN_MIGUEL.html" title="Contenido de Ejemplo 2" height="300px" width="100%" class="otro-iframe">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+            </td>
+        </tr>
+    </table>
+
+   <table class="iframe-table">
+     
+    </table>
+
+    <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia_Boxplot_SAN_RAM%C3%93N.html" class="otro-iframe"></iframe>
+<section id="asistencia">
+<h2>Comparativa de asistencia por tipo de enseñanza</h2>
+
+    <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia%20-%20Comparativa%20Tipo%20Ense%C3%B1anza.html"></iframe>
+
+
+<p>Al observar el gráfico, se identifican dos tendencias principales:</p>
+    <ul>
+        <li><strong>Ningún tipo de enseñanza cumple o supera consistentemente el 85%:</strong> Es notable que todos los tipos de enseñanza han experimentado una disminución en su promedio de asistencia del mes anterior al mes actual, y varios de ellos han caído por debajo del umbral del 85% en el mes actual, incluso aquellos que lo superaban previamente. Esto sugiere factores que afectan la asistencia de manera más generalizada.</li>
+        <li><strong>Brecha significativa en la educación de adultos:</strong> Existe una clara diferenciación en los promedios de asistencia entre los niveles de enseñanza para niños y jóvenes (que, aunque con bajas, se acercan o superaron el 85% en el mes anterior) y los niveles de educación de adultos, los cuales muestran promedios consistentemente muy por debajo del estándar en ambos meses.</li>
+    </ul>
+
+    <h2>Interpretación Detallada por Tipo de Enseñanza:</h2>
+    <p>Clasifiquemos los tipos de enseñanza según su desempeño respecto a la inasistencia crónica </p>
+
+    <h3>Niveles que cayeron por debajo del 85% en el mes actual (Requieren recuperación urgente):</h3>
+    <ul>
+        <li><strong>Enseñanza Básica (86.7% Mes Anterior vs 83.4% Mes Actual):</strong> Este nivel, crucial por su gran volumen de estudiantes, <strong>cayó por debajo del 85% en el mes Actual</strong>. Es una alerta significativa que demanda acciones para revertir esta tendencia.</li>
+        <li><strong>Enseñanza Media T-P Comercial Niños y Jóvenes (89.9% Mes Anterior vs 83.3% Mes Actual):</strong> A pesar de haber superado el 85% en el mes anterior, este grupo <strong>ahora está por debajo</strong>, con una disminución de más de 6 puntos porcentuales. La caída es considerable.</li>
+        <li><strong>Enseñanza Media T-P Industrial Niños y Jóvenes (88.0% Mes Anterior vs 82.7% Mes Actual):</strong> Similar a los anteriores, este tipo de enseñanza también <strong>cayó por debajo del 85% en el Mes Actual</strong>.</li>
+        <li><strong>Enseñanza Media H-C Niños y Jóvenes (87.5% Mes Anterior vs 81.3% Mes Actual):</strong> Otro nivel que pasó de cumplir el estándar a <strong>estar por debajo del 85% en el Mes Actual</strong>, con una baja de aproximadamente 6 puntos.</li>
+        <li><strong>Enseñanza Media T-P Técnica Niños y Jóvenes (91.8% Mes Anterior vs 81.2% Mes Actual):</strong> Este es el caso más preocupante dentro de este grupo. Si bien tuvo el promedio más alto en el mes anterior, experimentó la <strong>mayor caída (más de 10 puntos porcentuales)</strong> y ahora se sitúa <strong>claramente por debajo del 85% en el Mes Actual</strong>.</li>
+    </ul>
+
+    <h3>Niveles consistentemente por debajo del estándar del 85% (Desafío continuo y prioritario):</h3>
+    <ul>
+        <li><strong>Educación Parvularia (82.9% Mes Anterior vs 78.9% Mes Actual):</strong> Este nivel <strong>ya estaba por debajo del 85%</strong> en el Mes Anterior y ha disminuido aún más en el Mes Actual. Su asistencia se mantiene por debajo del estándar, lo cual es crítico para el desarrollo temprano de los niños.</li>
+        <li><strong>Educación Especial Discapacidad Intelectual (75.6% Mes Anterior vs 74.7% Mes Actual):</strong> Este grupo se encuentra <strong>significativamente por debajo del 85% en ambos meses</strong> y mantiene una asistencia relativamente estable pero baja.</li>
+        <li><strong>Educación Media T-P Técnica Adultos (98.0% Mes Anterior vs 81.6% Mes Actual):</strong> Se observa una caída considerable en el porcentaje de asistencia, lo que representa un desafío importante. Si el 98% es correcto, la caída es dramática y la situación actual es de preocupación.</li>
+        <li><strong>Educación Media H-C Adultos (71.7% Mes Anterior vs 62.0% Mes Actual):</strong> Este grupo se encuentra <strong>muy por debajo del 85% en ambos meses</strong> y ha experimentado una disminución adicional considerable en el Mes Actual. Su baja asistencia es un problema persistente que requiere atención prioritaria.</li>
+        <li><strong>Educación Básica Adultos Sin Oficios (64.0% Mes Anterior vs 61.9% Mes Actual):</strong> La asistencia es <strong>muy baja y consistentemente por debajo del 85%</strong> en ambos meses, con una ligera disminución adicional.</li>
+        <li><strong>Educación Básica Adultos Con Oficios (63.8% Mes Anterior vs 53.7% Mes Actual):</strong> Este es el grupo con el promedio de asistencia <strong>más bajo en ambos meses</strong> y, además, experimenta una <strong>caída drástica de más de 10 puntos porcentuales</strong> en el Mes Actual. Se encuentra muy lejos del 85% y representa la mayor preocupación en términos de asistencia en toda la comunidad educativa.</li>
+    </ul>
+
+
+    <h2>Mapa de calor de días de ausencia</h2>
+
+
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia%20-%20Heatmap%20-%20Ausentismo%20por%20d%C3%ADa%20-%20Anterior.html" title="Mapa de calor por día de ausencia - mes anterior" height="300px" width="100%" class="otro-iframe">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+            
+                <iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Asistencia%20-%20Heatmap%20-%20Ausentismo%20por%20d%C3%ADa%20-%20Actual.html" title="Mapa de calor por día de ausencia mes actual" height="300px" width="100%" class="otro-iframe">
+                    <p>Tu navegador no soporta iframes.</p>
+                </iframe>
+         <p>Los dos mapas de calor proporcionados ilustran la "Tasa de Ausentismo Promedio General por Día del Mes" para dos períodos distintos: "Anterior" y "Actual". Un color rojo más oscuro indica una tasa de ausentismo más alta, mientras que los tonos más claros y el blanco sugieren tasas más bajas.</p>
+
+        <h2>Observaciones Clave:</h2>
+        <ul>
+            <li>
+                <strong>Cambio en el Día de Mayor Ausentismo:</strong>
+                <ul>
+                    <li><strong>Período Anterior:</strong> El <em>punto máximo</em> más significativo de ausentismo ocurrió alrededor del <strong>Día 6</strong> del mes, mostrando una tasa muy alta (el rojo más oscuro, probablemente superior al 18%). Otros puntos elevados notables, aunque menores, se observaron alrededor de los días 11-14, 20-22 y 26-28.</li>
+                    <li><strong>Período Actual:</strong> El principal <em>punto más alto</em> de ausentismo se ha desplazado al <strong>Día 3</strong> del mes, exhibiendo una tasa extremadamente alta (el rojo más oscuro, probablemente superior al 80%). Esto representa un aumento sustancial en el valor del punto más alto de ausentismo en comparación con el período anterior.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Magnitud del Ausentismo Máximo:</strong>
+                <ul>
+                    <li>El período "Actual" muestra una tasa de ausentismo máxima dramáticamente más alta (hasta 80% o más) en el Día 3 en comparación con el <em>punto máximo</em> del período "Anterior" (alrededor del 18%) en el Día 6. Esto indica una escalada severa del ausentismo en días específicos.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Patrón General de Ausentismo:</strong>
+                <ul>
+                    <li><strong>Período Anterior:</strong> El ausentismo estaba más distribuido a lo largo del mes, con varios días mostrando tasas elevadas, aunque ninguna tan alta como el <em>punto más elevado</em> del período actual. Hubo patrones distintos de mayor ausentismo seguidos de tasas más bajas.</li>
+                    <li><strong>Período Actual:</strong> Aunque existe un <em>punto máximo</em> extremo en el Día 3, las tasas de ausentismo para la mayoría de los otros días parecen significativamente más bajas (tonos más claros de rojo) en comparación con el período "Anterior". Todavía hay algunas elevaciones menores alrededor de los días 14-16 y 25-27, pero son mucho menos pronunciadas que el punto principal.</li>
+                </ul>
+            </li>
+        </ul>
+
+       
+        <p>El análisis revela un cambio crítico en los patrones de ausentismo entre el período anterior y el actual. Mientras que el período anterior exhibía un patrón de ausentismo más distribuido con un <em>punto máximo</em> alrededor del 18%, el período actual muestra una alarmante concentración de ausentismo extremadamente alto (superando el 80%) en el <strong>Día 3</strong> del mes. Por el contrario, el ausentismo en la mayoría de los demás días del período actual parece ser menor que en el período anterior.</p>
+
+  </section>
+  </section>
+
+  <section id="retiro">
+
+    <h2>3. Análisis de Retiros y Flujo de Estudiantes</h2>
+        <div class="flex-container">
+            <div class="kpi-container">
+                <h3>Resumen de Flujo de Matrícula Activa</h3>
+                <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Métrica de Flujo</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Activos Mes Anterior</td>
+      <td>18.172</td>
+    </tr>
+    <tr>
+      <td>Activos Mes Actual</td>
+      <td>18.322</td>
+    </tr>
+    <tr>
+      <td>Variación Neta Calculada</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>Nuevos Ingresos (al roster activo)</td>
+      <td>685</td>
+    </tr>
+    <tr>
+      <td>Bajas (del roster activo)</td>
+      <td>535</td>
+    </tr>
+    <tr>
+      <td>Variación Neta (Ingresos - Bajas)</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>Estudiantes Continuantes</td>
+      <td>17.637</td>
+    </tr>
+    <tr>
+      <td>Tasa de Retención Mensual (%)</td>
+      <td>97.06%</td>
+    </tr>
+  </tbody>
+</table>
+                
+            </div>
+            <div class="kpi-container">
+                <h3>Resumen de Conteos de Retiros</h3>
+                <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Descripción</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total Retiros Mes Actual</td>
+      <td>1.251</td>
+    </tr>
+    <tr>
+      <td>Total Retiros Mes Anterior</td>
+      <td>690</td>
+    </tr>
+    <tr>
+      <td>Nuevos Retiros</td>
+      <td>566</td>
+    </tr>
+    <tr>
+      <td>Retiros Continuos</td>
+      <td>685</td>
+    </tr>
+    <tr>
+      <td>Retiros Ya No Marcados</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+               
+        </div>
+<div class="placeholder-text"><p><em>Para el periodo de actual, se observa un aumento de 150 estudiantes. Este aumento corresponde a 685 estudiantes que ingresaron a algún establecimiento del SLEP y 535 personas que se retiraron. Por lo tanto, en términos generales, hay 17.637 estudiantes inscritos en el mes de marzo, que continúan en el mes de abril, teniendo así una Tasa de Retención Mensual de 97.06%. </em></p></div>
+
+</div>
+
+
+<h2>Flujo de matrícula y retiros</h2>
+<iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Retiros%20-%20Flujo%20entre%20meses.html"></iframe>
+
+<section>
+<iframe src="https://jhondzsr.github.io/MAT_AS_RET_SR/04%20-Retiros%20-%20Tipo%20de%20ense%C3%B1anza.html"></iframe>
+
+
+</br>
+</br>
+</br>
+    <h2>Interpretación del Gráfico</h2>
+
+
+
+    <h3><strong>Observaciones Generales</strong></h3>
+    <ul>
+        <li>
+            <b>Dominio de "Retiro Continuo":</b> En la mayoría de los tipos de enseñanza presentados, el número de "Retiros Continuos" (identificados con las barras azules) es notablemente mayor o al menos comparable con el de "Nuevos Retiros" (barras rojas).
+        </li>
+        <li>
+            <strong>Tipos de Enseñanza con Mayor Volumen de Retiros</strong>:
+            <ul>
+                <li>
+                    La <strong>Educación Parvularia</strong> destaca con el número más alto de "Retiro Continuo" (<strong>368 estudiantes</strong>) y un considerable volumen de "Nuevo Retiro" (<strong>270 estudiantes</strong>).
+                </li>
+                <li>
+                    La <strong>Enseñanza Básica</strong> también presenta cifras elevadas, con <strong>129</strong> "Retiros Continuos" y <strong>99</strong> "Nuevos Retiros".
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Tipos de Enseñanza con Menor Volumen de Retiros</strong>:
+            <ul>
+                <li>
+                    La <strong>Educación Media T-P Técnica Adultos</strong> registra la cifra más baja, con apenas <strong>1</strong> "Retiro Continuo" y <strong>0</strong> "Nuevo Retiro".
+                </li>
+                <li>
+                    La <strong>Educación Básica Adultos Con Oficios</strong> y la <strong>Educación Especial Discapacidad Intelectual</strong> también muestran volúmenes muy reducidos.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Análisis Detallado por Tipo de Enseñanza</h2>
+    <ul>
+        <li>
+            <strong>Educación Básica Adultos Con Oficios</strong>: Muy pocos retiros, con <strong>5</strong> continuos y ningún nuevo retiro.
+        </li>
+        <li>
+            <strong>Educación Básica Adultos Sin Oficios</strong>: Un caso particular donde los "Nuevos Retiros" (<strong>7</strong>) superan ligeramente a los "Retiros Continuos" (<strong>4</strong>), aunque las cifras generales son bajas.
+        </li>
+        <li>
+            <strong>Educación Especial Discapacidad Intelectual</strong>: Cifras bajas pero consistentes, con <strong>7</strong> retiros continuos y <strong>4</strong> nuevos retiros.
+        </li>
+        <li>
+            <strong>Educación Media H-C Adultos</strong>: Presenta un número notable de "Nuevos Retiros" (<strong>86</strong>), que se acerca al de "Retiros Continuos" (<strong>73</strong>). Esto podría sugerir una dinámica particular de abandono en esta modalidad de adultos.
+        </li>
+        <li>
+            <strong class="highlight">Educación Parvularia</strong>: Es el tipo de enseñanza con la mayor cantidad de retiros totales y, en particular, el más alto en "Retiro Continuo" (<strong>368</strong>). Su alto número de "Nuevos Retiros" (<strong>270</strong>) también es significativo, lo que podría indicar una alta movilidad o abandono temprano en la etapa preescolar.
+        </li>
+        <li>
+            <strong class="highlight">Enseñanza Básica</strong>: Es el segundo tipo con mayor volumen de retiros. Similar a parvularia, el "Retiro Continuo" (<strong>129</strong>) es superior al "Nuevo Retiro" (<strong>99</strong>).
+        </li>
+        <li>
+            <strong>Enseñanza Media H-C Niños y Jóvenes</strong>: Muestra tasas de retiro muy bajas (<strong>6</strong> continuos, <strong>5</strong> nuevos), indicando una baja deserción en esta modalidad.
+        </li>
+        <li>
+            <strong>Enseñanza Media T-P Comercial Niños y Jóvenes</strong>: Cifras bajas en general, pero aquí el "Nuevo Retiro" (<strong>22</strong>) es ligeramente más alto que el "Retiro Continuo" (<strong>17</strong>).
+        </li>
+        <li>
+            <strong>Enseñanza Media T-P Industrial Niños y Jóvenes</strong>: También presenta cifras reducidas, con <strong>14</strong> "Retiros Continuos" y <strong>10</strong> "Nuevos Retiros".
+        </li>
+        <li>
+            <strong>Educación Media T-P Técnica Adultos</strong>: Prácticamente sin retiros, con solo <strong>1</strong> "Retiro Continuo" y <strong>0</strong> "Nuevo Retiro", lo que sugiere una alta retención.
+        </li>
+    </ul>
+
+    <h2>Conclusiones Potenciales</h2>
+    <ul>
+        <li>
+            Las etapas de <strong>Educación Parvularia</strong> y <strong>Enseñanza Básica</strong> son las que requieren mayor atención en cuanto a la deserción, destacando los "Retiros Continuos".
+        </li>
+        <li>
+            Algunas modalidades de adultos o técnico-profesionales, como la <strong>Educación Media H-C Adultos</strong> y la <strong>Educación Básica Adultos Sin Oficios</strong> (y en menor medida la Enseñanza Media T-P Comercial Niños y Jóvenes), muestran una proporción más significativa de "Nuevos Retiros".
+        </li>
+        <li>
+            Las modalidades con enfoque técnico o de oficios (como Educación Media T-P Técnica Adultos) generalmente presentan tasas de retiro muy bajas, lo que podría indicar un mayor compromiso o una oferta educativa más alineada con las expectativas del estudiante.
+        </li>
+    </ul>
+
+
+
+  </section>
+  </section>
+    
+
+    </section>
+    <footer>
+        <p>Informe generado con datos hasta 30 de abril de 2025.</p>
+        <p>&copy; 2025 Departamento de Estudios, Monitoreo y Datos</p>
+    </footer>
+</body>
+</html>
+    

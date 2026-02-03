@@ -1,0 +1,1851 @@
+
+
+
+    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Mensual de Asistencia, Matrícula y Retiros - Julio 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #363636;
+            --text-color-light: #99ABB5;
+            --heading-color: #1a1a1a;
+            --primary-color: #2563eb;
+            --primary-color-light: #dbeafe;
+            --border-color: #B2B2B2;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --divider: 0.5px solid #B2B2B2;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .main-container {
+            padding: 40px 0;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+        }
+
+        .topic-tag {
+            color: var(--text-color-light);
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .headline {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .drophead {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .byline {
+            color: var(--text-color-light);
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+        }
+
+        .content-section:not(:last-child) {
+            border-bottom: var(--divider);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin: 40px 0 24px 0;
+            line-height: 1.3;
+        }
+        
+        .insight-box {
+            background-color: var(--primary-color-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .insight-box-positive {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .insight-box-negative {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+
+        .insight-box p, 
+        .insight-box-positive p, 
+        .insight-box-negative p {
+            margin: 0;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 32px;
+            margin: 32px 0;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 24px 0;
+        }
+
+        .chart-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .chart-full-width {
+            grid-column: 1 / -1;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin: 32px 0;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .data-table th, 
+        .data-table td {
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.025em;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+
+        
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .metric-card h4 {
+            margin: 0 0 12px 0;
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .metric-card .value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.1;
+        }
+        .boxplot-container {
+            padding-bottom: 75%;
+        }
+
+        .download-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 16px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .download-link:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.95rem;
+            color: var(--text-color-light);
+            margin-top: 60px;
+            border-top: var(--divider);
+        }
+
+        @media (max-width: 992px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .headline {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 24px 0;
+            }
+            .headline {
+                font-size: 1.875rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .subsection-title {
+                font-size: 1.25rem;
+            }
+            .chart-container {
+                padding-bottom: 75%;
+            }
+            .boxplot-container {
+                padding-bottom: 100%;
+            }
+            .data-table {
+                font-size: 0.875rem;
+            }
+            .data-table th, 
+            .data-table td {
+                padding: 12px 16px;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 1.5rem;
+            }
+            .drophead {
+                font-size: 1.125rem;
+            }
+            .data-table {
+                font-size: 0.8125rem;
+            }
+            .data-table th, 
+            .data-table td {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-container">
+            <!-- Header Section -->
+            <div class="row">
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <div class="header-section">
+                        <span class="topic-tag">EDUCACIÓN</span>
+                        <h1 class="headline">Informe Mensual de Asistencia, Matrícula y Retiros - Julio 2025</h1>
+                        <p class="drophead">Correspondiente al mes de Julio 2025, en comparación con el mes de Junio 2025.</p>
+                        <p class="byline">Por Departamento de Estudios, Monitoreo y Datos • Generado agosto 28, 2025</p>
+                        <div style="border-bottom: var(--divider); margin: 40px 0;"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+            </div>
+            <!-- Resumen Ejecutivo -->
+            <div class="row">
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <div class="content-section">
+                        <h2 class="section-title">Resumen Ejecutivo</h2>
+                        <div class="insight-box">
+                            <p><em>Durante este mes, la matrícula total creció en 168 estudiantes, alcanzando los 18.604. Este crecimiento fue liderado por la E. Media H-C (+43) y E. Especial de Discapacidad Intelectual (+7). La asistencia promedio general aumentó a 83,6%, todas las comunas registraron variación positiva, la mayoría por sobre el 5%. Finalmente, el número total de estudiantes en estado de retiro es un aspecto que genera persiste en preocupación dado un nuevo aumento, de 1.807 a 2.224 durante julio.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+            </div>
+
+            <!-- Tendencias Generales -->
+            <div class="row">
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <div class="content-section">
+                        <h2 class="section-title">Tendencias Generales por Comuna</h2>
+                        <p>La siguiente tabla muestra el <strong>número de establecimientos</strong> que presentan diferentes tendencias por comuna:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table table">
+                                <thead>
+                                    <tr>
+                                        <th>Indicador De Tendencia</th>
+                                        <th>La Cisterna</th>
+                                        <th>Lo Espejo</th>
+                                        <th>Pedro Aguirre Cerda</th>
+                                        <th>San Miguel</th>
+                                        <th>San Ramón</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Aumentan Matrícula</strong></td>
+                                        <td>4</td>
+                                        <td>12</td>
+                                        <td>10</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td><strong>41</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Disminuyen Matrícula</strong></td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td><strong>13</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mantiene Matrícula</strong></td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td><strong>6</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Aumentan Asistencia</strong></td>
+                                        <td>8</td>
+                                        <td>14</td>
+                                        <td>15</td>
+                                        <td>8</td>
+                                        <td>7</td>
+                                        <td><strong>52</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Disminuyen Asistencia</strong></td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td><strong>8</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mantiene Asistencia</strong></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td><strong>0</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="insight-box-positive">
+                            <p><em>Este resumen permite identificar que un<strong> 68,3% de los establecimientos aumentó su matrícula</strong> respecto al mes anterior,<strong> el 53,5% lo concentra Lo Espejo (29,2%) y Pedro Aguirre Cerda (24,3%).</strong> Por otra parte, <strong>un 21,6% disminuyeron</strong>, concentrados en un <strong>30,6% en P.A.C</strong> y <strong>San Ramón con 23%</strong> de los casos.</em></p>
+                        </div>
+                        
+                        <div class="insight-box">
+                            <p><em>Respecto a la <strong>Asistencia, un 86,6% de los establecimientos aumentaron</strong> su asistencia respecto al mes anterior, siendo <strong> Lo Espejo y P.A.C quienes concentran este aumento con un 55,7% de los establecimientos</strong>, con un 26,9% y 28,9%, respectivamente. Los establecimientos que representan una <strong> disminución de la asistencia corresponden al 13,3% y se concentran en San Ramón y San Miguel, representando el 87% de los casos, con un 62,5% y 25%</strong>, respectivamente.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+            </div>
+
+            <!-- Análisis de Matrícula -->
+            <div class="row">
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <div class="content-section">
+                        <h2 class="section-title">1. Análisis de Matrícula</h2>
+                        <h3 class="subsection-title">Indicadores Clave de Matrícula</h3>
+                        <div class="table-responsive">
+                            <table class="data-table table">
+                                <thead>
+                                    <tr>
+                                        <th>Indicador</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Matrícula Junio 2025</strong></td>
+                                        <td>18.436</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Matrícula Julio 2025</strong></td>
+                                        <td>18.604</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Variación Absoluta</strong></td>
+                                        <td>+168</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Variación Porcentual</strong></td>
+                                        <td>+0,91%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="insight-box-positive">
+                            <p><em>Interpretación: Este mes, la <strong>matrícula total</strong> es de 18.604, lo que <strong>representa un aumento de 0,9%</strong> en comparación con el mes anterior. La variación neta es de 168 estudiantes.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 col-lg-2 col-xl-3"></div>
+            </div>
+
+            <!-- Gráficos de Matrícula -->
+            <div class="row">
+                <div class="col-12 col-lg-1 col-xl-2"></div>
+                <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="chart-grid">
+                        <div class="chart-container">
+                            <iframe src="plots\03_matricula_bar_comparativo_tipo_ense.html" title="Gráfico comparativo de matrícula por tipo de enseñanza"></iframe>
+                        </div>
+                        <div class="chart-container">
+                            <iframe src="plots\05_matricula_lollipop_variacion.html" title="Gráfico de variación de matrícula por tipo de enseñanza"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-1 col-xl-2"></div>
+            </div>
+
+            <h3>Matrícula por Tipo de Enseñanza (Julio 2025 vs. Junio 2025)</h3>
+            <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Tipo De Enseñanza</th>
+      <th>Matrícula Junio 2025</th>
+      <th>Matrícula Julio 2025</th>
+      <th>Variación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Educación Especial Discapacidad Intelectual</td>
+      <td>271</td>
+      <td>278</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Educación Parvularia</td>
+      <td>1.610</td>
+      <td>1.628</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Educación de Personas Jóvenes y Adultas</td>
+      <td>1.698</td>
+      <td>1.713</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Básica</td>
+      <td>11.104</td>
+      <td>11.193</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media H-C niños y jóvenes</td>
+      <td>2.804</td>
+      <td>2.847</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Comercial Niños y Jóvenes</td>
+      <td>198</td>
+      <td>192</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Industrial Niños y Jóvenes</td>
+      <td>527</td>
+      <td>526</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Técnica Niños y Jóvenes</td>
+      <td>224</td>
+      <td>227</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+            <div class="placeholder-text"><p><em>Aumento en matrícula en la mayoría de los tipos de enseñanza, destacando Educación Especial Discapacidad Intelectual (+2,58%), Media H-C (+1,5%), Media T-P Técnica (+1,3%) y Parvularia (+1,1%). La Educación Parvularia y Enseñanza Básica aumentaron un 0,8%, con variaciones positivas pero menores al 1%. </em></p></div>
+            <div class="placeholder-text"><p><em>Enseñanza T-P Comercial y T-P Industrial registraron caídas de -3% y -0,1%, respectivamente. </em></p></div>
+            
+            <h3>Matrícula por Comuna (Julio 2025 vs. Junio 2025)</h3>
+            <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Comuna</th>
+      <th>Matrícula Junio 2025</th>
+      <th>Matrícula Julio 2025</th>
+      <th>Variación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LA CISTERNA</td>
+      <td>3.228</td>
+      <td>3.243</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>LO ESPEJO</td>
+      <td>4.101</td>
+      <td>4.159</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>4.173</td>
+      <td>4.206</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>SAN MIGUEL</td>
+      <td>3.962</td>
+      <td>3.986</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>SAN RAMÓN</td>
+      <td>2.972</td>
+      <td>3.010</td>
+      <td>38</td>
+    </tr>
+  </tbody>
+</table>
+            <div class="placeholder-text"><p><em>La <strong> variación de la matrícula escolar</strong> , respecto del mes anterior, presenta <strong>mayor crecimiento en Lo Espejo (+1,65%), seguido por San Ramón (+1,27%)</strong>. En un nivel intermedio, aunque bajo el 1%, se ubican Pedro Aguirre Cerda (+0,79%) y San Miguel (+0,60%). Por último, <strong>Cisterna registra la menor variación (+0,46%) </strong>. Estos resultados muestran, una tendencia general positiva, existe una dispersión entre comunas, con una variación de 1,19%.</em></p></div>
+            
+            <h3>Composición de la Matrícula Activa Total del Mes de Julio 2025</h3>
+            <div class="grid-container">
+                <div class="iframe-container">
+                    <iframe src="plots\04_matricula_bar_composicion_comuna.html" title="Gráfico de composición de matrícula activa del mes actual"></iframe>
+                </div>
+            </div>
+            <div class="placeholder-text"><p><em> <strong>P.A.C concentra la matrícula más alta</strong>, predominando en ella la Enseñanza Básica (64,9%), con presencia relevante en Educación Parvularia (12%) y Enseñanza Media H-C (10%). Le sigue Lo Espejo, con un perfil similar, donde también predomina la Enseñanza Básica (2.689), acompañada por Parvularia (420) y un volumen moderado en Media H-C (435).</em></p>
+</div>
+            <div class="placeholder-text"><p><em>
+En contraste, San Miguel presenta menor matrícula total, manteniendo una base sólida en E. Básica (57,9%) y en Enseñanza Media H-C (21,9%). San Ramón, aunque con matrícula global más baja, sigue la misma tendencia: predominio de Básica (52,6%), complementada con Media H-C (345) y Educación de Personas Jóvenes y Adultas (21,2%). Finalmente, La Cisterna registra la matrícula más reducida, con E. Básica (57,9%) como nivel central, pero destacando además la presencia relativamente alta en Media H-C (23,5%), en proporción a su tamaño total.
+</em></p></div>
+
+        </section>
+        
+        <section id="asistencia" class="card">
+            <h2>2. Análisis de Asistencia</h2>
+            <h3>Indicadores Clave de Asistencia</h3>
+            <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Mes Junio 2025</th>
+      <th>Mes Julio 2025</th>
+      <th>Variación (P.P.)</th>
+      <th>Variación (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Asistencia Promedio</td>
+      <td>76,62%</td>
+      <td>83,62%</td>
+      <td>Aumento de 7,00 p.p.</td>
+      <td>Aumento de 9,1%</td>
+    </tr>
+  </tbody>
+</table>
+            <div class="placeholder-text"><p><em>La asistencia promedio este mes fue de 83,62%, lo que representa una variación de Aumento de 9,1% en comparación con el mes anterior.</em></p></div>
+            
+            <h3>Distribución General de Asistencia (Comparativa Mensual)</h3>
+            <div class="grid-container">
+                <div class="iframe-container">
+                    <iframe src="plots\07_Asistencia_Boxplot_General.html" title="Gráfico de BoxPlot General de Asistencia"></iframe>
+                </div>
+
+                
+            </div>
+            
+            <h3>Diagrama de Cajas por Comuna</h3>
+            <div class="grid-container">
+                <div class="iframe-container boxplot-container"><iframe src="plots\10_asistencia_boxplot_LA_CISTERNA.html" title="BoxPlot Asistencia La Cisterna"></iframe></div>
+<div class="iframe-container boxplot-container"><iframe src="plots\10_asistencia_boxplot_LO_ESPEJO.html" title="BoxPlot Asistencia Lo Espejo"></iframe></div>
+<div class="iframe-container boxplot-container"><iframe src="plots\10_asistencia_boxplot_PEDRO_AGUIRRE_CERDA.html" title="BoxPlot Asistencia Pedro Aguirre Cerda"></iframe></div>
+<div class="iframe-container boxplot-container"><iframe src="plots\10_asistencia_boxplot_SAN_MIGUEL.html" title="BoxPlot Asistencia San Miguel"></iframe></div>
+<div class="iframe-container boxplot-container"><iframe src="plots\10_asistencia_boxplot_SAN_RAMÓN.html" title="BoxPlot Asistencia San Ramón"></iframe></div>
+
+            </div>
+     
+            
+
+
+
+            <h3>Asistencia Promedio por Tipo de Enseñanza</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Tipo De Enseñanza</th>
+      <th>Asistencia Junio 2025 (%)</th>
+      <th>Asistencia Julio 2025 (%)</th>
+      <th>Variacion P.P.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Educación Especial Discapacidad Intelectual</td>
+      <td>58,30%</td>
+      <td>68,60%</td>
+      <td>10,30</td>
+    </tr>
+    <tr>
+      <td>Educación Parvularia</td>
+      <td>66,89%</td>
+      <td>73,14%</td>
+      <td>6,25</td>
+    </tr>
+    <tr>
+      <td>Educación de Personas Jóvenes y Adultas</td>
+      <td>57,88%</td>
+      <td>54,82%</td>
+      <td>-3,07</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Básica</td>
+      <td>73,52%</td>
+      <td>80,89%</td>
+      <td>7,37</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media H-C niños y jóvenes</td>
+      <td>69,01%</td>
+      <td>75,25%</td>
+      <td>6,25</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Comercial Niños y Jóvenes</td>
+      <td>70,40%</td>
+      <td>75,50%</td>
+      <td>5,10</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Industrial Niños y Jóvenes</td>
+      <td>72,71%</td>
+      <td>76,58%</td>
+      <td>3,88</td>
+    </tr>
+    <tr>
+      <td>Enseñanza Media T-P Técnica Niños y Jóvenes</td>
+      <td>69,85%</td>
+      <td>72,96%</td>
+      <td>3,11</td>
+    </tr>
+  </tbody>
+</table>
+        
+        <div class="iframe-container">
+            <iframe src="plots\08_asistencia_bar_horizontal_tipo_ense.html" title="Gráfico de análisis de promedio de asistencia horizontal por tipo de enseñanza"></iframe>
+        </div>
+        <div class="placeholder-text"><p><em>El análisis de la asistencia promedio por Tipo de Enseñanza <strong>muestra una variación positiva en gran parte de los niveles*, y sobre el 5%</strong> en Enseñanza de Discapacidad Intelectual (10,3%); Básica (7,4%); E. Media H-C y E. Parvularia (6,25%), y E. Media T-P Comercial (5,1%) </em></p></div>
+        <div class="placeholder-text"><p><em>El único nivel que varió negativamente fue la  E. de Personas Adultas (-3,07%), respecto al mes anterior. </em></p></div>
+
+        <h3>Asistencia Promedio por Comuna</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Comuna</th>
+      <th>Asistencia Junio 2025 (%)</th>
+      <th>Asistencia Julio 2025 (%)</th>
+      <th>Variacion P.P.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LA CISTERNA</td>
+      <td>69,89%</td>
+      <td>78,28%</td>
+      <td>8,39</td>
+    </tr>
+    <tr>
+      <td>LO ESPEJO</td>
+      <td>68,49%</td>
+      <td>73,33%</td>
+      <td>4,84</td>
+    </tr>
+    <tr>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>69,68%</td>
+      <td>75,93%</td>
+      <td>6,26</td>
+    </tr>
+    <tr>
+      <td>SAN MIGUEL</td>
+      <td>69,10%</td>
+      <td>77,08%</td>
+      <td>7,98</td>
+    </tr>
+    <tr>
+      <td>SAN RAMÓN</td>
+      <td>76,17%</td>
+      <td>77,14%</td>
+      <td>0,96</td>
+    </tr>
+  </tbody>
+</table>
+        <div class="placeholder-text"><p><em>En cuanto a la asistencia por comunas, <strong>La Cisterna registró la mayor variación (8,4%)</strong> respecto al mes anterior, seguido por <strong>San Miguel (8%) y P.A.C (6,3%)</strong>.
+        </em></p></div>
+        <div class="placeholder-text"><p><em>A penas por <strong>debajo del umbral de 5%</strong>, se encuentra <strong>Lo Espejo (4,8%)</strong>. San Ramón se ubica cercano al 1% de variación respecto al mes anterior.
+        </em></p></div>
+
+
+        <h3>Mapa de Calor de Días de Ausencia</h3>
+        <div class="grid-container">
+            <div class="iframe-container"> <iframe src="plots\06_asistencia_heatmap_tasa_actual.html" title="Mapa de calor del mes actual"></iframe></div>
+            <div class="iframe-container"> <iframe src="plots\06_asistencia_heatmap_tasa_anterior.html" title="Mapa de calor del mes anterior"></iframe></div>
+        </div>
+        <div class="placeholder-text"><p><em>El Análisis del mapa de calor de ausentismo en el mes de julio, evidencia un <strong>mayor ausentismo en los días lunes, iernes, pre y post festivos</strong> (ver días 15 y 16), con <strong>inasistencias por sobre el 15%</strong>. Caso evidenciado es el día <strong>Viernes 18 con un 19% de inasistencia</strong> total.</em></p></div>
+        
+        <div>
+            <h3>Alerta de Baja Asistencia (Menor a 85%)</h3>
+            <p>Se ha generado un reporte en PDF con los estudiantes activos que presentan una asistencia inferior al 85% durante el mes de Julio 2025.</p>
+            <a href="reporte_baja_asistencia.pdf" target="_blank" class="pdf-link" style="background-color: #ffc107; color: #212529;">Descargar PDF: Alerta de Baja Asistencia</a>
+            </div>
+        
+    </section>
+
+    <section id="resumen-establecimiento" class="card">
+        <h2>Resumen por Establecimiento</h2>
+        <h3>Variación Mensual de Matrícula y Asistencia</h3>
+        
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rbd</th>
+      <th>Establecimiento</th>
+      <th>Comuna</th>
+      <th>Variación Asistencia (P.P.)</th>
+      <th>Variación Neta Matrícula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9.461</td>
+      <td>ESC. ESP. DE ADULTOS HUGO MORALES BIZAMA</td>
+      <td>SAN MIGUEL</td>
+      <td>-3,54</td>
+      <td>-11</td>
+    </tr>
+    <tr>
+      <td>9.690</td>
+      <td>CENTRO DUC.CARDENAL JOSE MARIA CARO</td>
+      <td>LO ESPEJO</td>
+      <td>-3,19</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>9.631</td>
+      <td>ESCUELA ESPECIAL DE ADULTOS</td>
+      <td>SAN RAMÓN</td>
+      <td>-2,98</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <td>9.599</td>
+      <td>LICEO MUNICIPAL PURKUYEN</td>
+      <td>SAN RAMÓN</td>
+      <td>-2,09</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.460</td>
+      <td>INST. REG. EDUC ADULTOS SAN MIGUEL</td>
+      <td>SAN MIGUEL</td>
+      <td>-1,69</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>9.601</td>
+      <td>CENTRO EDUCACIONAL MUNICIPAL SAN RAMON</td>
+      <td>SAN RAMÓN</td>
+      <td>-0,82</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>9.625</td>
+      <td>ESCUELA BASICA VILLA LA CULTURA</td>
+      <td>SAN RAMÓN</td>
+      <td>-0,59</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>9.614</td>
+      <td>ESCUELA BASICA KARELMAPU</td>
+      <td>SAN RAMÓN</td>
+      <td>-0,08</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9.734</td>
+      <td>ESCUELA  RAUL SAEZ SAEZ</td>
+      <td>LO ESPEJO</td>
+      <td>0,36</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>9.592</td>
+      <td>ESCUELA BASICA SENDERO DEL SABER</td>
+      <td>SAN RAMÓN</td>
+      <td>0,87</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.727</td>
+      <td>ESCUELA CIUDAD DE BARCELONA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>1,70</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <td>9.741</td>
+      <td>ESCUELA BASICA COEDUCACIONAL</td>
+      <td>LO ESPEJO</td>
+      <td>1,95</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.608</td>
+      <td>CENTRO EDUCACIONAL MIRADOR</td>
+      <td>SAN RAMÓN</td>
+      <td>2,16</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>9.747</td>
+      <td>C.E.I.A.PEDRO AGUIRRE CERDA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>2,58</td>
+      <td>-6</td>
+    </tr>
+    <tr>
+      <td>9.416</td>
+      <td>ESCUELA POETAS DE CHILE</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>2,65</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>9.446</td>
+      <td>ESCUELA DE PARVULOS RAYITO DE LUZ</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>2,75</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>9.586</td>
+      <td>LICEO MUNICIPALIZADO ARAUCANIA</td>
+      <td>SAN RAMÓN</td>
+      <td>2,80</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>9.600</td>
+      <td>ESCUELA NANIHUE</td>
+      <td>SAN RAMÓN</td>
+      <td>2,97</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.700</td>
+      <td>COLEGIO PALESTINO</td>
+      <td>LA CISTERNA</td>
+      <td>3,28</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>9.695</td>
+      <td>LICEO POLIVALENTE EUGENIO PEREIRA SALAS</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>3,28</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.705</td>
+      <td>ESCUELA BASICA SALOMON SACK</td>
+      <td>LO ESPEJO</td>
+      <td>3,41</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>9.740</td>
+      <td>ESCUELA BASICA REPUBLICA DE LAS FILIPINAS</td>
+      <td>LO ESPEJO</td>
+      <td>3,60</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.629</td>
+      <td>ESCUELA BASICA ALIVEN</td>
+      <td>SAN RAMÓN</td>
+      <td>3,88</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>25.173</td>
+      <td>ESC. BASICA MUNICIPAL RISOPATRON</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>4,35</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <td>9.709</td>
+      <td>ESCUELA BLUE STAR COLLEGE</td>
+      <td>LO ESPEJO</td>
+      <td>4,40</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.611</td>
+      <td>ESCUELA BASICA TUPAHUE</td>
+      <td>SAN RAMÓN</td>
+      <td>4,51</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9.697</td>
+      <td>LICEO POLIVALENTE</td>
+      <td>LO ESPEJO</td>
+      <td>4,80</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>9.428</td>
+      <td>ESCUELA BASICA RICARDO E. LATCHMAN</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>4,84</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.419</td>
+      <td>LICEO MUNICIPAL ENRIQUE BACKAUSSE</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>5,75</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>9.733</td>
+      <td>ESCUELA BASICA CLARA  ESTRELLA</td>
+      <td>LO ESPEJO</td>
+      <td>5,85</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.704</td>
+      <td>ESCUELA LO VALLEDOR</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>5,94</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9.738</td>
+      <td>COLEGIO PARQUE LAS AMERICAS</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>5,96</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>9.422</td>
+      <td>ESCUELA CENTRO EDUC. REP. MEXICANA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>6,44</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>9.703</td>
+      <td>ESCUELA ESPERANZA JOVEN</td>
+      <td>LA CISTERNA</td>
+      <td>6,57</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9.693</td>
+      <td>LICEO POLITECNICO CIENCIA Y TECNOLOGIA</td>
+      <td>LA CISTERNA</td>
+      <td>6,66</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9.720</td>
+      <td>COLEGIO HERNAN OLGUIN</td>
+      <td>LO ESPEJO</td>
+      <td>6,68</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.726</td>
+      <td>LICEO TENIENTE FRANCISCO MERY AGUIRRE</td>
+      <td>LO ESPEJO</td>
+      <td>6,76</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>9.415</td>
+      <td>ESCUELA TERRITORIO ANTARTICO</td>
+      <td>SAN MIGUEL</td>
+      <td>6,76</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9.716</td>
+      <td>ESCUELA BASICA ACAPULCO</td>
+      <td>LO ESPEJO</td>
+      <td>6,82</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>9.719</td>
+      <td>ESCUELA BASICA</td>
+      <td>LO ESPEJO</td>
+      <td>6,97</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9.431</td>
+      <td>ESCUELA VILLA SAN MIGUEL</td>
+      <td>SAN MIGUEL</td>
+      <td>7,29</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>9.410</td>
+      <td>ESCUELA  CONSOLIDADA DAVILA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>7,86</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>9.593</td>
+      <td>ESCUELA BASICA EDUCADORES DE CHILE</td>
+      <td>SAN RAMÓN</td>
+      <td>8,10</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>9.426</td>
+      <td>ESCUELA LLANO SUBERCASEAUX</td>
+      <td>SAN MIGUEL</td>
+      <td>8,43</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>9.722</td>
+      <td>LICEO PORTAL DE LA CISTERNA</td>
+      <td>LA CISTERNA</td>
+      <td>8,51</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>9.699</td>
+      <td>COLEGIO NACIONES UNIDAS</td>
+      <td>LA CISTERNA</td>
+      <td>8,77</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <td>9.405</td>
+      <td>LICEO BETSABE HORMAZABAL DE ALARCON</td>
+      <td>SAN MIGUEL</td>
+      <td>8,93</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.706</td>
+      <td>ESCUELA BAS. OSCAR ENCALADA YOVANOVICH</td>
+      <td>LA CISTERNA</td>
+      <td>8,96</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>9.444</td>
+      <td>ESCUELA ESPECIAL LOS CEDROS DEL LIBANO</td>
+      <td>SAN MIGUEL</td>
+      <td>8,99</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9.710</td>
+      <td>ESCUELA BASICA SANTA ADRIANA</td>
+      <td>LO ESPEJO</td>
+      <td>9,19</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>9.736</td>
+      <td>ESCUELA BASICA BERNARDO O´HIGGINS</td>
+      <td>LO ESPEJO</td>
+      <td>9,30</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9.433</td>
+      <td>ESCUELA PABLO NERUDA</td>
+      <td>SAN MIGUEL</td>
+      <td>9,72</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9.729</td>
+      <td>ESCUELA VILLA SUR</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>9,93</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>9.418</td>
+      <td>ESCUELA LA VICTORIA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>10,08</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>9.701</td>
+      <td>LICEO POLIVALENTE OLOF PALME</td>
+      <td>LA CISTERNA</td>
+      <td>11,86</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>9.406</td>
+      <td>LICEO ANDRES BELLO</td>
+      <td>SAN MIGUEL</td>
+      <td>11,89</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>12.103</td>
+      <td>ESCUELA ESPECIAL DE EDUCACION</td>
+      <td>LO ESPEJO</td>
+      <td>12,42</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.730</td>
+      <td>COLEGIO ANTU</td>
+      <td>LA CISTERNA</td>
+      <td>15,38</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.413</td>
+      <td>ESCUELA GENERAL BASICA SANTA FE</td>
+      <td>SAN MIGUEL</td>
+      <td>15,86</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9.458</td>
+      <td>ESCUELA BOROA</td>
+      <td>PEDRO AGUIRRE CERDA</td>
+      <td>20,16</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+        <div class="placeholder-text">
+            <p><em>Esta tabla resume la variación neta de estudiantes y la variación en puntos porcentuales (p.p.) de la asistencia promedio para cada establecimiento, comparando el mes actual con el anterior.</em></p>
+        </div>
+    </section>
+
+        <section id="retiro" class="card">
+                <h2>3. Análisis de Retiros y Flujo de Estudiantes</h2>
+                
+                <h3>Indicadores Clave de Retiros</h3>
+                <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Conteo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total Retiros Mes Julio 2025</td>
+      <td>2.224</td>
+    </tr>
+    <tr>
+      <td>Total Retiros Mes Junio 2025</td>
+      <td>1.807</td>
+    </tr>
+    <tr>
+      <td>Nuevos Retiros (Marcados este mes)</td>
+      <td>441</td>
+    </tr>
+    <tr>
+      <td>Retiros Continuos (Ya estaban, siguen marcados)</td>
+      <td>1.783</td>
+    </tr>
+    <tr>
+      <td>Retiros Ya No Marcados (Estaban, ya no)</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+
+                <h3>Resumen de Retiro</h3>
+                <div class="iframe-container">
+                    <iframe src="plots\13_retiros_flujo_variacion.html" title="Gráfico de variación del flujo de retiros"></iframe>
+                </div>
+
+                <div class="grid-container">
+                    <div>
+                        <h3>Resumen de Flujo de Matrícula Activa</h3>
+                        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Activos Mes Anterior</td>
+      <td>18.436</td>
+    </tr>
+    <tr>
+      <td>Activos Mes Actual</td>
+      <td>18.604</td>
+    </tr>
+    <tr>
+      <td>Variación Neta Calculada</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <td>Nuevos Ingresos (al roster activo)</td>
+      <td>641</td>
+    </tr>
+    <tr>
+      <td>Bajas (del roster activo)</td>
+      <td>473</td>
+    </tr>
+    <tr>
+      <td>Variación Neta (Ingresos - Bajas)</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <td>Estudiantes Continuantes</td>
+      <td>17.963</td>
+    </tr>
+    <tr>
+      <td>Tasa de Retención Mensual (%)</td>
+      <td>97,43%</td>
+    </tr>
+  </tbody>
+</table>
+                        <div class="placeholder-text"><p><em>Análisis del flujo de matrícula activa.</em></p></div>
+                    </div>
+                    <div>
+                        <h3>Resumen de Conteos de Retiros</h3>
+                        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Indicador</th>
+      <th>Conteo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total Retiros Mes Julio 2025</td>
+      <td>2.224</td>
+    </tr>
+    <tr>
+      <td>Total Retiros Mes Junio 2025</td>
+      <td>1.807</td>
+    </tr>
+    <tr>
+      <td>Nuevos Retiros (Marcados este mes)</td>
+      <td>441</td>
+    </tr>
+    <tr>
+      <td>Retiros Continuos (Ya estaban, siguen marcados)</td>
+      <td>1.783</td>
+    </tr>
+    <tr>
+      <td>Retiros Ya No Marcados (Estaban, ya no)</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+                        <div class="placeholder-text"><p><em>Análisis de los conteos de retiros.</em></p></div>
+                    </div>
+                </div>
+
+                <h3>Retiros de Estudiantes por Tipo de Enseñanza</h3>
+                <div class="iframe-container">
+                    <iframe src="plots\14_retiros_bar_tipo_ense.html" title="Gráfico del perfil de retiros por tipo de enseñanza"></iframe>
+                </div>
+
+                <h3>Tasa de Retiro por Establecimiento (Julio 2025)</h3>
+                <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rbd</th>
+      <th>Establecimiento</th>
+      <th>Nº Retiros</th>
+      <th>Matrícula Total</th>
+      <th>Tasa De Retiro (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9.461</td>
+      <td>ESC. ESP. DE ADULTOS HUGO MORALES BIZAMA</td>
+      <td>35</td>
+      <td>157</td>
+      <td>22,29%</td>
+    </tr>
+    <tr>
+      <td>9.747</td>
+      <td>C.E.I.A.PEDRO AGUIRRE CERDA</td>
+      <td>25</td>
+      <td>245</td>
+      <td>10,20%</td>
+    </tr>
+    <tr>
+      <td>9.460</td>
+      <td>INST. REG. EDUC ADULTOS SAN MIGUEL</td>
+      <td>18</td>
+      <td>180</td>
+      <td>10,00%</td>
+    </tr>
+    <tr>
+      <td>9.601</td>
+      <td>CENTRO EDUCACIONAL MUNICIPAL SAN RAMON</td>
+      <td>22</td>
+      <td>349</td>
+      <td>6,30%</td>
+    </tr>
+    <tr>
+      <td>9.699</td>
+      <td>COLEGIO NACIONES UNIDAS</td>
+      <td>14</td>
+      <td>314</td>
+      <td>4,46%</td>
+    </tr>
+    <tr>
+      <td>9.614</td>
+      <td>ESCUELA BASICA KARELMAPU</td>
+      <td>8</td>
+      <td>188</td>
+      <td>4,26%</td>
+    </tr>
+    <tr>
+      <td>9.631</td>
+      <td>ESCUELA ESPECIAL DE ADULTOS</td>
+      <td>13</td>
+      <td>326</td>
+      <td>3,99%</td>
+    </tr>
+    <tr>
+      <td>9.697</td>
+      <td>LICEO POLIVALENTE</td>
+      <td>15</td>
+      <td>403</td>
+      <td>3,72%</td>
+    </tr>
+    <tr>
+      <td>9.608</td>
+      <td>CENTRO EDUCACIONAL MIRADOR</td>
+      <td>5</td>
+      <td>137</td>
+      <td>3,65%</td>
+    </tr>
+    <tr>
+      <td>9.700</td>
+      <td>COLEGIO PALESTINO</td>
+      <td>10</td>
+      <td>284</td>
+      <td>3,52%</td>
+    </tr>
+    <tr>
+      <td>9.690</td>
+      <td>CENTRO DUC.CARDENAL JOSE MARIA CARO</td>
+      <td>12</td>
+      <td>346</td>
+      <td>3,47%</td>
+    </tr>
+    <tr>
+      <td>9.416</td>
+      <td>ESCUELA POETAS DE CHILE</td>
+      <td>13</td>
+      <td>377</td>
+      <td>3,45%</td>
+    </tr>
+    <tr>
+      <td>9.446</td>
+      <td>ESCUELA DE PARVULOS RAYITO DE LUZ</td>
+      <td>4</td>
+      <td>116</td>
+      <td>3,45%</td>
+    </tr>
+    <tr>
+      <td>9.716</td>
+      <td>ESCUELA BASICA ACAPULCO</td>
+      <td>7</td>
+      <td>212</td>
+      <td>3,30%</td>
+    </tr>
+    <tr>
+      <td>9.599</td>
+      <td>LICEO MUNICIPAL PURKUYEN</td>
+      <td>11</td>
+      <td>352</td>
+      <td>3,12%</td>
+    </tr>
+    <tr>
+      <td>9.705</td>
+      <td>ESCUELA BASICA SALOMON SACK</td>
+      <td>6</td>
+      <td>197</td>
+      <td>3,05%</td>
+    </tr>
+    <tr>
+      <td>9.701</td>
+      <td>LICEO POLIVALENTE OLOF PALME</td>
+      <td>13</td>
+      <td>432</td>
+      <td>3,01%</td>
+    </tr>
+    <tr>
+      <td>9.422</td>
+      <td>ESCUELA CENTRO EDUC. REP. MEXICANA</td>
+      <td>10</td>
+      <td>350</td>
+      <td>2,86%</td>
+    </tr>
+    <tr>
+      <td>9.726</td>
+      <td>LICEO TENIENTE FRANCISCO MERY AGUIRRE</td>
+      <td>17</td>
+      <td>620</td>
+      <td>2,74%</td>
+    </tr>
+    <tr>
+      <td>9.704</td>
+      <td>ESCUELA LO VALLEDOR</td>
+      <td>4</td>
+      <td>151</td>
+      <td>2,65%</td>
+    </tr>
+    <tr>
+      <td>9.734</td>
+      <td>ESCUELA  RAUL SAEZ SAEZ</td>
+      <td>7</td>
+      <td>267</td>
+      <td>2,62%</td>
+    </tr>
+    <tr>
+      <td>9.706</td>
+      <td>ESCUELA BAS. OSCAR ENCALADA YOVANOVICH</td>
+      <td>7</td>
+      <td>276</td>
+      <td>2,54%</td>
+    </tr>
+    <tr>
+      <td>9.593</td>
+      <td>ESCUELA BASICA EDUCADORES DE CHILE</td>
+      <td>4</td>
+      <td>162</td>
+      <td>2,47%</td>
+    </tr>
+    <tr>
+      <td>9.727</td>
+      <td>ESCUELA CIUDAD DE BARCELONA</td>
+      <td>5</td>
+      <td>204</td>
+      <td>2,45%</td>
+    </tr>
+    <tr>
+      <td>9.729</td>
+      <td>ESCUELA VILLA SUR</td>
+      <td>5</td>
+      <td>216</td>
+      <td>2,31%</td>
+    </tr>
+    <tr>
+      <td>25.173</td>
+      <td>ESC. BASICA MUNICIPAL RISOPATRON</td>
+      <td>5</td>
+      <td>224</td>
+      <td>2,23%</td>
+    </tr>
+    <tr>
+      <td>9.741</td>
+      <td>ESCUELA BASICA COEDUCACIONAL</td>
+      <td>5</td>
+      <td>240</td>
+      <td>2,08%</td>
+    </tr>
+    <tr>
+      <td>9.406</td>
+      <td>LICEO ANDRES BELLO</td>
+      <td>12</td>
+      <td>587</td>
+      <td>2,04%</td>
+    </tr>
+    <tr>
+      <td>9.720</td>
+      <td>COLEGIO HERNAN OLGUIN</td>
+      <td>9</td>
+      <td>455</td>
+      <td>1,98%</td>
+    </tr>
+    <tr>
+      <td>9.710</td>
+      <td>ESCUELA BASICA SANTA ADRIANA</td>
+      <td>3</td>
+      <td>152</td>
+      <td>1,97%</td>
+    </tr>
+    <tr>
+      <td>9.693</td>
+      <td>LICEO POLITECNICO CIENCIA Y TECNOLOGIA</td>
+      <td>17</td>
+      <td>904</td>
+      <td>1,88%</td>
+    </tr>
+    <tr>
+      <td>9.418</td>
+      <td>ESCUELA LA VICTORIA</td>
+      <td>4</td>
+      <td>218</td>
+      <td>1,83%</td>
+    </tr>
+    <tr>
+      <td>9.410</td>
+      <td>ESCUELA  CONSOLIDADA DAVILA</td>
+      <td>7</td>
+      <td>389</td>
+      <td>1,80%</td>
+    </tr>
+    <tr>
+      <td>9.431</td>
+      <td>ESCUELA VILLA SAN MIGUEL</td>
+      <td>6</td>
+      <td>363</td>
+      <td>1,65%</td>
+    </tr>
+    <tr>
+      <td>9.738</td>
+      <td>COLEGIO PARQUE LAS AMERICAS</td>
+      <td>3</td>
+      <td>185</td>
+      <td>1,62%</td>
+    </tr>
+    <tr>
+      <td>9.722</td>
+      <td>LICEO PORTAL DE LA CISTERNA</td>
+      <td>7</td>
+      <td>432</td>
+      <td>1,62%</td>
+    </tr>
+    <tr>
+      <td>9.703</td>
+      <td>ESCUELA ESPERANZA JOVEN</td>
+      <td>5</td>
+      <td>320</td>
+      <td>1,56%</td>
+    </tr>
+    <tr>
+      <td>9.415</td>
+      <td>ESCUELA TERRITORIO ANTARTICO</td>
+      <td>10</td>
+      <td>648</td>
+      <td>1,54%</td>
+    </tr>
+    <tr>
+      <td>9.629</td>
+      <td>ESCUELA BASICA ALIVEN</td>
+      <td>3</td>
+      <td>195</td>
+      <td>1,54%</td>
+    </tr>
+    <tr>
+      <td>9.695</td>
+      <td>LICEO POLIVALENTE EUGENIO PEREIRA SALAS</td>
+      <td>8</td>
+      <td>549</td>
+      <td>1,46%</td>
+    </tr>
+    <tr>
+      <td>9.733</td>
+      <td>ESCUELA BASICA CLARA  ESTRELLA</td>
+      <td>4</td>
+      <td>278</td>
+      <td>1,44%</td>
+    </tr>
+    <tr>
+      <td>9.730</td>
+      <td>COLEGIO ANTU</td>
+      <td>4</td>
+      <td>281</td>
+      <td>1,42%</td>
+    </tr>
+    <tr>
+      <td>9.625</td>
+      <td>ESCUELA BASICA VILLA LA CULTURA</td>
+      <td>3</td>
+      <td>230</td>
+      <td>1,30%</td>
+    </tr>
+    <tr>
+      <td>9.586</td>
+      <td>LICEO MUNICIPALIZADO ARAUCANIA</td>
+      <td>5</td>
+      <td>385</td>
+      <td>1,30%</td>
+    </tr>
+    <tr>
+      <td>9.600</td>
+      <td>ESCUELA NANIHUE</td>
+      <td>3</td>
+      <td>253</td>
+      <td>1,19%</td>
+    </tr>
+    <tr>
+      <td>9.419</td>
+      <td>LICEO MUNICIPAL ENRIQUE BACKAUSSE</td>
+      <td>4</td>
+      <td>356</td>
+      <td>1,12%</td>
+    </tr>
+    <tr>
+      <td>9.405</td>
+      <td>LICEO BETSABE HORMAZABAL DE ALARCON</td>
+      <td>5</td>
+      <td>503</td>
+      <td>0,99%</td>
+    </tr>
+    <tr>
+      <td>12.103</td>
+      <td>ESCUELA ESPECIAL DE EDUCACION</td>
+      <td>1</td>
+      <td>108</td>
+      <td>0,93%</td>
+    </tr>
+    <tr>
+      <td>9.458</td>
+      <td>ESCUELA BOROA</td>
+      <td>3</td>
+      <td>348</td>
+      <td>0,86%</td>
+    </tr>
+    <tr>
+      <td>9.719</td>
+      <td>ESCUELA BASICA</td>
+      <td>2</td>
+      <td>234</td>
+      <td>0,85%</td>
+    </tr>
+    <tr>
+      <td>9.433</td>
+      <td>ESCUELA PABLO NERUDA</td>
+      <td>3</td>
+      <td>365</td>
+      <td>0,82%</td>
+    </tr>
+    <tr>
+      <td>9.592</td>
+      <td>ESCUELA BASICA SENDERO DEL SABER</td>
+      <td>2</td>
+      <td>244</td>
+      <td>0,82%</td>
+    </tr>
+    <tr>
+      <td>9.413</td>
+      <td>ESCUELA GENERAL BASICA SANTA FE</td>
+      <td>3</td>
+      <td>428</td>
+      <td>0,70%</td>
+    </tr>
+    <tr>
+      <td>9.709</td>
+      <td>ESCUELA BLUE STAR COLLEGE</td>
+      <td>1</td>
+      <td>184</td>
+      <td>0,54%</td>
+    </tr>
+    <tr>
+      <td>9.426</td>
+      <td>ESCUELA LLANO SUBERCASEAUX</td>
+      <td>3</td>
+      <td>585</td>
+      <td>0,51%</td>
+    </tr>
+    <tr>
+      <td>9.740</td>
+      <td>ESCUELA BASICA REPUBLICA DE LAS FILIPINAS</td>
+      <td>1</td>
+      <td>209</td>
+      <td>0,48%</td>
+    </tr>
+    <tr>
+      <td>9.611</td>
+      <td>ESCUELA BASICA TUPAHUE</td>
+      <td>0</td>
+      <td>189</td>
+      <td>0,00%</td>
+    </tr>
+    <tr>
+      <td>9.444</td>
+      <td>ESCUELA ESPECIAL LOS CEDROS DEL LIBANO</td>
+      <td>0</td>
+      <td>170</td>
+      <td>0,00%</td>
+    </tr>
+    <tr>
+      <td>9.428</td>
+      <td>ESCUELA BASICA RICARDO E. LATCHMAN</td>
+      <td>0</td>
+      <td>278</td>
+      <td>0,00%</td>
+    </tr>
+    <tr>
+      <td>9.736</td>
+      <td>ESCUELA BASICA BERNARDO O´HIGGINS</td>
+      <td>0</td>
+      <td>254</td>
+      <td>0,00%</td>
+    </tr>
+  </tbody>
+</table>
+                <div class="placeholder-text"><p><em>Análisis de la tasa de retiro por establecimiento. Una tasa alta puede indicar problemas que requieren atención.</em></p></div>
+                
+                <h3>Detalle de Nuevos Retiros (Julio 2025)</h3>
+                <div><p>La información detallada se ha generado en un archivo PDF.</p><a href="detalle_nuevos_retiros.pdf" target="_blank" class="pdf-link">Descargar PDF: Detalle de Nuevos Retiros</a></div>
+                <div class="placeholder-text"><p><em>Análisis del detalle de nuevos retiros.</em></p></div>
+                
+                <h3>Detalle de Todos los Retiros (Julio 2025)</h3>
+                <div><p>La información detallada se ha generado en un archivo PDF.</p><a href="detalle_total_retiros.pdf" target="_blank" class="pdf-link">Descargar PDF: Detalle de Todos los Retiros</a></div>
+                <div class="placeholder-text"><p><em>Análisis del detalle de todos los retiros del mes actual.</em></p></div>
+            </section>
+
+                
+
+            <!-- Footer -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer">
+                        <p>Reporte generado el 28-08-2025 por el Departamento de Estudios, Monitoreo y Datos del SLEP Santa Rosa, utilizando las Bases de Datos de Julio 2025, procesadas por el Centro de Estudios del Ministerio de Educación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+                 
