@@ -1,0 +1,35 @@
+Log generado: 24-03-2026 20:18:31
+Total fallidos: 32
+------------------------------------------------------------
+RBD: 13116009 | Jardin Infantil Estrellitas De La Mañana -> cannot open the connection
+RBD: 13116010 | Jardin Infantil Pequeños Gigantes -> cannot open the connection
+RBD: 13116011 | Jardin Infantil Mis Primeros Pasos -> cannot open the connection
+RBD: 13116014 | Jardin Infantil Mi Mundo En Miniaturas -> cannot open the connection
+RBD: 13116015 | Jardin Infantil Huelemu -> cannot open the connection
+RBD: 13116016 | Jardin Infantil Manitos De Colores -> cannot open the connection
+RBD: 13116024 | Renacer Por Un Sueño -> cannot open the connection
+RBD: 13116025 | La Sonrisa -> cannot open the connection
+RBD: 13116026 | Jesús Pescador -> cannot open the connection
+RBD: 13116027 | Cardenal Caro -> cannot open the connection
+RBD: 13116028 | Santa Adriana -> cannot open the connection
+RBD: 13121016 | Jardin Infantil La Marina -> cannot open the connection
+RBD: 13121017 | Jardin Infantil Ochagavia -> cannot open the connection
+RBD: 13121018 | Jardín Infantil Rukawe -> cannot open the connection
+RBD: 13121019 | Jardin Infantil Parque Las Americas -> cannot open the connection
+RBD: 13121020 | Jardin Infantil Pequeño Aymara -> cannot open the connection
+RBD: 13121021 | Jardin Infantil Mi Trencito De Lo Ovalle -> cannot open the connection
+RBD: 13121022 | Jardin Infantil Ciudad De Barcelona -> cannot open the connection
+RBD: 13121023 | Jardin Infantil Enrique Backausse -> cannot open the connection
+RBD: 13121024 | Jardin Infantil Poetas De Chile -> cannot open the connection
+RBD: 13121025 | Jardin Infantil Eugenio Pereira Salas -> cannot open the connection
+RBD: 13130003 | Jardin Infantil Villa San Miguel -> cannot open the connection
+RBD: 13130004 | Jardin Infantil Santa Fe -> cannot open the connection
+RBD: 13130006 | Jardin Infantil Sala Cuna Andres Bello -> cannot open the connection
+RBD: 13130007 | Jardin Infantil Territorio Antartico -> cannot open the connection
+RBD: 13130008 | Jardin Infantil Llano Subercaseaux -> cannot open the connection
+RBD: 13131005 | Jardin Infantil Las Hormiguitas -> cannot open the connection
+RBD: 13131009 | Jardin Infantil Principes Del Reino -> cannot open the connection
+RBD: 13131010 | Jardin Infantil Semillitas De Esperanza -> cannot open the connection
+RBD: 13131014 | Jardin Infantil Caballito Feliz -> cannot open the connection
+RBD: 13131015 | Jardin Infantil Akun Pichiwentxu -> cannot open the connection
+RBD: 13131016 | Jardin Infantil Modelo -> cannot open the connection
