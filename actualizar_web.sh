@@ -30,14 +30,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# --- Agregar todos los HTMLs nuevos o modificados ---
+# --- Agregar TODOS los archivos nuevos o modificados ---
 echo ""
-echo "📄 Agregando archivos HTML..."
-git add "*.html"
-git add "**/*.html"
-
-# --- Agregar también .gitattributes por si cambió ---
-git add .gitattributes 2>/dev/null
+echo "📦 Agregando todos los archivos modificados..."
+git add .
 
 # --- Ver cuántos archivos cambiaron ---
 CAMBIOS=$(git diff --cached --name-only | wc -l)
@@ -48,6 +44,11 @@ if [ "$CAMBIOS" -eq 0 ]; then
     echo "✅ No hay cambios nuevos. Todo está actualizado."
     exit 0
 fi
+
+# --- Mostrar qué archivos se van a subir ---
+echo ""
+echo "📋 Archivos a subir:"
+git diff --cached --name-only
 
 # --- Commit con fecha automática ---
 FECHA=$(date '+%d/%m/%Y %H:%M')
