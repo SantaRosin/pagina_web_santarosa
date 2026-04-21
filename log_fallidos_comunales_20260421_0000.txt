@@ -1,0 +1,5 @@
+Etapa: comunales
+Log generado: 21-04-2026 08:53:49
+Total fallidos: 1
+------------------------------------------------------------
+COMUNA: Pedro Aguirre Cerda -> pandoc document conversion failed with error 251
