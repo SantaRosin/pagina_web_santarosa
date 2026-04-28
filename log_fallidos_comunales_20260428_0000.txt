@@ -1,0 +1,5 @@
+Etapa: comunales
+Log generado: 28-04-2026 09:56:13
+Total fallidos: 1
+------------------------------------------------------------
+COMUNA: La Cisterna -> Can't combine `..1$RBD` <character> and `..2$RBD` <logical>.
