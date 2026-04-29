@@ -4231,21 +4231,63 @@ line-height: 1.7;
 #TOC { display: none !important; }
 .tocify-extend-page { display: none !important; }
 
+.toc-layout-shell {
+--toc-panel-width: clamp(214px, 15vw, 248px);
+--toc-gap: clamp(18px, 1.6vw, 28px);
+--toc-shell-max: 1860px;
+display: grid;
+grid-template-columns: minmax(0, var(--toc-panel-width)) minmax(0, 1fr);
+gap: var(--toc-gap);
+align-items: start;
+width: min(var(--toc-shell-max), calc(100vw - 18px));
+max-width: none;
+margin: 0 auto 0 8px;
+padding: 14px 14px 36px 0;
+box-sizing: border-box;
+transition: grid-template-columns 0.24s ease, gap 0.24s ease, max-width 0.24s ease;
+}
+.toc-layout-shell > .main-container {
+max-width: none !important;
+width: 100%;
+margin: 0 !important;
+padding: 0 !important;
+}
+.toc-layout-shell > .main-container > .row {
+margin-left: 0 !important;
+margin-right: 0 !important;
+}
+.toc-layout-shell > .main-container > .row > .col-xs-12.col-sm-4.col-md-3 {
+display: none !important;
+}
+.toc-layout-shell > .main-container > .row > .toc-content,
+.toc-layout-shell > .main-container > .row > .col-xs-12.col-sm-8.col-md-9 {
+width: 100% !important;
+max-width: none !important;
+float: none !important;
+margin: 0 !important;
+padding-left: 0 !important;
+padding-right: 0 !important;
+}
 #ji-toc-custom {
-position: fixed;
-top: 0;
-left: 0;
-width: 255px;
-height: 100vh;
-background: #ffffff;
-border-right: 2px solid var(--ji-violet-light);
+position: sticky;
+top: 14px;
+left: auto;
+width: 100%;
+min-width: 0;
+height: calc(100vh - 28px);
+max-height: calc(100vh - 28px);
+background: rgba(255,255,255,0.96);
+-webkit-backdrop-filter: blur(14px);
+backdrop-filter: blur(14px);
+border: 1px solid var(--ji-border);
+border-radius: 18px;
 display: flex;
 flex-direction: column;
 overflow: hidden;
-z-index: 1000;
+z-index: 40;
 font-family: 'Inter', 'Segoe UI', sans-serif;
-box-shadow: 3px 0 18px rgba(59,7,100,0.10);
-transition: transform 0.28s ease;
+box-shadow: 0 18px 44px rgba(59,7,100,0.10), 0 4px 14px rgba(59,7,100,0.08);
+transition: opacity 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
 }
 
 #ji-toc-custom .toc-header {
@@ -4396,20 +4438,116 @@ transition: background 0.18s;
 .col-xs-12.col-sm-9.col-md-9.main,
 div[role="main"],
 .main {
-margin-left: 265px !important;
-transition: margin-left 0.28s ease;
+margin-left: 0 !important;
+width: auto !important;
+min-width: 0;
 }
 
-body.toc-collapsed #ji-toc-custom { transform: translateX(-255px); }
-body.toc-collapsed .col-xs-12.col-sm-9.col-md-9.main,
-body.toc-collapsed div[role="main"],
-body.toc-collapsed .main { margin-left: 12px !important; }
+body.toc-collapsed .toc-layout-shell {
+grid-template-columns: 0 minmax(0, 1fr);
+gap: 0;
+}
+body.toc-collapsed #ji-toc-custom {
+opacity: 0;
+transform: translateX(-18px);
+pointer-events: none;
+}
 body.toc-collapsed #ji-toc-fab { display: flex; }
-@media (max-width: 920px) {
-#ji-toc-custom { transform: translateX(-255px); }
-#ji-toc-fab { display: flex; }
-.col-xs-12.col-sm-9.col-md-9.main,
-div[role="main"], .main { margin-left: 12px !important; }
+@media (max-width: 1366px) {
+.toc-layout-shell {
+--toc-panel-width: clamp(202px, 15vw, 226px);
+--toc-gap: 16px;
+width: calc(100vw - 14px);
+margin-left: 6px;
+padding-right: 8px;
+}
+#ji-toc-custom .toc-header-title {
+font-size: 0.62em;
+letter-spacing: 1.9px;
+}
+#ji-toc-custom .toc-search,
+#ji-toc-custom .toc-list li a {
+font-size: 0.75em;
+}
+}
+@media (max-width: 1120px) {
+.toc-layout-shell {
+--toc-panel-width: 188px;
+--toc-gap: 12px;
+width: calc(100vw - 10px);
+margin-left: 4px;
+padding-right: 6px;
+}
+#ji-toc-custom .toc-header {
+padding: 11px 10px 9px;
+}
+#ji-toc-custom .toc-header-title {
+font-size: 0.58em;
+letter-spacing: 1.5px;
+}
+#ji-toc-custom .toc-search-wrap {
+padding: 8px 8px 6px;
+}
+#ji-toc-custom .toc-search {
+font-size: 0.72em;
+}
+#ji-toc-custom .toc-count {
+padding: 4px 10px 6px;
+font-size: 0.64em;
+}
+#ji-toc-custom .toc-list {
+padding: 4px;
+}
+#ji-toc-custom .toc-list li a {
+gap: 6px;
+padding: 5px 7px 5px 9px;
+font-size: 0.72em;
+border-radius: 7px;
+}
+#ji-toc-custom .toc-list li a:hover {
+padding-left: 11px;
+}
+}
+@media (max-width: 980px) {
+.toc-layout-shell {
+grid-template-columns: minmax(0, 1fr);
+gap: 0;
+width: calc(100vw - 8px);
+margin-left: 4px;
+padding: 10px 4px 30px 0;
+}
+body.toc-collapsed .toc-layout-shell {
+grid-template-columns: minmax(0, 1fr);
+gap: 0;
+}
+#ji-toc-custom {
+position: fixed;
+top: 12px;
+left: 12px;
+width: min(280px, calc(100vw - 24px));
+height: calc(100vh - 24px);
+max-height: calc(100vh - 24px);
+transform: translateX(-118%);
+opacity: 0;
+pointer-events: none;
+z-index: 1000;
+}
+body.toc-collapsed #ji-toc-custom {
+transform: translateX(-118%);
+opacity: 0;
+pointer-events: none;
+}
+body:not(.toc-collapsed) #ji-toc-custom {
+transform: translateX(0);
+opacity: 1;
+pointer-events: auto;
+}
+#ji-toc-fab {
+display: flex;
+}
+body:not(.toc-collapsed) #ji-toc-fab {
+display: none;
+}
 }
 
 .rt-table { font-family: 'Inter', sans-serif !important; font-size: 0.88em; }
@@ -4544,6 +4682,27 @@ $(document).ready(function () {
   var $fab = $('<button id="ji-toc-fab" title="Abrir índice">🌸</button>');
   $('body').append($toc).append($fab);
 
+  var $mainContainer = $('.main-container').first();
+  if ($mainContainer.length && !$mainContainer.parent().hasClass('toc-layout-shell')) {
+    var $shell = $('<div class="toc-layout-shell"></div>');
+    $mainContainer.before($shell);
+    $shell.append($toc).append($mainContainer);
+  }
+
+  function setTocButtonState() {
+    $('#ji-toc-btn').text($('body').hasClass('toc-collapsed') ? '▶' : '◀');
+  }
+
+  function syncResponsiveToc() {
+    var isCompact = window.matchMedia('(max-width: 980px)').matches;
+    if (isCompact) {
+      $('body').addClass('toc-collapsed toc-auto-collapsed');
+    } else if ($('body').hasClass('toc-auto-collapsed')) {
+      $('body').removeClass('toc-collapsed toc-auto-collapsed');
+    }
+    setTocButtonState();
+  }
+
   /* ── 3. Buscador en tiempo real ─────────────────────────────────── */
   $('#ji-toc-search').on('input', function () {
     var q = $(this).val().toLowerCase().trim();
@@ -4568,6 +4727,16 @@ $(document).ready(function () {
   });
 
   /* ── 5. Active state + barra de progreso al hacer scroll ────────── */
+  $('#ji-toc-btn').off('click').on('click', function () {
+    $('body').toggleClass('toc-collapsed');
+    $('body').removeClass('toc-auto-collapsed');
+    setTocButtonState();
+  });
+  $fab.off('click').on('click', function () {
+    $('body').removeClass('toc-collapsed toc-auto-collapsed');
+    setTocButtonState();
+  });
+
   function actualizarScroll() {
     var scrollTop = $(window).scrollTop() + 80;
     var docH      = $(document).height() - $(window).height();
@@ -4591,6 +4760,8 @@ $(document).ready(function () {
   }
 
   $(window).on('scroll.jitoc', actualizarScroll);
+  $(window).on('resize.jitoclayout', syncResponsiveToc);
+  syncResponsiveToc();
   setTimeout(actualizarScroll, 300);
 
 });
@@ -4634,7 +4805,7 @@ $(document).ready(function () {
     <div style="width:20px;height:4px;border-radius:2px;background:#2ab5b5;opacity:0.7;"></div>
   </div>
   <div style="font-size:0.82em;color:#7f8c8d;line-height:2;">
-    <span style="color:#a855f7;font-weight:700;">📅 Actualización: 28-04-2026</span><br>
+    <span style="color:#a855f7;font-weight:700;">📅 Actualización: 29-04-2026</span><br>
     <span style="text-transform:uppercase;letter-spacing:1.2px;font-size:0.82em;color:#b0bec5;font-weight:700;">
       Departamento de Estudios, Monitoreo y Datos · SLEP Santa Rosa</span>
   </div>
@@ -5535,7 +5706,7 @@ grupo</span>
     "11. Noviembre": ["2025||11. Noviembre|| TOTAL MATRÍCULA", "2025||11. Noviembre||Nivel Medio Mayor", "2025||11. Noviembre||Nivel Medio Menor"],
     "12. Diciembre": ["2025||12. Diciembre|| TOTAL MATRÍCULA", "2025||12. Diciembre||Nivel Medio Mayor", "2025||12. Diciembre||Nivel Medio Menor"]
   },
-  "group": ["SharedData7ccd69c9"]
+  "group": ["SharedData5f8cc2f2"]
 }</script>
 </div>
 </div>
@@ -5556,7 +5727,7 @@ grupo</span>
     "Nivel Medio Mayor": ["2025||03. Marzo||Nivel Medio Mayor", "2025||04. Abril||Nivel Medio Mayor", "2025||05. Mayo||Nivel Medio Mayor", "2025||06. Junio||Nivel Medio Mayor", "2025||07. Julio||Nivel Medio Mayor", "2025||08. Agosto||Nivel Medio Mayor", "2025||09. Septiembre||Nivel Medio Mayor", "2025||10. Octubre||Nivel Medio Mayor", "2025||11. Noviembre||Nivel Medio Mayor", "2025||12. Diciembre||Nivel Medio Mayor", "2026||03. Marzo||Nivel Medio Mayor"],
     "Nivel Medio Menor": ["2025||03. Marzo||Nivel Medio Menor", "2025||04. Abril||Nivel Medio Menor", "2025||05. Mayo||Nivel Medio Menor", "2025||06. Junio||Nivel Medio Menor", "2025||07. Julio||Nivel Medio Menor", "2025||08. Agosto||Nivel Medio Menor", "2025||09. Septiembre||Nivel Medio Menor", "2025||10. Octubre||Nivel Medio Menor", "2025||11. Noviembre||Nivel Medio Menor", "2025||12. Diciembre||Nivel Medio Menor", "2026||03. Marzo||Nivel Medio Menor"]
   },
-  "group": ["SharedData7ccd69c9"]
+  "group": ["SharedData5f8cc2f2"]
 }</script>
 </div>
 </div>
@@ -5568,8 +5739,8 @@ grupo</span>
 </div>
 </div>
 <div class="mat-ji-cht">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-0caf9514b6f9ec9babda" style="width:100%;height:400px;"></div>
-<script type="application/json" data-for="htmlwidget-0caf9514b6f9ec9babda">{"x":{"visdat":{"90883cf46e93":["function () ","plotlyVisDat"]},"cur_data":"90883cf46e93","attrs":{"90883cf46e93":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines+markers+text","line":{"shape":"spline","width":4,"color":"#8b5cf6"},"marker":{"size":10,"color":"#8b5cf6","line":{"color":"white","width":2.5}},"text":{},"textposition":"top center","textfont":{"color":"#3b0764","size":12,"family":"Nunito"},"hovertemplate":"<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","showlegend":false,"inherit":true}},"layout":{"margin":{"b":42,"l":42,"t":28,"r":24},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickfont":{"size":12,"color":"#3b0764"},"showgrid":false,"type":"category","categoryorder":"array","categoryarray":["2025","2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"","autorange":true,"gridcolor":"#f3e8ff","tickfont":{"size":11}},"hovermode":"closest","plot_bgcolor":"#fdf9ff","paper_bgcolor":"#fdf9ff","dragmode":"zoom","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"responsive":true},"data":[{"x":["2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2026"],"y":[27,29,29,30,31,31,31,31,31,31,22,14,13,15,14,15,14,16,14,16,15,16,15,17,14,17,14,17,14,17,14,15,7],"type":"scatter","mode":"lines+markers+text","line":{"color":"#8b5cf6","shape":"spline","width":4},"marker":{"color":"#8b5cf6","size":10,"line":{"color":"white","width":2.5}},"text":["27","29","29","30","31","31","31","31","31","31","22","14","13","15","14","15","14","16","14","16","15","16","15","17","14","17","14","17","14","17","14","15"," 7"],"textposition":["top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center"],"textfont":{"color":"#3b0764","size":12,"family":"Nunito"},"hovertemplate":["<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>"],"showlegend":false,"key":["2025||03. Marzo|| TOTAL MATRÍCULA","2025||04. Abril|| TOTAL MATRÍCULA","2025||05. Mayo|| TOTAL MATRÍCULA","2025||06. Junio|| TOTAL MATRÍCULA","2025||07. Julio|| TOTAL MATRÍCULA","2025||08. Agosto|| TOTAL MATRÍCULA","2025||09. Septiembre|| TOTAL MATRÍCULA","2025||10. Octubre|| TOTAL MATRÍCULA","2025||11. Noviembre|| TOTAL MATRÍCULA","2025||12. Diciembre|| TOTAL MATRÍCULA","2026||03. Marzo|| TOTAL MATRÍCULA","2025||03. Marzo||Nivel Medio Mayor","2025||03. Marzo||Nivel Medio Menor","2025||04. Abril||Nivel Medio Mayor","2025||04. Abril||Nivel Medio Menor","2025||05. Mayo||Nivel Medio Mayor","2025||05. Mayo||Nivel Medio Menor","2025||06. Junio||Nivel Medio Mayor","2025||06. Junio||Nivel Medio Menor","2025||07. Julio||Nivel Medio Mayor","2025||07. Julio||Nivel Medio Menor","2025||08. Agosto||Nivel Medio Mayor","2025||08. Agosto||Nivel Medio Menor","2025||09. Septiembre||Nivel Medio Mayor","2025||09. Septiembre||Nivel Medio Menor","2025||10. Octubre||Nivel Medio Mayor","2025||10. Octubre||Nivel Medio Menor","2025||11. Noviembre||Nivel Medio Mayor","2025||11. Noviembre||Nivel Medio Menor","2025||12. Diciembre||Nivel Medio Mayor","2025||12. Diciembre||Nivel Medio Menor","2026||03. Marzo||Nivel Medio Mayor","2026||03. Marzo||Nivel Medio Menor"],"set":"SharedData7ccd69c9","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedData7ccd69c9"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-3f56ccec6697d1cefae0" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-3f56ccec6697d1cefae0">{"x":{"visdat":{"274410c65103":["function () ","plotlyVisDat"]},"cur_data":"274410c65103","attrs":{"274410c65103":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines+markers+text","line":{"shape":"spline","width":4,"color":"#8b5cf6"},"marker":{"size":10,"color":"#8b5cf6","line":{"color":"white","width":2.5}},"text":{},"textposition":"top center","textfont":{"color":"#3b0764","size":12,"family":"Nunito"},"hovertemplate":"<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","showlegend":false,"inherit":true}},"layout":{"margin":{"b":42,"l":42,"t":28,"r":24},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickfont":{"size":12,"color":"#3b0764"},"showgrid":false,"type":"category","categoryorder":"array","categoryarray":["2025","2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"","autorange":true,"gridcolor":"#f3e8ff","tickfont":{"size":11}},"hovermode":"closest","plot_bgcolor":"#fdf9ff","paper_bgcolor":"#fdf9ff","dragmode":"zoom","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"responsive":true},"data":[{"x":["2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2026"],"y":[27,29,29,30,31,31,31,31,31,31,22,14,13,15,14,15,14,16,14,16,15,16,15,17,14,17,14,17,14,17,14,15,7],"type":"scatter","mode":"lines+markers+text","line":{"color":"#8b5cf6","shape":"spline","width":4},"marker":{"color":"#8b5cf6","size":10,"line":{"color":"white","width":2.5}},"text":["27","29","29","30","31","31","31","31","31","31","22","14","13","15","14","15","14","16","14","16","15","16","15","17","14","17","14","17","14","17","14","15"," 7"],"textposition":["top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center"],"textfont":{"color":"#3b0764","size":12,"family":"Nunito"},"hovertemplate":["<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>","<b>Año %{x}<\/b><br>Matrícula: %{y}<extra><\/extra>"],"showlegend":false,"key":["2025||03. Marzo|| TOTAL MATRÍCULA","2025||04. Abril|| TOTAL MATRÍCULA","2025||05. Mayo|| TOTAL MATRÍCULA","2025||06. Junio|| TOTAL MATRÍCULA","2025||07. Julio|| TOTAL MATRÍCULA","2025||08. Agosto|| TOTAL MATRÍCULA","2025||09. Septiembre|| TOTAL MATRÍCULA","2025||10. Octubre|| TOTAL MATRÍCULA","2025||11. Noviembre|| TOTAL MATRÍCULA","2025||12. Diciembre|| TOTAL MATRÍCULA","2026||03. Marzo|| TOTAL MATRÍCULA","2025||03. Marzo||Nivel Medio Mayor","2025||03. Marzo||Nivel Medio Menor","2025||04. Abril||Nivel Medio Mayor","2025||04. Abril||Nivel Medio Menor","2025||05. Mayo||Nivel Medio Mayor","2025||05. Mayo||Nivel Medio Menor","2025||06. Junio||Nivel Medio Mayor","2025||06. Junio||Nivel Medio Menor","2025||07. Julio||Nivel Medio Mayor","2025||07. Julio||Nivel Medio Menor","2025||08. Agosto||Nivel Medio Mayor","2025||08. Agosto||Nivel Medio Menor","2025||09. Septiembre||Nivel Medio Mayor","2025||09. Septiembre||Nivel Medio Menor","2025||10. Octubre||Nivel Medio Mayor","2025||10. Octubre||Nivel Medio Menor","2025||11. Noviembre||Nivel Medio Mayor","2025||11. Noviembre||Nivel Medio Menor","2025||12. Diciembre||Nivel Medio Mayor","2025||12. Diciembre||Nivel Medio Menor","2026||03. Marzo||Nivel Medio Mayor","2026||03. Marzo||Nivel Medio Menor"],"set":"SharedData5f8cc2f2","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedData5f8cc2f2"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="modal-mat-ji">
@@ -5585,8 +5756,8 @@ grupo</span>
 </div>
 </div>
 <div class="tbl-ji-t">📋 Evolución anual — Mes de corte: 03. Marzo</div>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-d6fb7098564bf0934251" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d6fb7098564bf0934251">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Año":[2025,2026],"Mes de corte":["03. Marzo","03. Marzo"],"Matrícula":[27,22],"Variacion":["NA",-5],"Pct":["NA",-18.5]},"columns":[{"id":"Año","name":"Año","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":75},{"id":"Mes de corte","name":"Mes de corte","type":"factor","align":"left","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":155},{"id":"Matrícula","name":"Matrícula","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["27","22"],"style":{"fontWeight":"900","color":"#3b0764","fontSize":"1.05em"}},{"id":"Variacion","name":"Variación","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:800;\">▼ 5<\/span>"],"html":true},{"id":"Pct","name":"% Cambio","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:700;\">-18.5%<\/span>"],"html":true}],"highlight":true,"striped":true,"compact":true,"style":{"fontSize":"0.9em"},"theme":{"borderColor":"#e9d5ff","stripedColor":"#faf5ff","highlightColor":"#ede9fe","rowStyle":{"borderBottom":"1px solid #f3e8ff"}},"dataKey":"2874b0d97d6bda9c22c87fd5665bbb69"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-a2f84b4215a0642f868f" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a2f84b4215a0642f868f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Año":[2025,2026],"Mes de corte":["03. Marzo","03. Marzo"],"Matrícula":[27,22],"Variacion":["NA",-5],"Pct":["NA",-18.5]},"columns":[{"id":"Año","name":"Año","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":75},{"id":"Mes de corte","name":"Mes de corte","type":"factor","align":"left","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":155},{"id":"Matrícula","name":"Matrícula","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["27","22"],"style":{"fontWeight":"900","color":"#3b0764","fontSize":"1.05em"}},{"id":"Variacion","name":"Variación","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:800;\">▼ 5<\/span>"],"html":true},{"id":"Pct","name":"% Cambio","type":"numeric","align":"center","headerStyle":{"background":"#5b21b6","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:700;\">-18.5%<\/span>"],"html":true}],"highlight":true,"striped":true,"compact":true,"style":{"fontSize":"0.9em"},"theme":{"borderColor":"#e9d5ff","stripedColor":"#faf5ff","highlightColor":"#ede9fe","rowStyle":{"borderBottom":"1px solid #f3e8ff"}},"dataKey":"2874b0d97d6bda9c22c87fd5665bbb69"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <script>
 HTMLWidgets.addPostRenderHandler(function() {
 
@@ -5661,7 +5832,7 @@ HTMLWidgets.addPostRenderHandler(function() {
     "11. Noviembre": ["2025||11. Noviembre|| PROMEDIO GENERAL", "2025||11. Noviembre||Nivel Medio Mayor", "2025||11. Noviembre||Nivel Medio Menor"],
     "12. Diciembre": ["2025||12. Diciembre|| PROMEDIO GENERAL", "2025||12. Diciembre||Nivel Medio Mayor", "2025||12. Diciembre||Nivel Medio Menor"]
   },
-  "group": ["SharedDataa0b9b0bf"]
+  "group": ["SharedData067742a1"]
 }</script>
 </div>
 </div>
@@ -5682,7 +5853,7 @@ HTMLWidgets.addPostRenderHandler(function() {
     "Nivel Medio Mayor": ["2025||03. Marzo||Nivel Medio Mayor", "2025||04. Abril||Nivel Medio Mayor", "2025||05. Mayo||Nivel Medio Mayor", "2025||06. Junio||Nivel Medio Mayor", "2025||07. Julio||Nivel Medio Mayor", "2025||08. Agosto||Nivel Medio Mayor", "2025||09. Septiembre||Nivel Medio Mayor", "2025||10. Octubre||Nivel Medio Mayor", "2025||11. Noviembre||Nivel Medio Mayor", "2025||12. Diciembre||Nivel Medio Mayor", "2026||03. Marzo||Nivel Medio Mayor"],
     "Nivel Medio Menor": ["2025||03. Marzo||Nivel Medio Menor", "2025||04. Abril||Nivel Medio Menor", "2025||05. Mayo||Nivel Medio Menor", "2025||06. Junio||Nivel Medio Menor", "2025||07. Julio||Nivel Medio Menor", "2025||08. Agosto||Nivel Medio Menor", "2025||09. Septiembre||Nivel Medio Menor", "2025||10. Octubre||Nivel Medio Menor", "2025||11. Noviembre||Nivel Medio Menor", "2025||12. Diciembre||Nivel Medio Menor", "2026||03. Marzo||Nivel Medio Menor"]
   },
-  "group": ["SharedDataa0b9b0bf"]
+  "group": ["SharedData067742a1"]
 }</script>
 </div>
 </div>
@@ -5696,8 +5867,8 @@ HTMLWidgets.addPostRenderHandler(function() {
 </div>
 </div>
 <div class="asist-ji-cht">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-41a1c090aecc699a833f" style="width:100%;height:400px;"></div>
-<script type="application/json" data-for="htmlwidget-41a1c090aecc699a833f">{"x":{"visdat":{"908871742a26":["function () ","plotlyVisDat"]},"cur_data":"908871742a26","attrs":{"908871742a26":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines+markers+text","line":{"shape":"spline","width":4,"color":"#16a085"},"marker":{"size":10,"color":"#1abc9c","line":{"color":"white","width":2.5}},"text":{},"textposition":"top center","textfont":{"color":"#064e3b","size":12,"family":"Nunito"},"hovertemplate":"<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","showlegend":false,"connectgaps":true,"inherit":true}},"layout":{"margin":{"b":42,"l":42,"t":28,"r":24},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickfont":{"size":12,"color":"#064e3b"},"showgrid":false,"type":"category","categoryorder":"array","categoryarray":["2025","2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"","range":[0,105],"gridcolor":"#d1fae5","tickfont":{"size":11},"ticksuffix":"%"},"hovermode":"closest","plot_bgcolor":"#f0fdf9","paper_bgcolor":"#f0fdf9","dragmode":"zoom","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"responsive":true},"data":[{"x":["2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2026"],"y":[65.5,81.700000000000003,61.899999999999999,63.100000000000001,67.900000000000006,59,67,74.599999999999994,84.099999999999994,82.200000000000003,63.600000000000001,74.099999999999994,56.100000000000001,83.700000000000003,79.599999999999994,65.200000000000003,58.299999999999997,67.900000000000006,57.700000000000003,74,61.5,73.900000000000006,43.100000000000001,71.400000000000006,61.700000000000003,75.700000000000003,73.400000000000006,81,87.700000000000003,78.900000000000006,86.099999999999994,55.600000000000001,80.799999999999997],"type":"scatter","mode":"lines+markers+text","line":{"color":"#16a085","shape":"spline","width":4},"marker":{"color":"#1abc9c","size":10,"line":{"color":"white","width":2.5}},"text":["65.5%","81.7%","61.9%","63.1%","67.9%","59%","67%","74.6%","84.1%","82.2%","63.6%","74.1%","56.1%","83.7%","79.6%","65.2%","58.3%","67.9%","57.7%","74%","61.5%","73.9%","43.1%","71.4%","61.7%","75.7%","73.4%","81%","87.7%","78.9%","86.1%","55.6%","80.8%"],"textposition":["top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center"],"textfont":{"color":"#064e3b","size":12,"family":"Nunito"},"hovertemplate":["<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>"],"showlegend":false,"connectgaps":true,"key":["2025||03. Marzo|| PROMEDIO GENERAL","2025||04. Abril|| PROMEDIO GENERAL","2025||05. Mayo|| PROMEDIO GENERAL","2025||06. Junio|| PROMEDIO GENERAL","2025||07. Julio|| PROMEDIO GENERAL","2025||08. Agosto|| PROMEDIO GENERAL","2025||09. Septiembre|| PROMEDIO GENERAL","2025||10. Octubre|| PROMEDIO GENERAL","2025||11. Noviembre|| PROMEDIO GENERAL","2025||12. Diciembre|| PROMEDIO GENERAL","2026||03. Marzo|| PROMEDIO GENERAL","2025||03. Marzo||Nivel Medio Mayor","2025||03. Marzo||Nivel Medio Menor","2025||04. Abril||Nivel Medio Mayor","2025||04. Abril||Nivel Medio Menor","2025||05. Mayo||Nivel Medio Mayor","2025||05. Mayo||Nivel Medio Menor","2025||06. Junio||Nivel Medio Mayor","2025||06. Junio||Nivel Medio Menor","2025||07. Julio||Nivel Medio Mayor","2025||07. Julio||Nivel Medio Menor","2025||08. Agosto||Nivel Medio Mayor","2025||08. Agosto||Nivel Medio Menor","2025||09. Septiembre||Nivel Medio Mayor","2025||09. Septiembre||Nivel Medio Menor","2025||10. Octubre||Nivel Medio Mayor","2025||10. Octubre||Nivel Medio Menor","2025||11. Noviembre||Nivel Medio Mayor","2025||11. Noviembre||Nivel Medio Menor","2025||12. Diciembre||Nivel Medio Mayor","2025||12. Diciembre||Nivel Medio Menor","2026||03. Marzo||Nivel Medio Mayor","2026||03. Marzo||Nivel Medio Menor"],"set":"SharedDataa0b9b0bf","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedDataa0b9b0bf"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-cfbc034496636f11f236" style="width:100%;height:400px;"></div>
+<script type="application/json" data-for="htmlwidget-cfbc034496636f11f236">{"x":{"visdat":{"274422b730f":["function () ","plotlyVisDat"]},"cur_data":"274422b730f","attrs":{"274422b730f":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines+markers+text","line":{"shape":"spline","width":4,"color":"#16a085"},"marker":{"size":10,"color":"#1abc9c","line":{"color":"white","width":2.5}},"text":{},"textposition":"top center","textfont":{"color":"#064e3b","size":12,"family":"Nunito"},"hovertemplate":"<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","showlegend":false,"connectgaps":true,"inherit":true}},"layout":{"margin":{"b":42,"l":42,"t":28,"r":24},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickfont":{"size":12,"color":"#064e3b"},"showgrid":false,"type":"category","categoryorder":"array","categoryarray":["2025","2026"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"","range":[0,105],"gridcolor":"#d1fae5","tickfont":{"size":11},"ticksuffix":"%"},"hovermode":"closest","plot_bgcolor":"#f0fdf9","paper_bgcolor":"#f0fdf9","dragmode":"zoom","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false,"responsive":true},"data":[{"x":["2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2025","2026","2026"],"y":[65.5,81.700000000000003,61.899999999999999,63.100000000000001,67.900000000000006,59,67,74.599999999999994,84.099999999999994,82.200000000000003,63.600000000000001,74.099999999999994,56.100000000000001,83.700000000000003,79.599999999999994,65.200000000000003,58.299999999999997,67.900000000000006,57.700000000000003,74,61.5,73.900000000000006,43.100000000000001,71.400000000000006,61.700000000000003,75.700000000000003,73.400000000000006,81,87.700000000000003,78.900000000000006,86.099999999999994,55.600000000000001,80.799999999999997],"type":"scatter","mode":"lines+markers+text","line":{"color":"#16a085","shape":"spline","width":4},"marker":{"color":"#1abc9c","size":10,"line":{"color":"white","width":2.5}},"text":["65.5%","81.7%","61.9%","63.1%","67.9%","59%","67%","74.6%","84.1%","82.2%","63.6%","74.1%","56.1%","83.7%","79.6%","65.2%","58.3%","67.9%","57.7%","74%","61.5%","73.9%","43.1%","71.4%","61.7%","75.7%","73.4%","81%","87.7%","78.9%","86.1%","55.6%","80.8%"],"textposition":["top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center","top center"],"textfont":{"color":"#064e3b","size":12,"family":"Nunito"},"hovertemplate":["<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>","<b>Año %{x}<\/b><br>Asistencia: %{y}%%<extra><\/extra>"],"showlegend":false,"connectgaps":true,"key":["2025||03. Marzo|| PROMEDIO GENERAL","2025||04. Abril|| PROMEDIO GENERAL","2025||05. Mayo|| PROMEDIO GENERAL","2025||06. Junio|| PROMEDIO GENERAL","2025||07. Julio|| PROMEDIO GENERAL","2025||08. Agosto|| PROMEDIO GENERAL","2025||09. Septiembre|| PROMEDIO GENERAL","2025||10. Octubre|| PROMEDIO GENERAL","2025||11. Noviembre|| PROMEDIO GENERAL","2025||12. Diciembre|| PROMEDIO GENERAL","2026||03. Marzo|| PROMEDIO GENERAL","2025||03. Marzo||Nivel Medio Mayor","2025||03. Marzo||Nivel Medio Menor","2025||04. Abril||Nivel Medio Mayor","2025||04. Abril||Nivel Medio Menor","2025||05. Mayo||Nivel Medio Mayor","2025||05. Mayo||Nivel Medio Menor","2025||06. Junio||Nivel Medio Mayor","2025||06. Junio||Nivel Medio Menor","2025||07. Julio||Nivel Medio Mayor","2025||07. Julio||Nivel Medio Menor","2025||08. Agosto||Nivel Medio Mayor","2025||08. Agosto||Nivel Medio Menor","2025||09. Septiembre||Nivel Medio Mayor","2025||09. Septiembre||Nivel Medio Menor","2025||10. Octubre||Nivel Medio Mayor","2025||10. Octubre||Nivel Medio Menor","2025||11. Noviembre||Nivel Medio Mayor","2025||11. Noviembre||Nivel Medio Menor","2025||12. Diciembre||Nivel Medio Mayor","2025||12. Diciembre||Nivel Medio Menor","2026||03. Marzo||Nivel Medio Mayor","2026||03. Marzo||Nivel Medio Menor"],"set":"SharedData067742a1","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","_isNestedKey":false,"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0,"ctGroups":["SharedData067742a1"]},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="modal-asist-ji">
@@ -5713,8 +5884,8 @@ HTMLWidgets.addPostRenderHandler(function() {
 </div>
 </div>
 <div class="tbl-asist-ji-t">📋 Evolución anual — Mes de corte: 03. Marzo · Promedio general</div>
-<div class="reactable html-widget html-fill-item" id="htmlwidget-63ada212bd3c328d592c" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-63ada212bd3c328d592c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Año":[2025,2026],"Mes de corte":["03. Marzo","03. Marzo"],"Asistencia (%)":[0.654512097236555,0.635845295055821],"Var_Ppt":["NA",-1.9],"Pct_Cambio":["NA",-2.9]},"columns":[{"id":"Año","name":"Año","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":75},{"id":"Mes de corte","name":"Mes de corte","type":"factor","align":"left","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":155},{"id":"Asistencia (%)","name":"Asistencia (%)","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["65.5%","63.6%"],"style":{"fontWeight":"900","color":"#065f46","fontSize":"1.05em"}},{"id":"Var_Ppt","name":"Var. Ppt.","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:800;\">▼ 1.9<\/span>"],"html":true},{"id":"Pct_Cambio","name":"% Cambio","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:700;\">-2.9%<\/span>"],"html":true}],"highlight":true,"striped":true,"compact":true,"style":{"fontSize":"0.9em"},"theme":{"borderColor":"#bbf7d0","stripedColor":"#f0fdf9","highlightColor":"#dcfce7","rowStyle":{"borderBottom":"1px solid #ecfdf5"}},"dataKey":"e2bb622385ee84d18ffaa69419c207e9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-688a18ee2ecd757d8a49" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-688a18ee2ecd757d8a49">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Año":[2025,2026],"Mes de corte":["03. Marzo","03. Marzo"],"Asistencia (%)":[0.654512097236555,0.635845295055821],"Var_Ppt":["NA",-1.9],"Pct_Cambio":["NA",-2.9]},"columns":[{"id":"Año","name":"Año","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":75},{"id":"Mes de corte","name":"Mes de corte","type":"factor","align":"left","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"width":155},{"id":"Asistencia (%)","name":"Asistencia (%)","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["65.5%","63.6%"],"style":{"fontWeight":"900","color":"#065f46","fontSize":"1.05em"}},{"id":"Var_Ppt","name":"Var. Ppt.","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:800;\">▼ 1.9<\/span>"],"html":true},{"id":"Pct_Cambio","name":"% Cambio","type":"numeric","align":"center","headerStyle":{"background":"#065f46","color":"white","fontWeight":"800","fontSize":"0.7em","textTransform":"uppercase","letterSpacing":"1px","padding":"12px 10px"},"cell":["—","<span style=\"color:#991b1b;font-weight:700;\">-2.9%<\/span>"],"html":true}],"highlight":true,"striped":true,"compact":true,"style":{"fontSize":"0.9em"},"theme":{"borderColor":"#bbf7d0","stripedColor":"#f0fdf9","highlightColor":"#dcfce7","rowStyle":{"borderBottom":"1px solid #ecfdf5"}},"dataKey":"e2bb622385ee84d18ffaa69419c207e9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <script>
 HTMLWidgets.addPostRenderHandler(function() {
 
