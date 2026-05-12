@@ -2149,7 +2149,7 @@ $(document).ready(function () {
     <div style="width:20px;height:4px;border-radius:2px;background:#2ab5b5;opacity:0.7;"></div>
   </div>
   <div style="font-size:0.82em;color:#7f8c8d;line-height:2;">
-    <span style="color:#a855f7;font-weight:700;">📅 Actualización: 07-05-2026</span><br>
+    <span style="color:#a855f7;font-weight:700;">📅 Actualización: 12-05-2026</span><br>
     <span style="text-transform:uppercase;letter-spacing:1.2px;font-size:0.82em;color:#b0bec5;font-weight:700;">
       Departamento de Estudios, Monitoreo y Datos · SLEP Santa Rosa</span>
   </div>
@@ -2904,6 +2904,12 @@ matrícula activa.
 <div style="height:24px;">
 
 </div>
+<div style="padding:20px;background:#ecfdf5;border:1px dashed #86efac;text-align:center;color:#047857;border-radius:12px;">
+⚠️ No se encontraron datos de asistencia para este jardín.
+</div>
+<div style="height:24px;">
+
+</div>
 <div class="alert alert-warning">Sin datos históricos de asistencia.</div>
 <div style="height: 30px;">
 
@@ -2921,37 +2927,30 @@ matrícula activa.
 Ocupación
 </div>
 <div style="font-size:0.78em;color:rgba(255,255,255,0.6);margin-top:3px;">
-Decreto N°47 OGUC · Res. Ex. N°567/2021 · Convenio VTF JUNJI
+Cupos estructurados en Gesparvu / GPW JUNJI
 </div>
 </div>
 <div style="margin-left:auto;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 14px;font-size:0.72em;font-weight:800;color:white;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;">
-📜 Decreto 47 · Res. 567
+📦 Cupos Gesparvu
 </div>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:12px;padding:16px 24px 20px 24px;">
 <div style="flex:3;min-width:100%;background:rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;border:1px solid rgba(255,255,255,0.15);">
 <div style="font-size:0.7em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:800;letter-spacing:1px;margin-bottom:8px;">
-📐 ¿Cómo se calcula la capacidad?
+📐 ¿Cómo se leen los cupos?
 </div>
 <div style="font-size:0.84em;color:rgba(255,255,255,0.9);line-height:1.75;">
-La capacidad del jardín infantil se determina conforme a lo dispuesto en
-el <strong style="color:#fde68a;">Decreto N°47 de la Ordenanza General
-de Urbanismo y Construcciones (OGUC)</strong> y a la
-<strong style="color:#fde68a;">Resolución Exenta N°567, de 16 de agosto
-de 2021</strong>, de la Superintendencia de Educación, que fija el texto
-actualizado, refundido, coordinado y sistematizado de la circular
-normativa aplicable a los establecimientos de Educación Parvularia
-sujetos a períodos de adecuación.<br><br>En este marco, la capacidad no
-se calcula únicamente en función del número de salas, sino considerando
-el <strong style="color:#fde68a;">“factor más desfavorable”</strong>
-entre tres variables: (1) superficie útil mínima por niño/a en la sala,
-(2) superficie mínima del patio de juegos, y (3) dotación sanitaria
-disponible (baños, mudadores y espacios de higiene). Aunque una sala sea
-amplia, si el patio o los baños no cumplen el estándar para cierto
-número de niños, la capacidad se reduce a ese límite.<br><br>El convenio
-de transferencia de fondos (VTF) con la
-<strong style="color:#fde68a;">JUNJI</strong> también define y autoriza
-la cantidad de párvulos por unidad educativa.
+Para esta ficha los <strong style="color:#fde68a;">cupos</strong> se
+toman desde la base
+<strong style="color:#fde68a;">bd_estructura_cursos_jisc</strong>,
+construida a partir de la estructura de cursos del sistema
+<strong style="color:#fde68a;">Gesparvu (GPW) de JUNJI</strong>. Se usa
+el <strong style="color:#fde68a;">año más reciente disponible por
+jardín</strong> y se suman los cupos de cada grupo para obtener la
+capacidad total del establecimiento.<br><br>La ocupación se calcula
+luego como <strong style="color:#fde68a;">matrícula vigente ÷ cupos
+Gesparvu</strong>, permitiendo identificar jardines con holgura, alta
+ocupación o sobrecupo en el último corte disponible.
 </div>
 <div style="margin-top:14px;background:rgba(255,255,255,0.08);border-radius:10px;padding:12px 16px;border:1px solid rgba(255,255,255,0.15);">
 <div style="font-size:0.68em;text-transform:uppercase;color:rgba(255,255,255,0.5);font-weight:800;letter-spacing:1px;margin-bottom:8px;">
