@@ -1,0 +1,3737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Matriz visual de rubricas y OA</title>
+  <style>
+        body{margin:0;background:#f8fafc;color:#10233f;font-family:Inter,Segoe UI,sans-serif;}
+        .shell{max-width:1680px;margin:0 auto;padding:28px 24px 40px 24px;}
+        .hero{background:#fff;border:1px solid #dbe3f1;border-radius:24px;box-shadow:0 20px 48px rgba(15,23,42,.06);padding:22px 24px;margin-bottom:18px;}
+        .kicker{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#8b5e34;margin-bottom:8px;}
+        h1{margin:0;font-size:32px;line-height:1.05;}
+        .note{margin-top:10px;color:#475569;line-height:1.7;font-size:14px;}
+        .card{background:#fff;border:1px solid #dbe3f1;border-radius:24px;box-shadow:0 20px 48px rgba(15,23,42,.06);padding:18px 22px;}
+        .legend{display:flex;justify-content:flex-end;margin-bottom:10px;}
+        .dia-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border-radius:999px;border:1px solid transparent;font-size:.73rem;font-weight:800;line-height:1;white-space:nowrap;}
+        .dia-pill b{font-size:.78rem;}
+        .dia-pill-violet{background:#f5f3ff;color:#5b21b6;border-color:#ddd6fe;}
+        .dia-pill-blue{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;}
+        .dia-pill-teal{background:#ecfeff;color:#0f766e;border-color:#a5f3fc;}
+        .dia-pill-rose{background:#fdf2f8;color:#be185d;border-color:#fbcfe8;}
+        .dia-pill-amber{background:#fffbeb;color:#b45309;border-color:#fde68a;}
+        .dia-pill-green{background:#f0fdf4;color:#166534;border-color:#bbf7d0;}
+        .dia-nucleo-list{display:flex;flex-direction:column;}
+        .dia-nucleo-row{display:grid;grid-template-columns:minmax(360px,470px) minmax(360px,1fr) 220px;gap:18px;align-items:center;padding:15px 0;border-top:1px solid rgba(148,163,184,.16);}
+        .dia-nucleo-row:first-child{border-top:none;}
+        .dia-nucleo-title{font-size:1rem;font-weight:900;line-height:1.3;color:#10233f;}
+        .dia-rubrica-topline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+        .dia-rubrica-meta{margin-top:4px;font-size:.82rem;color:#64748b;line-height:1.55;}
+        .dia-rubrica-topline .dia-rubrica-meta{margin-top:0;}
+        .dia-rubrica-oa-row{margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+        .dia-oa-chip{display:inline-flex;align-items:center;justify-content:center;min-width:58px;padding:5px 10px;border-radius:999px;background:#fff7ed;border:1px solid rgba(217,119,6,.18);color:#9a3412;font-size:.74rem;font-weight:900;letter-spacing:.03em;}
+        .dia-stackbar{width:100%;height:22px;background:#eef2f7;border-radius:999px;overflow:hidden;display:flex;}
+        .dia-stackbar-seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.68rem;font-weight:800;white-space:nowrap;overflow:hidden;}
+        .seg-comenzando{background:#ef4444;}
+        .seg-desarrollando{background:#f59e0b;}
+        .seg-consolidando{background:#22c55e;}
+        .seg-profundizando{background:#0ea5a4;}
+        .dia-level-values{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:flex-end;}
+        .dia-level-values span{display:inline-flex;align-items:center;gap:6px;font-size:.84rem;font-weight:800;color:#334155;}
+        .dia-level-values i{width:8px;height:8px;border-radius:999px;display:inline-block;}
+        .dia-legend{display:flex;flex-wrap:wrap;gap:10px 12px;}
+        .dia-legend-item{display:flex;align-items:center;gap:6px;font-size:.76rem;color:#475569;}
+        .dia-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+        @media (max-width: 980px){
+          .dia-nucleo-row{grid-template-columns:1fr;}
+          .dia-level-values{justify-content:flex-start;}
+        }
+      </style>
+</head>
+<html>
+  <body>
+    <div class="shell">
+      <div class="hero">
+        <div class="kicker">Vista extendida</div>
+        <h1>Matriz visual de rubricas y OA</h1>
+        <div class="note">La vista extendida muestra todas las rubricas en una sola pagina con su OA identificado y la misma distribucion porcentual de niveles usada en el informe principal.</div>
+      </div>
+      <div class="card">
+        <div class="legend">
+          <div class="dia-legend">
+            <div class="dia-legend-item">
+              <span class="dia-dot" style="background:#ef4444;"></span>
+              Comenzando
+            </div>
+            <div class="dia-legend-item">
+              <span class="dia-dot" style="background:#f59e0b;"></span>
+              Desarrollando
+            </div>
+            <div class="dia-legend-item">
+              <span class="dia-dot" style="background:#22c55e;"></span>
+              Consolidando
+            </div>
+            <div class="dia-legend-item">
+              <span class="dia-dot" style="background:#0ea5a4;"></span>
+              Profundizando
+            </div>
+          </div>
+        </div>
+        <div class="dia-nucleo-list">
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Movimiento y bienestar</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar el bienestar que le produce el movimiento, al ejercitar y recrear su cuerpo en forma habitual, con y sin implementos u obstáculos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:24.1500%;">24,15%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:36.0000%;">36,00%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:24.0600%;">24,06%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:15.7900%;">15,79%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                24,15%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                36,00%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                24,06%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                15,79%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Autocuidado corporal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar iniciativa para resguardar el autocuidado de su cuerpo y su confortabilidad, en función de su propio bienestar</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:27.2300%;">27,23%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.2200%;">33,22%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:28.5700%;">28,57%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.9800%;">10,98%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                27,23%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,22%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                28,57%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,98%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Comunicación de emociones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar a las demás personas emociones y sentimientos, tales como amor, miedo, alegría, ira, que le provocan diversas narraciones o situaciones observadas en forma directa o a través de TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:26.5800%;">26,58%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.0300%;">35,03%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:26.9900%;">26,99%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:11.4000%;">11,40%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                26,58%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,03%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                26,99%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                11,40%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Preferencias, opiniones e ideas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus preferencias, opiniones, ideas, en diversas situaciones cotidianas y juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:27.3700%;">27,37%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.5200%;">34,52%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:23.8800%;">23,88%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:14.2300%;">14,23%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                27,37%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,52%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                23,88%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                14,23%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación personal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar sus características corporales, manifestando interés y cuidado por su bienestar y apariencia personal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:29.1300%;">29,13%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.4300%;">35,43%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:24.7100%;">24,71%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.7300%;">10,73%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                29,13%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,43%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                24,71%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,73%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Desafíos prácticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver desafíos prácticos manteniendo control, equilibrio y coordinación al combinar diversos movimientos, posturas y desplazamientos tales como: lanzar y recibir, desplazarse en planos inclinados, seguir ritmos, en una variedad de juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:27.9200%;">27,92%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:37.4500%;">37,45%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:26.0700%;">26,07%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.5600%;">8,56%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                27,92%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                37,45%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                26,07%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,56%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Juegos sociodramáticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 13</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar en juegos socio dramáticos sus pensamientos y experiencias, atribuyendo significados a objetos, personas y situaciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:32.7500%;">32,75%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.6700%;">33,67%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:23.5000%;">23,50%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.0800%;">10,08%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                32,75%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,67%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                23,50%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,08%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Representación a través del dibujo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar a través del dibujo, sus ideas, intereses y experiencias, incorporando detalles a las figuras humanas y a objetos de su entorno, ubicándolos en parámetros básicos de organización espacial (arriba/ abajo, dentro/fuera)</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:33.9800%;">33,98%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.8900%;">33,89%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:21.4800%;">21,48%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.6500%;">10,65%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                33,98%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,89%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                21,48%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,65%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Comprensión oral</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comprender contenidos explícitos de textos literarios y no literarios, a partir de la escucha atenta, describiendo información y realizando progresivamente inferencias y predicciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:34.6100%;">34,61%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.7900%;">34,79%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:21.3500%;">21,35%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:9.2500%;">9,25%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                34,61%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,79%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                21,35%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                9,25%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Aprecio por la diversidad</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 11</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar la diversidad de las personas y sus formas de vida, tales como: singularidades fisonómicas, lingüísticas, religiosas, de género, entre otras.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:40.0000%;">40,00%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:29.6200%;">29,62%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:20.5700%;">20,57%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:9.8100%;">9,81%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                40,00%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                29,62%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                20,57%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                9,81%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Autorregulación emocional</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Expresar sus emociones y sentimientos, autorregulándose en función de las necesidades propias, de los demás y de las normas de funcionamiento grupal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:31.9800%;">31,98%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:39.1200%;">39,12%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:20.7100%;">20,71%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.1900%;">8,19%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                31,98%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                39,12%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                20,71%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,19%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Vocabulario</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar oralmente temas de su interés, empleando un vocabulario variado e incorporando palabras nuevas y pertinentes a las distintas situaciones comunicativas e interlocutores.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:36.6800%;">36,68%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.1100%;">35,11%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:20.1700%;">20,17%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.0400%;">8,04%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                36,68%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,11%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                20,17%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,04%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Participación colaborativa</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Participar en actividades y juegos colaborativos, planificando, acordando estrategias para un propósito común y asumiendo progresivamente responsabilidades.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:32.5400%;">32,54%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:40.0500%;">40,05%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:19.8200%;">19,82%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.5900%;">7,59%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                32,54%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                40,05%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                19,82%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,59%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Conteo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Emplear los números, para contar, identificar, cuantificar y comparar cantidades hasta el 20 e indicar orden o posición de algunos elementos en situaciones cotidianas o juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:45.6200%;">45,62%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:27.4000%;">27,40%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:18.8000%;">18,80%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.1800%;">8,18%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                45,62%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                27,40%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                18,80%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,18%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Expresión artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Experimentar diversas combinaciones de expresión plástica, corporal y musical, comunicando las razones del proceso realizado.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:31.4700%;">31,47%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:42.2900%;">42,29%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:18.7600%;">18,76%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.4800%;">7,48%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                31,47%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                42,29%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                18,76%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,48%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Resolución de conflictos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Aplicar estrategias pacíficas frente a la resolución de conflictos cotidianos con niños y niñas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:32.8400%;">32,84%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:41.4000%;">41,40%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:19.4500%;">19,45%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:6.3100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                32,84%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                41,40%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                19,45%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                6,31%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Interés y asombro por el entorno</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar interés y asombro al ampliar información sobre cambios que ocurren en el entorno natural, a las personas, animales, plantas, lugares y cuerpos celestes, utilizando diversas fuentes y procedimientos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:41.1000%;">41,10%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.2500%;">33,25%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:17.1900%;">17,19%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.4600%;">8,46%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                41,10%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,25%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                17,19%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,46%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Ambientes sostenibles</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Practicar algunas acciones cotidianas, que contribuyen al cuidado de ambientes sostenibles, tales como manejo de desechos en paseos al aire libre, separación de residuos, utilizar envases o papeles, plantar flores o árboles.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:41.8500%;">41,85%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.6100%;">32,61%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:18.4800%;">18,48%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.0600%;">7,06%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                41,85%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,61%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                18,48%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,06%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Instituciones y organizaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer la importancia que prestan instituciones, organizaciones, lugares y obras de interés patrimonial, tales como: escuelas, transporte público, empresas, iglesias, museos, bibliotecas, entre otros.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:39.2000%;">39,20%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.3000%;">35,30%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:17.1300%;">17,13%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.3700%;">8,37%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                39,20%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,30%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                17,13%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,37%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Prácticas democráticas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer progresivamente requerimientos esenciales de las prácticas de convivencia democrática, tales como: escucha de opiniones divergentes, el respeto por los demás, de los turnos, de los acuerdos de las mayorías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:38.4000%;">38,40%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:38.2300%;">38,23%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:18.3300%;">18,33%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.0400%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                38,40%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                38,23%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                18,33%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,04%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Patrones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Crear patrones sonoros, visuales, gestuales, corporales u otros, de dos o tres elementos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:49.3700%;">49,37%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:27.8200%;">27,82%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:17.6200%;">17,62%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.1900%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                49,37%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                27,82%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                17,62%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,19%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar producciones artísticas de diversos contextos (en forma directa o a través de medios tecnológicos), describiendo y comparando algunas características visuales, musicales o escénicas (desplazamiento, ritmo, carácter expresivo, colorido, formas, diseño, entre otros).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:47.2200%;">47,22%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:30.4400%;">30,44%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:14.6300%;">14,63%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.7100%;">7,71%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                47,22%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                30,44%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                14,63%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,71%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Impresiones y emociones de obras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus impresiones, emociones e ideas respecto de diversas obras de arte, producciones propias y de sus pares (artesanías, piezas musicales, obras plásticas y escénicas, entre otras).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:44.3700%;">44,37%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.8000%;">33,80%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:17.0500%;">17,05%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:4.7800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                44,37%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,80%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                17,05%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                4,78%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Predicciones y explicaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Formular conjeturas y predicciones acerca de las causas o consecuencias de fenómenos naturales que observa, a partir de sus conocimientos y experiencias previas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:45.9400%;">45,94%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.9900%;">32,99%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:15.4200%;">15,42%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.6500%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                45,94%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,99%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                15,42%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,65%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Reconocimiento de palabras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer palabras que se encuentran en diversos soportes asociando algunos fonemas a sus correspondientes grafemas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:53.5900%;">53,59%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:27.6200%;">27,62%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:15.7100%;">15,71%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.0800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                53,59%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                27,62%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                15,71%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,08%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Indagación del entorno natural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 9</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus observaciones, los instrumentos utilizados y los hallazgos obtenidos en experiencias de indagación en el entorno natural, mediante relatos, representaciones gráficas o fotografías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:52.3800%;">52,38%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:29.5800%;">29,58%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:12.7100%;">12,71%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.3300%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                52,38%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                29,58%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                12,71%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,33%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Conciencia fonológica</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 3</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Descubrir en contextos lúdicos, atributos fonológicos de palabras conocidas, tales como conteo de palabras, segmentación y conteo de sílabas, identificación de sonidos finales e iniciales.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:46.8100%;">46,81%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:36.2600%;">36,26%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:11.7900%;">11,79%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.1400%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                46,81%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                36,26%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                11,79%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,14%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Figuras 2D y 3D</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Identificar atributos de figuras 2D y 3D, tales como: forma, cantidad de lados, vértices, caras, que observa en forma directa o a través de las TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:56.0300%;">56,03%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:28.3400%;">28,34%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:9.8800%;">9,88%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.7500%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                56,03%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                28,34%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                9,88%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,75%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Formas de vida de comunidades</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar diversas formas de vida de comunidades, del país y del mundo, en el pasado y en el presente, tales como: viviendas, paisajes, alimentación, costumbres, identificando mediante diversas fuentes de documentación gráfica y audiovisual, sus características relevantes.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:57.1700%;">57,17%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:27.4500%;">27,45%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:11.6400%;">11,64%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.7400%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                57,17%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                27,45%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                11,64%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,74%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Patrimonio cultural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer diversas acciones para el cuidado del patrimonio cultural material (construcciones, obras de carácter arqueológico, lugares) e inmaterial (tradiciones, celebraciones), de su comunidad local.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:57.0700%;">57,07%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:28.8000%;">28,80%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:10.9300%;">10,93%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.2000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                57,07%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                28,80%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                10,93%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,20%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Hechos significativos del pasado</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar algunos relatos sociales sobre hechos significativos del pasado de su comunidad y país, apoyándose en recursos tales como: fotografías, videos, utensilios u objetos representativos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:59.2200%;">59,22%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:27.7500%;">27,75%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:9.8500%;">9,85%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.1800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                59,22%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                27,75%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                9,85%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,18%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="total" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | Total</div>
+              </div>
+              <div class="dia-nucleo-title">Agregar y quitar elementos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver problemas simples de manera concreta y pictórica agregando o quitando hasta 10 elementos, comunicando las acciones llevadas a cabo.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:57.0200%;">57,02%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:30.0200%;">30,02%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:8.3200%;">8,32%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:4.6400%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                57,02%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                30,02%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                8,32%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                4,64%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Comunicación de emociones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar a las demás personas emociones y sentimientos, tales como amor, miedo, alegría, ira, que le provocan diversas narraciones o situaciones observadas en forma directa o a través de TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:41.4200%;">41,42%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.1600%;">34,16%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:19.8000%;">19,80%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:4.6200%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                41,42%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,16%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                19,80%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                4,62%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Autorregulación emocional</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Expresar sus emociones y sentimientos, autorregulándose en función de las necesidades propias, de los demás y de las normas de funcionamiento grupal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:45.5500%;">45,55%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.4100%;">35,41%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:15.8400%;">15,84%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.2000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                45,55%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,41%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                15,84%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,20%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Autocuidado corporal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar iniciativa para resguardar el autocuidado de su cuerpo y su confortabilidad, en función de su propio bienestar</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:43.3900%;">43,39%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:37.6800%;">37,68%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:16.6100%;">16,61%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:2.3200%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                43,39%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                37,68%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                16,61%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                2,32%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Preferencias, opiniones e ideas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus preferencias, opiniones, ideas, en diversas situaciones cotidianas y juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:42.0600%;">42,06%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:40.2000%;">40,20%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:14.5300%;">14,53%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.2100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                42,06%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                40,20%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                14,53%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,21%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Movimiento y bienestar</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar el bienestar que le produce el movimiento, al ejercitar y recrear su cuerpo en forma habitual, con y sin implementos u obstáculos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:35.8000%;">35,80%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:47.2000%;">47,20%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:12.1200%;">12,12%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:4.8800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                35,80%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                47,20%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                12,12%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                4,88%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación personal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar sus características corporales, manifestando interés y cuidado por su bienestar y apariencia personal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:45.9100%;">45,91%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:37.1600%;">37,16%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:13.6200%;">13,62%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.3100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                45,91%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                37,16%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                13,62%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,31%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Aprecio por la diversidad</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 11</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar la diversidad de las personas y sus formas de vida, tales como: singularidades fisonómicas, lingüísticas, religiosas, de género, entre otras.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:53.4000%;">53,40%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:29.7100%;">29,71%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:13.5900%;">13,59%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.3000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                53,40%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                29,71%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                13,59%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,30%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Desafíos prácticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver desafíos prácticos manteniendo control, equilibrio y coordinación al combinar diversos movimientos, posturas y desplazamientos tales como: lanzar y recibir, desplazarse en planos inclinados, seguir ritmos, en una variedad de juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:43.3300%;">43,33%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:40.4500%;">40,45%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:13.3500%;">13,35%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:2.8700%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                43,33%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                40,45%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                13,35%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                2,87%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Comprensión oral</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comprender contenidos explícitos de textos literarios y no literarios, a partir de la escucha atenta, describiendo información y realizando progresivamente inferencias y predicciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:51.2400%;">51,24%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.8100%;">33,81%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:13.7000%;">13,70%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:1.2500%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                51,24%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,81%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                13,70%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                1,25%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Vocabulario</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar oralmente temas de su interés, empleando un vocabulario variado e incorporando palabras nuevas y pertinentes a las distintas situaciones comunicativas e interlocutores.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:55.4800%;">55,48%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:30.4800%;">30,48%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:12.6700%;">12,67%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:1.3700%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                55,48%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                30,48%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                12,67%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                1,37%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Juegos sociodramáticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 13</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar en juegos socio dramáticos sus pensamientos y experiencias, atribuyendo significados a objetos, personas y situaciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:51.8500%;">51,85%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.8100%;">34,81%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:10.9300%;">10,93%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:2.4100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                51,85%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,81%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                10,93%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                2,41%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Expresión artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Experimentar diversas combinaciones de expresión plástica, corporal y musical, comunicando las razones del proceso realizado.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:46.0300%;">46,03%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:41.0900%;">41,09%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:12.8800%;">12,88%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                46,03%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                41,09%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                12,88%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Resolución de conflictos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Aplicar estrategias pacíficas frente a la resolución de conflictos cotidianos con niños y niñas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:47.1700%;">47,17%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:40.8100%;">40,81%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:8.8400%;">8,84%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:3.1800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                47,17%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                40,81%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                8,84%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                3,18%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Interés y asombro por el entorno</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar interés y asombro al ampliar información sobre cambios que ocurren en el entorno natural, a las personas, animales, plantas, lugares y cuerpos celestes, utilizando diversas fuentes y procedimientos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:61.2600%;">61,26%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:26.8700%;">26,87%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:11.8700%;">11,87%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                61,26%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                26,87%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                11,87%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Representación a través del dibujo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar a través del dibujo, sus ideas, intereses y experiencias, incorporando detalles a las figuras humanas y a objetos de su entorno, ubicándolos en parámetros básicos de organización espacial (arriba/ abajo, dentro/fuera)</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:56.1200%;">56,12%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.0200%;">32,02%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:11.8600%;">11,86%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                56,12%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,02%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                11,86%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Participación colaborativa</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Participar en actividades y juegos colaborativos, planificando, acordando estrategias para un propósito común y asumiendo progresivamente responsabilidades.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:44.5200%;">44,52%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:43.7000%;">43,70%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:9.4900%;">9,49%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:2.2900%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                44,52%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                43,70%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                9,49%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                2,29%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Prácticas democráticas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer progresivamente requerimientos esenciales de las prácticas de convivencia democrática, tales como: escucha de opiniones divergentes, el respeto por los demás, de los turnos, de los acuerdos de las mayorías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:56.2300%;">56,23%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.1800%;">32,18%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:10.0300%;">10,03%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:1.5600%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                56,23%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,18%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                10,03%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                1,56%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Ambientes sostenibles</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Practicar algunas acciones cotidianas, que contribuyen al cuidado de ambientes sostenibles, tales como manejo de desechos en paseos al aire libre, separación de residuos, utilizar envases o papeles, plantar flores o árboles.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:67.4800%;">67,48%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:21.3800%;">21,38%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:11.1400%;">11,14%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                67,48%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                21,38%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                11,14%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Conteo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Emplear los números, para contar, identificar, cuantificar y comparar cantidades hasta el 20 e indicar orden o posición de algunos elementos en situaciones cotidianas o juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:70.7600%;">70,76%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:20.5000%;">20,50%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:7.2300%;">7,23%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:1.5100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                70,76%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                20,50%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                7,23%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                1,51%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar producciones artísticas de diversos contextos (en forma directa o a través de medios tecnológicos), describiendo y comparando algunas características visuales, musicales o escénicas (desplazamiento, ritmo, carácter expresivo, colorido, formas, diseño, entre otros).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:61.1700%;">61,17%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:30.2900%;">30,29%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:8.5400%;">8,54%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                61,17%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                30,29%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                8,54%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Reconocimiento de palabras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer palabras que se encuentran en diversos soportes asociando algunos fonemas a sus correspondientes grafemas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:70.9300%;">70,93%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:20.7000%;">20,70%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:8.3700%;">8,37%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                70,93%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                20,70%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                8,37%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Impresiones y emociones de obras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus impresiones, emociones e ideas respecto de diversas obras de arte, producciones propias y de sus pares (artesanías, piezas musicales, obras plásticas y escénicas, entre otras).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:56.9800%;">56,98%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.7700%;">34,77%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:8.2500%;">8,25%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                56,98%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,77%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                8,25%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Instituciones y organizaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer la importancia que prestan instituciones, organizaciones, lugares y obras de interés patrimonial, tales como: escuelas, transporte público, empresas, iglesias, museos, bibliotecas, entre otros.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:66.8600%;">66,86%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:25.5800%;">25,58%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:7.5600%;">7,56%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                66,86%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                25,58%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                7,56%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Predicciones y explicaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Formular conjeturas y predicciones acerca de las causas o consecuencias de fenómenos naturales que observa, a partir de sus conocimientos y experiencias previas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:74.2400%;">74,24%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:18.8300%;">18,83%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:6.9300%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                74,24%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                18,83%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                6,93%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Patrones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Crear patrones sonoros, visuales, gestuales, corporales u otros, de dos o tres elementos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:71.2500%;">71,25%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:22.0500%;">22,05%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:6.7000%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                71,25%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                22,05%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                6,70%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Conciencia fonológica</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 3</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Descubrir en contextos lúdicos, atributos fonológicos de palabras conocidas, tales como conteo de palabras, segmentación y conteo de sílabas, identificación de sonidos finales e iniciales.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:75.6600%;">75,66%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:18.6800%;">18,68%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:3.5800%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:2.0800%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                75,66%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                18,68%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                3,58%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                2,08%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Hechos significativos del pasado</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar algunos relatos sociales sobre hechos significativos del pasado de su comunidad y país, apoyándose en recursos tales como: fotografías, videos, utensilios u objetos representativos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:85.7200%;">85,72%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:8.8200%;">8,82%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:5.4600%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                85,72%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                8,82%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                5,46%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Indagación del entorno natural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 9</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus observaciones, los instrumentos utilizados y los hallazgos obtenidos en experiencias de indagación en el entorno natural, mediante relatos, representaciones gráficas o fotografías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:77.0800%;">77,08%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:17.9200%;">17,92%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:5.0000%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                77,08%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                17,92%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                5,00%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Figuras 2D y 3D</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Identificar atributos de figuras 2D y 3D, tales como: forma, cantidad de lados, vértices, caras, que observa en forma directa o a través de las TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:83.7800%;">83,78%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:11.7100%;">11,71%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:4.5100%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                83,78%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                11,71%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                4,51%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Formas de vida de comunidades</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar diversas formas de vida de comunidades, del país y del mundo, en el pasado y en el presente, tales como: viviendas, paisajes, alimentación, costumbres, identificando mediante diversas fuentes de documentación gráfica y audiovisual, sus características relevantes.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:78.8500%;">78,85%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:16.7400%;">16,74%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:4.4100%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                78,85%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                16,74%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                4,41%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Agregar y quitar elementos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver problemas simples de manera concreta y pictórica agregando o quitando hasta 10 elementos, comunicando las acciones llevadas a cabo.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:73.7300%;">73,73%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:25.3500%;">25,35%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:0.6900%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.2300%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                73,73%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                25,35%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                0,69%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,23%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt1" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT1</div>
+              </div>
+              <div class="dia-nucleo-title">Patrimonio cultural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer diversas acciones para el cuidado del patrimonio cultural material (construcciones, obras de carácter arqueológico, lugares) e inmaterial (tradiciones, celebraciones), de su comunidad local.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:85.3000%;">85,30%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:14.7000%;">14,70%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:0.0000%;"></div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:0.0000%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                85,30%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                14,70%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                0,00%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                0,00%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Movimiento y bienestar</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar el bienestar que le produce el movimiento, al ejercitar y recrear su cuerpo en forma habitual, con y sin implementos u obstáculos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:11.5500%;">11,55%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:23.8700%;">23,87%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:36.9900%;">36,99%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:27.5900%;">27,59%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                11,55%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                23,87%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                36,99%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                27,59%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Autocuidado corporal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar iniciativa para resguardar el autocuidado de su cuerpo y su confortabilidad, en función de su propio bienestar</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:11.0700%;">11,07%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:28.7500%;">28,75%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:40.5400%;">40,54%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:19.6400%;">19,64%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                11,07%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                28,75%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                40,54%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                19,64%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Preferencias, opiniones e ideas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus preferencias, opiniones, ideas, en diversas situaciones cotidianas y juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:13.1100%;">13,11%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:29.0200%;">29,02%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:32.9500%;">32,95%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:24.9200%;">24,92%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                13,11%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                29,02%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                32,95%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                24,92%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación personal</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar sus características corporales, manifestando interés y cuidado por su bienestar y apariencia personal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:11.9500%;">11,95%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.6600%;">33,66%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:36.0600%;">36,06%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:18.3300%;">18,33%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                11,95%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,66%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                36,06%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                18,33%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Juegos sociodramáticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 13</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar en juegos socio dramáticos sus pensamientos y experiencias, atribuyendo significados a objetos, personas y situaciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:13.6800%;">13,68%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.5300%;">32,53%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:36.0400%;">36,04%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:17.7500%;">17,75%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                13,68%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,53%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                36,04%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                17,75%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Comunicación de emociones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar a las demás personas emociones y sentimientos, tales como amor, miedo, alegría, ira, que le provocan diversas narraciones o situaciones observadas en forma directa o a través de TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:11.9100%;">11,91%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.8900%;">35,89%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:34.0900%;">34,09%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:18.1100%;">18,11%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                11,91%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,89%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                34,09%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                18,11%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Representación a través del dibujo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Representar a través del dibujo, sus ideas, intereses y experiencias, incorporando detalles a las figuras humanas y a objetos de su entorno, ubicándolos en parámetros básicos de organización espacial (arriba/ abajo, dentro/fuera)</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:12.5700%;">12,57%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.7000%;">35,70%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:30.7800%;">30,78%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:20.9500%;">20,95%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                12,57%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,70%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                30,78%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                20,95%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="corporalidad-y-movimiento">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Corporalidad y movimiento | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Desafíos prácticos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver desafíos prácticos manteniendo control, equilibrio y coordinación al combinar diversos movimientos, posturas y desplazamientos tales como: lanzar y recibir, desplazarse en planos inclinados, seguir ritmos, en una variedad de juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:14.0500%;">14,05%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.7500%;">34,75%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:37.5200%;">37,52%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:13.6800%;">13,68%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                14,05%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,75%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                37,52%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                13,68%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Comprensión oral</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comprender contenidos explícitos de textos literarios y no literarios, a partir de la escucha atenta, describiendo información y realizando progresivamente inferencias y predicciones.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:17.9700%;">17,97%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:35.7700%;">35,77%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:29.0000%;">29,00%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:17.2600%;">17,26%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                17,97%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                35,77%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                29,00%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                17,26%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Conteo</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Emplear los números, para contar, identificar, cuantificar y comparar cantidades hasta el 20 e indicar orden o posición de algunos elementos en situaciones cotidianas o juegos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:20.3000%;">20,30%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.3500%;">34,35%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:30.4600%;">30,46%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:14.8900%;">14,89%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                20,30%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,35%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                30,46%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                14,89%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Aprecio por la diversidad</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 11</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar la diversidad de las personas y sus formas de vida, tales como: singularidades fisonómicas, lingüísticas, religiosas, de género, entre otras.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:27.1000%;">27,10%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:29.5300%;">29,53%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:27.2900%;">27,29%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:16.0800%;">16,08%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                27,10%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                29,53%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                27,29%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                16,08%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Vocabulario</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar oralmente temas de su interés, empleando un vocabulario variado e incorporando palabras nuevas y pertinentes a las distintas situaciones comunicativas e interlocutores.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:17.1100%;">17,11%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:39.9300%;">39,93%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:27.9900%;">27,99%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:14.9700%;">14,97%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                17,11%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                39,93%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                27,99%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                14,97%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Participación colaborativa</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Participar en actividades y juegos colaborativos, planificando, acordando estrategias para un propósito común y asumiendo progresivamente responsabilidades.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:20.6500%;">20,65%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:36.4200%;">36,42%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:30.0800%;">30,08%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:12.8500%;">12,85%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                20,65%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                36,42%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                30,08%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                12,85%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Instituciones y organizaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer la importancia que prestan instituciones, organizaciones, lugares y obras de interés patrimonial, tales como: escuelas, transporte público, empresas, iglesias, museos, bibliotecas, entre otros.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:12.5200%;">12,52%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:44.6700%;">44,67%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:26.3600%;">26,36%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:16.4500%;">16,45%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                12,52%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                44,67%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                26,36%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                16,45%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Expresión artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Experimentar diversas combinaciones de expresión plástica, corporal y musical, comunicando las razones del proceso realizado.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:16.2400%;">16,24%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:43.5400%;">43,54%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:24.9100%;">24,91%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:15.3100%;">15,31%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                16,24%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                43,54%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                24,91%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                15,31%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Interés y asombro por el entorno</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Manifestar interés y asombro al ampliar información sobre cambios que ocurren en el entorno natural, a las personas, animales, plantas, lugares y cuerpos celestes, utilizando diversas fuentes y procedimientos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:20.9400%;">20,94%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:39.6200%;">39,62%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:22.5100%;">22,51%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:16.9300%;">16,93%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                20,94%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                39,62%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                22,51%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                16,93%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Patrones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Crear patrones sonoros, visuales, gestuales, corporales u otros, de dos o tres elementos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:26.8600%;">26,86%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.7600%;">33,76%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:28.8600%;">28,86%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.5200%;">10,52%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                26,86%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,76%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                28,86%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,52%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Resolución de conflictos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Aplicar estrategias pacíficas frente a la resolución de conflictos cotidianos con niños y niñas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:19.1200%;">19,12%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:41.9600%;">41,96%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:29.6100%;">29,61%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:9.3100%;">9,31%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                19,12%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                41,96%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                29,61%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                9,31%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="identidad-y-autonomia">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Identidad y autonomía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Autorregulación emocional</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 4</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Expresar sus emociones y sentimientos, autorregulándose en función de las necesidades propias, de los demás y de las normas de funcionamiento grupal.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:18.6700%;">18,67%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:42.7600%;">42,76%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:25.4800%;">25,48%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:13.0900%;">13,09%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                18,67%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                42,76%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                25,48%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                13,09%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Ambientes sostenibles</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Practicar algunas acciones cotidianas, que contribuyen al cuidado de ambientes sostenibles, tales como manejo de desechos en paseos al aire libre, separación de residuos, utilizar envases o papeles, plantar flores o árboles.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:19.4600%;">19,46%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:42.4100%;">42,41%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:24.9000%;">24,90%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:13.2300%;">13,23%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                19,46%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                42,41%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                24,90%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                13,23%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Apreciación artística</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 1</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar producciones artísticas de diversos contextos (en forma directa o a través de medios tecnológicos), describiendo y comparando algunas características visuales, musicales o escénicas (desplazamiento, ritmo, carácter expresivo, colorido, formas, diseño, entre otros).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:33.1400%;">33,14%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:30.5900%;">30,59%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:20.7800%;">20,78%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:15.4900%;">15,49%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                33,14%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                30,59%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                20,78%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                15,49%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguajes-artisticos">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguajes artísticos | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Impresiones y emociones de obras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus impresiones, emociones e ideas respecto de diversas obras de arte, producciones propias y de sus pares (artesanías, piezas musicales, obras plásticas y escénicas, entre otras).</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:31.3800%;">31,38%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:32.7900%;">32,79%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:26.1100%;">26,11%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:9.7200%;">9,72%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                31,38%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                32,79%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                26,11%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                9,72%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="desarrollo-personal-y-social" data-nucleo="convivencia-y-ciudadania">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Desarrollo Personal y Social | Convivencia y ciudadanía | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Prácticas democráticas</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer progresivamente requerimientos esenciales de las prácticas de convivencia democrática, tales como: escucha de opiniones divergentes, el respeto por los demás, de los turnos, de los acuerdos de las mayorías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:20.4200%;">20,42%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:44.3300%;">44,33%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:26.7000%;">26,70%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.5500%;">8,55%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                20,42%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                44,33%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                26,70%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,55%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Predicciones y explicaciones</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Formular conjeturas y predicciones acerca de las causas o consecuencias de fenómenos naturales que observa, a partir de sus conocimientos y experiencias previas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:20.3500%;">20,35%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:45.7900%;">45,79%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:23.0900%;">23,09%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:10.7700%;">10,77%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                20,35%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                45,79%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                23,09%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                10,77%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="exploracion-del-entorno-natural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Exploración del entorno natural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Indagación del entorno natural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 9</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar sus observaciones, los instrumentos utilizados y los hallazgos obtenidos en experiencias de indagación en el entorno natural, mediante relatos, representaciones gráficas o fotografías.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:30.8500%;">30,85%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:39.7500%;">39,75%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:19.4200%;">19,42%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:9.9800%;">9,98%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                30,85%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                39,75%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                19,42%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                9,98%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Reconocimiento de palabras</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 7</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer palabras que se encuentran en diversos soportes asociando algunos fonemas a sus correspondientes grafemas.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:39.8900%;">39,89%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:33.0900%;">33,09%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:21.5100%;">21,51%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.5100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                39,89%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                33,09%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                21,51%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,51%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="comunicacion-integral" data-nucleo="lenguaje-verbal">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Comunicación Integral | Lenguaje verbal | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Conciencia fonológica</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 3</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Descubrir en contextos lúdicos, atributos fonológicos de palabras conocidas, tales como conteo de palabras, segmentación y conteo de sílabas, identificación de sonidos finales e iniciales.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:21.2400%;">21,24%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:51.8400%;">51,84%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:19.0600%;">19,06%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.8600%;">7,86%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                21,24%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                51,84%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                19,06%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,86%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Patrimonio cultural</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 6</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Reconocer diversas acciones para el cuidado del patrimonio cultural material (construcciones, obras de carácter arqueológico, lugares) e inmaterial (tradiciones, celebraciones), de su comunidad local.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:32.7500%;">32,75%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:40.9400%;">40,94%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:20.3500%;">20,35%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:5.9600%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                32,75%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                40,94%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                20,35%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                5,96%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Figuras 2D y 3D</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 10</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Identificar atributos de figuras 2D y 3D, tales como: forma, cantidad de lados, vértices, caras, que observa en forma directa o a través de las TIC.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:30.1900%;">30,19%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:43.8200%;">43,82%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:14.8800%;">14,88%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:11.1100%;">11,11%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                30,19%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                43,82%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                14,88%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                11,11%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Formas de vida de comunidades</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 2</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Apreciar diversas formas de vida de comunidades, del país y del mundo, en el pasado y en el presente, tales como: viviendas, paisajes, alimentación, costumbres, identificando mediante diversas fuentes de documentación gráfica y audiovisual, sus características relevantes.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:37.7900%;">37,79%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:37.0100%;">37,01%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:18.1100%;">18,11%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:7.0900%;">7,09%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                37,79%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                37,01%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                18,11%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                7,09%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="pensamiento-matematico">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Pensamiento matemático | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Agregar y quitar elementos</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 8</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Resolver problemas simples de manera concreta y pictórica agregando o quitando hasta 10 elementos, comunicando las acciones llevadas a cabo.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:42.2800%;">42,28%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:34.1400%;">34,14%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:15.0400%;">15,04%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:8.5400%;">8,54%</div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                42,28%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                34,14%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                15,04%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                8,54%
+              </span>
+            </div>
+          </div>
+          <div class="dia-nucleo-row dia-rubrica-row dia-rubrica-item" data-vista="nt2" data-ambito="interaccion-y-comprension-del-entorno" data-nucleo="comprension-del-entorno-sociocultural">
+            <div class="dia-rubrica-main">
+              <div class="dia-rubrica-topline">
+                <div class="dia-rubrica-meta">Interacción y Comprensión del Entorno | Comprensión del Entorno sociocultural | NT2</div>
+              </div>
+              <div class="dia-nucleo-title">Hechos significativos del pasado</div>
+              <div class="dia-rubrica-oa-row">
+                <span class="dia-oa-chip">OA 5</span>
+                <span class="dia-rubrica-meta" style="margin-top:0;">Comunicar algunos relatos sociales sobre hechos significativos del pasado de su comunidad y país, apoyándose en recursos tales como: fotografías, videos, utensilios u objetos representativos.</span>
+              </div>
+            </div>
+            <div class="dia-nucleo-bar">
+              <div class="dia-stackbar">
+                <div class="dia-stackbar-seg seg-comenzando" style="width:32.2600%;">32,26%</div>
+                <div class="dia-stackbar-seg seg-desarrollando" style="width:47.0100%;">47,01%</div>
+                <div class="dia-stackbar-seg seg-consolidando" style="width:14.3200%;">14,32%</div>
+                <div class="dia-stackbar-seg seg-profundizando" style="width:6.4100%;"></div>
+              </div>
+            </div>
+            <div class="dia-level-values">
+              <span>
+                <i style="background:#ef4444;"></i>
+                32,26%
+              </span>
+              <span>
+                <i style="background:#f59e0b;"></i>
+                47,01%
+              </span>
+              <span>
+                <i style="background:#22c55e;"></i>
+                14,32%
+              </span>
+              <span>
+                <i style="background:#0ea5a4;"></i>
+                6,41%
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+</html>
