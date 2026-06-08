@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas Institucionales - Escuelas y Liceos - SLEP Santa Rosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --slep-blue: #1a3a6b;
+            --slep-blue-light: #2a5298;
+            --slep-red: #c0392b;
+            --slep-yellow: #f0b429;
+            --slep-green: #27ae60;
+            --slep-green-dark: #1e8449;
+            --slep-purple: #7b2d8e;
+            --slep-teal: #1abc9c;
+
+            --bg-main: #ffffff;
+            --bg-alt: #f5f7fa;
+            --text-primary: #1d2d35;
+            --text-secondary: #5c6a72;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(26, 58, 107, 0.06);
+            --shadow-md: 0 8px 30px rgba(26, 58, 107, 0.10);
+            --shadow-lg: 0 15px 40px rgba(26, 58, 107, 0.14);
+            --white: #ffffff;
+            --font-main: 'Work Sans', sans-serif;
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-secondary);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { margin: 0 0 12px 0; color: var(--text-primary); font-weight: 700; line-height: 1.25; }
+        a { color: var(--slep-blue); text-decoration: none; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* FRANJA COLORES SLEP */
+        .slep-stripe {
+            display: flex;
+            height: 5px;
+        }
+        .slep-stripe span { flex: 1; }
+        .slep-stripe .s1 { background: var(--slep-green); }
+        .slep-stripe .s2 { background: var(--slep-blue); }
+        .slep-stripe .s3 { background: var(--slep-red); }
+        .slep-stripe .s4 { background: var(--slep-yellow); }
+        .slep-stripe .s5 { background: var(--slep-green-dark); }
+        .slep-stripe .s6 { background: var(--slep-purple); }
+
+        /* BANNER INFO */
+        .info-banner {
+            background: linear-gradient(135deg, var(--slep-blue) 0%, var(--slep-blue-light) 100%);
+            color: var(--white);
+            padding: 44px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .info-banner .inner {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .info-banner .text-col { flex: 1; }
+        .info-banner h2 {
+            color: var(--white);
+            font-size: clamp(22px, 3vw, 30px);
+            margin-bottom: 14px;
+        }
+        .info-banner p {
+            font-size: 0.95rem;
+            opacity: 0.92;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .info-banner .stats-col {
+            display: flex;
+            gap: 28px;
+            flex-shrink: 0;
+        }
+        .stat-box {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px 22px;
+            min-width: 100px;
+        }
+        .stat-box .num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .stat-box .label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SEARCH & FILTERS */
+        .controls-section {
+            padding: 32px 0 16px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-main);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .search-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-alt);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 6px 18px;
+            transition: var(--transition);
+            flex: 0 1 400px;
+            min-width: 220px;
+        }
+        .search-wrap:focus-within {
+            border-color: var(--slep-blue);
+            box-shadow: 0 0 0 4px rgba(26,58,107,0.08);
+            background: var(--white);
+        }
+        .search-wrap svg { flex-shrink: 0; color: var(--text-secondary); }
+        .search-wrap input {
+            flex: 1; border: none; outline: none;
+            font-family: var(--font-main); font-size: 0.92rem;
+            padding: 8px 0; background: transparent;
+            color: var(--text-primary);
+        }
+        .search-wrap input::placeholder { color: #a0aab0; }
+        .search-wrap .clear-btn {
+            background: none; border: none; cursor: pointer;
+            color: var(--text-secondary); padding: 2px 6px;
+            display: none; font-size: 1.3rem; line-height: 1;
+        }
+        .search-wrap .clear-btn.visible { display: block; }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 1;
+        }
+        .filter-btn {
+            padding: 7px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--text-secondary);
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--slep-blue);
+            color: var(--slep-blue);
+            background: rgba(26,58,107,0.03);
+        }
+        .filter-btn.active {
+            background: var(--slep-blue);
+            color: var(--white);
+            border-color: var(--slep-blue);
+        }
+        .filter-btn .count {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 1px 7px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            margin-left: 4px;
+            font-weight: 600;
+        }
+        .filter-btn.active .count { background: rgba(255,255,255,0.25); }
+        .filter-btn:not(.active) .count { background: var(--bg-alt); color: var(--text-secondary); }
+
+        .results-line {
+            text-align: right;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            padding: 10px 0 0;
+        }
+        .results-line strong { color: var(--text-primary); }
+
+        /* GRID LOGOS */
+        .grid-section { padding: 40px 0 70px; }
+
+        .escuelas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 28px;
+        }
+
+        .escuela-card {
+            background: var(--white);
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px 18px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .escuela-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--slep-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        .escuela-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--card-accent, var(--slep-blue));
+            opacity: 1;
+        }
+        .escuela-card:hover::before { transform: scaleX(1); }
+
+        .escuela-card .logo-wrap {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafd;
+            border: 3px solid var(--border-color);
+            margin-bottom: 16px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .escuela-card:hover .logo-wrap {
+            border-color: var(--card-accent, var(--slep-blue));
+            box-shadow: 0 0 0 5px rgba(26,58,107,0.06);
+        }
+        .escuela-card .logo-wrap img {
+            width: 88%;
+            height: 88%;
+            object-fit: contain;
+        }
+
+        .escuela-card .rbd-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--slep-blue);
+            background: rgba(26,58,107,0.07);
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .escuela-card .nombre {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.35;
+            flex: 1;
+        }
+
+        .escuela-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        .escuela-card .tipo-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--card-accent, var(--slep-blue));
+            flex-shrink: 0;
+        }
+        .escuela-card .comuna-tag {
+            font-size: 0.68rem;
+            background: var(--bg-alt);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+
+        .escuela-card.hidden { display: none; }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 70px 20px;
+            color: var(--text-secondary);
+        }
+        .no-results svg { margin: 0 auto 16px; opacity: 0.5; }
+
+        /* SECCIONES */
+        .secciones-section {
+            padding: 70px 0 80px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-color);
+        }
+        .secciones-section h2 {
+            font-size: clamp(22px, 3.5vw, 32px);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .secciones-section .sub {
+            text-align: center;
+            font-size: 0.95rem;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
+
+        .secciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 14px;
+        }
+
+        .seccion-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--white);
+            padding: 14px 18px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .seccion-item:hover {
+            border-color: var(--slep-blue);
+            box-shadow: var(--shadow-sm);
+        }
+        .seccion-item .icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .seccion-item .icon.c1 { background: rgba(26,58,107,0.08); }
+        .seccion-item .icon.c2 { background: rgba(39,174,96,0.08); }
+        .seccion-item .icon.c3 { background: rgba(192,57,43,0.08); }
+        .seccion-item .icon.c4 { background: rgba(240,180,41,0.08); }
+        .seccion-item .icon.c5 { background: rgba(123,45,142,0.08); }
+        .seccion-item .icon.c6 { background: rgba(26,188,156,0.08); }
+
+        .seccion-item .sec-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .seccion-item .sec-num {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .info-banner .inner { flex-direction: column; gap: 24px; text-align: center; }
+            .info-banner .stats-col { justify-content: center; }
+            .controls-row { flex-direction: column; align-items: stretch; }
+            .search-wrap { flex: 1 1 100%; }
+            .filters { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .escuelas-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+            .escuela-card { padding: 18px 12px 14px; }
+            .escuela-card .logo-wrap { width: 100px; height: 100px; }
+            .info-banner .stats-col { gap: 12px; }
+            .stat-box { padding: 12px 14px; min-width: 80px; }
+            .stat-box .num { font-size: 1.5rem; }
+            .secciones-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ANIMATION */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .escuela-card {
+            animation: fadeInUp 0.35s ease forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Franja de colores SLEP -->
+    <div class="slep-stripe">
+        <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+        <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+    </div>
+
+    <!-- Banner informativo -->
+    <section class="info-banner">
+        <div class="container">
+            <div class="inner">
+                <div class="text-col">
+                    <h2>Fichas Institucionales</h2>
+                    <p>Cada ficha re&uacute;ne los <strong>datos m&aacute;s importantes</strong> del establecimiento en un solo lugar: desde matr&iacute;cula y resultados acad&eacute;micos hasta convivencia escolar y registros administrativos. La informaci&oacute;n se presenta de forma <strong>clara y accesible</strong>, con actualizaciones peri&oacute;dicas para apoyar la toma de decisiones del equipo directivo y el SLEP.</p>
+                </div>
+                <div class="stats-col">
+                    <div class="stat-box">
+                        <span class="num" id="totalCount">60</span>
+                        <span class="label">Establecimientos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="num">19</span>
+                        <span class="label">Secciones</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="num">5</span>
+                        <span class="label">Comunas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="slep-stripe">
+        <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+        <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+    </div>
+
+    <!-- Buscador y filtros -->
+    <div class="controls-section" id="escuelas">
+        <div class="container">
+            <div class="controls-row">
+                <div class="search-wrap">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="searchInput" placeholder="Buscar por nombre o RBD..." autocomplete="off">
+                    <button class="clear-btn" id="clearBtn" onclick="clearSearch()">&times;</button>
+                </div>
+                <div class="filters" id="filters"></div>
+            </div>
+            <div class="results-line">Mostrando <strong id="visibleCount">60</strong> de <strong>60</strong> establecimientos</div>
+        </div>
+    </div>
+
+    <!-- Grid de logos -->
+    <section class="grid-section">
+        <div class="container">
+            <div class="escuelas-grid" id="escuelasGrid"></div>
+        </div>
+    </section>
+
+    <!-- Secciones disponibles -->
+    <section class="secciones-section" id="secciones">
+        <div class="container">
+            <div class="slep-stripe" style="margin-bottom:40px; border-radius:3px; overflow:hidden;">
+                <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+                <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+            </div>
+            <h2>19 secciones disponibles en cada ficha</h2>
+            <p class="sub">Haz clic en el logo de tu escuela o liceo para acceder a la ficha individual con todos sus indicadores, datos acad&eacute;micos y administrativos.</p>
+
+            <div class="secciones-grid">
+                <div class="seccion-item"><div class="icon c1">&#x1F3EB;</div><div><div class="sec-num">01</div><div class="sec-name">Resumen Institucional</div></div></div>
+                <div class="seccion-item"><div class="icon c2">&#x1F5FA;</div><div><div class="sec-num">02</div><div class="sec-name">Mapa EE</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x2699;</div><div><div class="sec-num">03</div><div class="sec-name">Instrumentos de Gesti&oacute;n</div></div></div>
+                <div class="seccion-item"><div class="icon c4">&#x1F4CA;</div><div><div class="sec-num">04</div><div class="sec-name">Sistema Nacional de Evaluaci&oacute;n</div></div></div>
+                <div class="seccion-item"><div class="icon c5">&#x1F465;</div><div><div class="sec-num">05</div><div class="sec-name">Matr&iacute;cula y Asistencia</div></div></div>
+                <div class="seccion-item"><div class="icon c6">&#x1F4BA;</div><div><div class="sec-num">06</div><div class="sec-name">Ocupaci&oacute;n</div></div></div>
+                <div class="seccion-item"><div class="icon c1">&#x267F;</div><div><div class="sec-num">07</div><div class="sec-name">Programa de Integraci&oacute;n Escolar</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x1F504;</div><div><div class="sec-num">08</div><div class="sec-name">An&aacute;lisis de Retiros y Movilidad</div></div></div>
+                <div class="seccion-item"><div class="icon c2">&#x1F4D6;</div><div><div class="sec-num">09</div><div class="sec-name">Resultados Educativos</div></div></div>
+                <div class="seccion-item"><div class="icon c4">&#x1F4DD;</div><div><div class="sec-num">10</div><div class="sec-name">Resultados SIMCE</div></div></div>
+                <div class="seccion-item"><div class="icon c5">&#x1F9E0;</div><div><div class="sec-num">11</div><div class="sec-name">Indicadores de Desarrollo Personal</div></div></div>
+                <div class="seccion-item"><div class="icon c6">&#x1F393;</div><div><div class="sec-num">12</div><div class="sec-name">Resultados PAES</div></div></div>
+                <div class="seccion-item"><div class="icon c1">&#x1F680;</div><div><div class="sec-num">13</div><div class="sec-name">Tr&aacute;nsito a la Educaci&oacute;n Superior</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x1F46A;</div><div><div class="sec-num">14</div><div class="sec-name">Funcionarios del Establecimiento</div></div></div>
+                <div class="seccion-item"><div class="icon c2">&#x1F3E0;</div><div><div class="sec-num">15</div><div class="sec-name">Uso de Espacios y Convenios</div></div></div>
+                <div class="seccion-item"><div class="icon c4">&#x1F4E2;</div><div><div class="sec-num">16</div><div class="sec-name">Circulares y Comunicaciones</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x26A0;</div><div><div class="sec-num">17</div><div class="sec-name">Registro de Denuncias y Reclamos</div></div></div>
+                <div class="seccion-item"><div class="icon c5">&#x1F6A8;</div><div><div class="sec-num">18</div><div class="sec-name">Robos y Delitos Escuela</div></div></div>
+                <div class="seccion-item"><div class="icon c6">&#x1F4CD;</div><div><div class="sec-num">19</div><div class="sec-name">Ubicaci&oacute;n Residencias Estudiantes</div></div></div>
+            </div>
+        </div>
+    </section>
+
+<script>
+var escuelas = [
+    { rbd:"9405", nombre:"Liceo Betsabé Hormazábal De Alarcón", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9405-liceo-betsabe-hormazabal-de-alarcon?authuser=2", ext:"png", comuna:"San Miguel", tipo:"tp" },
+    { rbd:"9406", nombre:"Liceo Andrés Bello", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9406-liceo-andres-bello?authuser=2", ext:"png", comuna:"San Miguel", tipo:"tp" },
+    { rbd:"9410", nombre:"Escuela Consolidada Dávila", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9410-escuela-consolidado-d%C3%A1vila?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9413", nombre:"Escuela General Básica Santa Fe", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9413-escuela-general-basica-santa-fe?authuser=2", ext:"png", comuna:"San Miguel", tipo:"basica" },
+    { rbd:"9415", nombre:"Escuela Territorio Antártico", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9415-escuela-territorio-antartico?authuser=2", ext:"png", comuna:"San Miguel", tipo:"basica" },
+    { rbd:"9416", nombre:"Escuela Poetas De Chile", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9416-escuela-poetas-de-chile?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9418", nombre:"Escuela La Victoria", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9418-escuela-la-victoria?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9419", nombre:"Liceo Municipal Enrique Backausse", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9419-liceo-municipal-enrique-backausse?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"tp" },
+    { rbd:"9422", nombre:"Escuela Centro Educ. Rep. Mexicana", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9422-escuela-centro-educ-rep-mexicana?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9426", nombre:"Escuela Llano Subercaseaux", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9426-escuela-llano-subercaseaux?authuser=2", ext:"png", comuna:"San Miguel", tipo:"basica" },
+    { rbd:"9428", nombre:"Escuela Básica Ricardo E. Latcham", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9428-escuela-basica-ricardo-e-latcham?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9431", nombre:"Escuela Villa San Miguel", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9431-escuela-villa-san-miguel?authuser=2", ext:"png", comuna:"San Miguel", tipo:"basica" },
+    { rbd:"9433", nombre:"Escuela Básica Pablo Neruda", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9433-escuela-basica-pablo-neruda?authuser=2", ext:"png", comuna:"San Miguel", tipo:"basica" },
+    { rbd:"9444", nombre:"Escuela Especial Los Cedros Del Líbano", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9444-escuela-especial-los-cedros-del-libano?authuser=2", ext:"png", comuna:"San Miguel", tipo:"especial" },
+    { rbd:"9446", nombre:"Escuela De Párvulos Rayito De Luz", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9446-escuela-de-parvulos-rayito-de-luz?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"parvularia" },
+    { rbd:"9458", nombre:"Escuela Boroa", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9458-escuela-boroa?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9460", nombre:"Inst. Reg. Educ Adultos San Miguel", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9460-inst-reg-educ-adultos-san-miguel?authuser=2", ext:"png", comuna:"San Miguel", tipo:"adultos" },
+    { rbd:"9461", nombre:"Esc. Esp. De Adultos Hugo Morales Bizama", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9461-esc-esp-de-adultos-hugo-morales-bizama?authuser=2", ext:"png", comuna:"San Miguel", tipo:"adultos" },
+    { rbd:"9586", nombre:"Liceo Araucanía", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9586-liceo-araucania?authuser=2", ext:"png", comuna:"San Ramón", tipo:"tp" },
+    { rbd:"9592", nombre:"Escuela Básica Sendero Del Saber", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9592-escuela-basica-sendero-del-saber?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9593", nombre:"Escuela Básica Educadores De Chile", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9593-escuela-basica-educadores-de-chile?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9599", nombre:"Liceo Purkuyen", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9599-liceo-purkuyen?authuser=2", ext:"png", comuna:"San Ramón", tipo:"tp" },
+    { rbd:"9600", nombre:"Escuela Nanihue", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9600-escuela-nanihue?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9601", nombre:"Centro Educacional Municipal San Ramón", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9601-centro-educacional-municipal-san-ramon?authuser=2", ext:"png", comuna:"San Ramón", tipo:"tp" },
+    { rbd:"9608", nombre:"Centro Educacional Mirador", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9608-centro-educacional-mirador?authuser=2", ext:"png", comuna:"San Ramón", tipo:"tp" },
+    { rbd:"9611", nombre:"Escuela Básica Tupahue", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9611-escuela-basica-tupahue?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9614", nombre:"Escuela Básica Karelmapu", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9614-escuela-basica-karelmapu?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9625", nombre:"Escuela Básica Villa La Cultura", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9625-escuela-basica-villa-la-cultura?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9629", nombre:"Escuela Básica Aliven", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9629-escuela-basica-aliven?authuser=2", ext:"png", comuna:"San Ramón", tipo:"basica" },
+    { rbd:"9631", nombre:"Escuela Especial De Adultos CEIA San Ramón", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9631-escuela-especial-de-adultos-ceia-san-ram%C3%B3n?authuser=2", ext:"png", comuna:"San Ramón", tipo:"adultos" },
+    { rbd:"9690", nombre:"Centro Duc. Cardenal José María Caro", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9690-centro-duc-cardenal-jose-maria-caro?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"tp" },
+    { rbd:"9693", nombre:"Liceo Politécnico Ciencia Y Tecnología", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9693-liceo-politecnico-ciencia-y-tecnologia?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"tp" },
+    { rbd:"9695", nombre:"Liceo Polivalente Eugenio Pereira Salas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9695-liceo-polivalente-eugenio-pereira-salas?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"tp" },
+    { rbd:"9697", nombre:"Liceo Polivalente Lo Espejo", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9697-liceo-polivalente-de-lo-espejo?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"tp" },
+    { rbd:"9699", nombre:"Colegio Naciones Unidas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9699-colegio-naciones-unidas?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"basica" },
+    { rbd:"9700", nombre:"Colegio Palestino", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9700-colegio-palestino?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"basica" },
+    { rbd:"9701", nombre:"Liceo Polivalente Olof Palme", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9701-liceo-polivalente-olof-palme?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"tp" },
+    { rbd:"9703", nombre:"Escuela Esperanza Joven", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9703_escuela_esperanza_joven?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"basica" },
+    { rbd:"9704", nombre:"Escuela Lo Valledor", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9704-escuela-lo-valledor?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9705", nombre:"Escuela Básica Salomón Sack", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9705-escuela-basica-salomon-sack?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9706", nombre:"Escuela Bas. Oscar Encalada Yovanovich", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9706-escuela-bas-oscar-encalada-yovanovich?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"basica" },
+    { rbd:"9709", nombre:"Escuela Blue Star College", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9709-escuela-blue-star-college?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9710", nombre:"Escuela Básica Santa Adriana", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9710-escuela-basica-santa-adriana?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9716", nombre:"Escuela Básica Acapulco", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9716-escuela-basica-acapulco?authuser=2", ext:"jpg", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9719", nombre:"Escuela Básica Santa Olga De Kiev", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9719-escuela-b%C3%A1sica-santa-olga-de-kiev?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9720", nombre:"Colegio Hernán Olguín", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9720-colegio-hernan-olguin?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9722", nombre:"Liceo Portal De La Cisterna", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9722-liceo-portal-de-la-cisterna?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"tp" },
+    { rbd:"9726", nombre:"Liceo Teniente Francisco Mery Aguirre", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9726-liceo-teniente-francisco-mery-aguirre?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"tp" },
+    { rbd:"9727", nombre:"Escuela Ciudad De Barcelona", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9727-escuela-ciudad-de-barcelona?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9729", nombre:"Escuela Villa Sur", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9729-escuela-villa-sur?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9730", nombre:"Colegio Antu", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9730-colegio-antu?authuser=2", ext:"png", comuna:"La Cisterna", tipo:"basica" },
+    { rbd:"9733", nombre:"Escuela Básica Clara Estrella", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9733-escuela-basica-clara-estrella?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9734", nombre:"Escuela Raúl Sáez Sáez", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9734-escuela-raul-saez-saez?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9736", nombre:"Escuela Básica Bernardo O’Higgins", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9736-escuela-basica-bernardo-ohiggins?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9738", nombre:"Colegio Parque Las Americas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9738-colegio-parque-las-americas?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" },
+    { rbd:"9740", nombre:"Escuela Básica República De Las Filipinas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9740-escuela-basica-rep%C3%BAblica-de-las-filipinas?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9741", nombre:"Escuela Básica República De Indonesia", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9741-escuela-basica-rep%C3%BAblica-de-indonesia?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"basica" },
+    { rbd:"9747", nombre:"C.E.I.A. Pedro Aguirre Cerda", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/9747-c-e-i-a-pedro-aguirre-cerda?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"adultos" },
+    { rbd:"12103", nombre:"Escuela Especial De Educación Tamarugal", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/12103-escuela-especial-de-educacion-tamarugal?authuser=2", ext:"png", comuna:"Lo Espejo", tipo:"especial" },
+    { rbd:"25173", nombre:"Esc. Básica Municipal Risopatrón", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_escuelas/25173-esc-basica-municipal-risopatron?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda", tipo:"basica" }
+];
+
+var LOGO_BASE = "../../07_graficas_instituciones/01.logos_establecimientos/";
+
+var TIPOS = {
+    todos:      { label: "Todos",                       color: "#1a3a6b" },
+    basica:     { label: "Educación Básica",  color: "#2a5298" },
+    tp:         { label: "Ed. Técnico Profesional", color: "#c0392b" },
+    especial:   { label: "Educación Especial",      color: "#7b2d8e" },
+    parvularia: { label: "Ed. Parvularia",               color: "#27ae60" },
+    adultos:    { label: "Ed. de Adultos",               color: "#f0b429" }
+};
+
+function normalize(s) {
+    return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+var grid = document.getElementById("escuelasGrid");
+var searchInput = document.getElementById("searchInput");
+var clearBtn = document.getElementById("clearBtn");
+var visibleCount = document.getElementById("visibleCount");
+var filtersEl = document.getElementById("filters");
+var activeFilter = "todos";
+
+// Build filter buttons with counts
+var counts = { todos: escuelas.length };
+escuelas.forEach(function(e) { counts[e.tipo] = (counts[e.tipo] || 0) + 1; });
+
+Object.keys(TIPOS).forEach(function(key) {
+    var btn = document.createElement("button");
+    btn.className = "filter-btn" + (key === "todos" ? " active" : "");
+    btn.setAttribute("data-filter", key);
+    btn.innerHTML = TIPOS[key].label + ' <span class="count">' + (counts[key] || 0) + '</span>';
+    filtersEl.appendChild(btn);
+});
+
+function renderGrid() {
+    grid.innerHTML = "";
+    var query = normalize(searchInput.value.trim());
+    var count = 0;
+
+    escuelas.forEach(function(e) {
+        var matchF = activeFilter === "todos" || e.tipo === activeFilter;
+        var matchS = !query || normalize(e.nombre).includes(query) || e.rbd.includes(query);
+        if (!matchF || !matchS) return;
+
+        count++;
+        var card = document.createElement("a");
+        card.className = "escuela-card";
+        card.href = e.link;
+        card.target = "_blank";
+        card.rel = "noopener";
+        card.style.setProperty("--card-accent", TIPOS[e.tipo].color);
+        card.style.animationDelay = (count * 0.025) + "s";
+
+        card.innerHTML =
+            '<div class="logo-wrap">' +
+                '<img src="' + LOGO_BASE + e.rbd + '.' + e.ext + '" alt="' + e.nombre + '" loading="lazy" ' +
+                'onerror="this.src=\'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22 fill=%22%231a3a6b%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 3L1 9l11 6 9-4.91V17h2V9L12 3z%22/%3E%3Cpath d=%22M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z%22/%3E%3C/svg%3E\'">' +
+            '</div>' +
+            '<div class="rbd-tag">RBD ' + e.rbd + '</div>' +
+            '<div class="nombre">' + e.nombre + '</div>' +
+            '<div class="meta">' +
+                '<span class="tipo-dot"></span>' +
+                '<span>' + TIPOS[e.tipo].label + '</span>' +
+                '<span class="comuna-tag">' + e.comuna + '</span>' +
+            '</div>';
+
+        grid.appendChild(card);
+    });
+
+    if (count === 0) {
+        grid.innerHTML =
+            '<div class="no-results">' +
+                '<svg width="48" height="48" fill="none" stroke="#a0aab0" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/></svg>' +
+                '<p style="font-size:1.1rem;font-weight:600;color:#1d2d35;">No se encontraron establecimientos</p>' +
+                '<p>Intenta con otro nombre o RBD</p>' +
+            '</div>';
+    }
+
+    visibleCount.textContent = count;
+}
+
+filtersEl.addEventListener("click", function(ev) {
+    var btn = ev.target.closest(".filter-btn");
+    if (!btn) return;
+    filtersEl.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    activeFilter = btn.getAttribute("data-filter");
+    renderGrid();
+});
+
+searchInput.addEventListener("input", function() {
+    clearBtn.classList.toggle("visible", searchInput.value.length > 0);
+    renderGrid();
+});
+
+function clearSearch() {
+    searchInput.value = "";
+    clearBtn.classList.remove("visible");
+    renderGrid();
+    searchInput.focus();
+}
+
+renderGrid();
+</script>
+
+</body>
+</html>
