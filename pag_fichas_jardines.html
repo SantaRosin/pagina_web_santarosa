@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas Institucionales - Jardines Infantiles - SLEP Santa Rosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta morada principal */
+            --ji-purple: #5b2d8e;
+            --ji-purple-light: #7c4dab;
+            --ji-purple-soft: #9b6fc5;
+            --ji-purple-bg: #f5f0fa;
+            --ji-purple-border: #e4d6f2;
+
+            /* Colores SLEP */
+            --slep-blue: #1a3a6b;
+            --slep-red: #c0392b;
+            --slep-yellow: #f0b429;
+            --slep-green: #27ae60;
+            --slep-green-dark: #1e8449;
+
+            /* Colores por comuna */
+            --c-lo-espejo: #e74c3c;
+            --c-pac: #2980b9;
+            --c-san-miguel: #27ae60;
+            --c-san-ramon: #f39c12;
+
+            --bg-main: #ffffff;
+            --bg-alt: #faf8fc;
+            --text-primary: #1d2d35;
+            --text-secondary: #5c6a72;
+            --border-color: #e8e0f0;
+            --shadow-sm: 0 2px 8px rgba(91, 45, 142, 0.06);
+            --shadow-md: 0 8px 30px rgba(91, 45, 142, 0.10);
+            --shadow-lg: 0 15px 40px rgba(91, 45, 142, 0.14);
+            --white: #ffffff;
+            --font-main: 'Work Sans', sans-serif;
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-secondary);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { margin: 0 0 12px 0; color: var(--text-primary); font-weight: 700; line-height: 1.25; }
+        a { color: var(--ji-purple); text-decoration: none; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* FRANJA COLORES */
+        .slep-stripe {
+            display: flex;
+            height: 5px;
+        }
+        .slep-stripe span { flex: 1; }
+        .slep-stripe .s1 { background: var(--slep-green); }
+        .slep-stripe .s2 { background: var(--slep-blue); }
+        .slep-stripe .s3 { background: var(--ji-purple); }
+        .slep-stripe .s4 { background: var(--slep-red); }
+        .slep-stripe .s5 { background: var(--slep-yellow); }
+        .slep-stripe .s6 { background: var(--ji-purple-light); }
+
+        /* BANNER INFO */
+        .info-banner {
+            background: linear-gradient(135deg, var(--ji-purple) 0%, var(--ji-purple-light) 60%, var(--ji-purple-soft) 100%);
+            color: var(--white);
+            padding: 44px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-banner::before {
+            content: '';
+            position: absolute;
+            top: -30%; left: -5%;
+            width: 350px; height: 350px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .info-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -40%; right: -8%;
+            width: 450px; height: 450px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .info-banner .inner {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .info-banner .text-col { flex: 1; }
+        .info-banner h2 {
+            color: var(--white);
+            font-size: clamp(22px, 3vw, 30px);
+            margin-bottom: 14px;
+        }
+        .info-banner p {
+            font-size: 0.95rem;
+            opacity: 0.92;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .info-banner .stats-col {
+            display: flex;
+            gap: 28px;
+            flex-shrink: 0;
+        }
+        .stat-box {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 12px;
+            padding: 16px 22px;
+            min-width: 100px;
+        }
+        .stat-box .num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .stat-box .label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SEARCH & FILTERS */
+        .controls-section {
+            padding: 32px 0 16px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-main);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .search-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--ji-purple-bg);
+            border: 2px solid var(--ji-purple-border);
+            border-radius: 50px;
+            padding: 6px 18px;
+            transition: var(--transition);
+            flex: 0 1 400px;
+            min-width: 220px;
+        }
+        .search-wrap:focus-within {
+            border-color: var(--ji-purple);
+            box-shadow: 0 0 0 4px rgba(91,45,142,0.08);
+            background: var(--white);
+        }
+        .search-wrap svg { flex-shrink: 0; color: var(--ji-purple-light); }
+        .search-wrap input {
+            flex: 1; border: none; outline: none;
+            font-family: var(--font-main); font-size: 0.92rem;
+            padding: 8px 0; background: transparent;
+            color: var(--text-primary);
+        }
+        .search-wrap input::placeholder { color: #a89bb8; }
+        .search-wrap .clear-btn {
+            background: none; border: none; cursor: pointer;
+            color: var(--text-secondary); padding: 2px 6px;
+            display: none; font-size: 1.3rem; line-height: 1;
+        }
+        .search-wrap .clear-btn.visible { display: block; }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 1;
+        }
+        .filter-btn {
+            padding: 7px 16px;
+            border: 1.5px solid var(--ji-purple-border);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--text-secondary);
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--ji-purple);
+            color: var(--ji-purple);
+            background: var(--ji-purple-bg);
+        }
+        .filter-btn.active {
+            background: var(--ji-purple);
+            color: var(--white);
+            border-color: var(--ji-purple);
+        }
+        .filter-btn .count {
+            display: inline-block;
+            padding: 1px 7px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            margin-left: 4px;
+            font-weight: 600;
+        }
+        .filter-btn.active .count { background: rgba(255,255,255,0.25); }
+        .filter-btn:not(.active) .count { background: var(--ji-purple-bg); color: var(--ji-purple-light); }
+
+        .results-line {
+            text-align: right;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            padding: 10px 0 0;
+        }
+        .results-line strong { color: var(--text-primary); }
+
+        /* GRID LOGOS */
+        .grid-section { padding: 40px 0 70px; }
+
+        .jardines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 28px;
+        }
+
+        .jardin-card {
+            background: var(--white);
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px 18px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .jardin-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ji-purple), var(--ji-purple-light));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        .jardin-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ji-purple-light);
+            opacity: 1;
+        }
+        .jardin-card:hover::before { transform: scaleX(1); }
+
+        .jardin-card .logo-wrap {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ji-purple-bg);
+            border: 3px solid var(--ji-purple-border);
+            margin-bottom: 16px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .jardin-card:hover .logo-wrap {
+            border-color: var(--ji-purple-light);
+            box-shadow: 0 0 0 5px rgba(91,45,142,0.06);
+        }
+        .jardin-card .logo-wrap img {
+            width: 88%;
+            height: 88%;
+            object-fit: contain;
+        }
+
+        .jardin-card .rbd-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--ji-purple);
+            background: rgba(91,45,142,0.07);
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .jardin-card .nombre {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.35;
+            flex: 1;
+        }
+
+        .jardin-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        .jardin-card .comuna-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .jardin-card .comuna-dot.lo-espejo { background: var(--c-lo-espejo); }
+        .jardin-card .comuna-dot.pac { background: var(--c-pac); }
+        .jardin-card .comuna-dot.san-miguel { background: var(--c-san-miguel); }
+        .jardin-card .comuna-dot.san-ramon { background: var(--c-san-ramon); }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 70px 20px;
+            color: var(--text-secondary);
+        }
+        .no-results svg { margin: 0 auto 16px; opacity: 0.5; }
+
+        /* SECCIONES */
+        .secciones-section {
+            padding: 70px 0 80px;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-color);
+        }
+        .secciones-section h2 {
+            font-size: clamp(22px, 3.5vw, 32px);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .secciones-section .sub {
+            text-align: center;
+            font-size: 0.95rem;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
+
+        .secciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 14px;
+        }
+
+        .seccion-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--white);
+            padding: 14px 18px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .seccion-item:hover {
+            border-color: var(--ji-purple-light);
+            box-shadow: var(--shadow-sm);
+        }
+        .seccion-item .icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .seccion-item .icon.c1 { background: rgba(91,45,142,0.08); }
+        .seccion-item .icon.c2 { background: rgba(192,57,43,0.08); }
+        .seccion-item .icon.c3 { background: rgba(240,180,41,0.08); }
+        .seccion-item .icon.c4 { background: rgba(39,174,96,0.08); }
+        .seccion-item .icon.c5 { background: rgba(41,128,185,0.08); }
+        .seccion-item .icon.c6 { background: rgba(124,77,171,0.08); }
+
+        .seccion-item .sec-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .seccion-item .sec-num {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .info-banner .inner { flex-direction: column; gap: 24px; text-align: center; }
+            .info-banner .stats-col { justify-content: center; }
+            .controls-row { flex-direction: column; align-items: stretch; }
+            .search-wrap { flex: 1 1 100%; }
+            .filters { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .jardines-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+            .jardin-card { padding: 18px 12px 14px; }
+            .jardin-card .logo-wrap { width: 100px; height: 100px; }
+            .info-banner .stats-col { gap: 12px; }
+            .stat-box { padding: 12px 14px; min-width: 80px; }
+            .stat-box .num { font-size: 1.5rem; }
+            .secciones-grid { grid-template-columns: 1fr; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .jardin-card {
+            animation: fadeInUp 0.35s ease forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slep-stripe">
+        <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+        <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+    </div>
+
+    <section class="info-banner">
+        <div class="container">
+            <div class="inner">
+                <div class="text-col">
+                    <h2>Fichas Institucionales &mdash; Jardines Infantiles</h2>
+                    <p>Cada ficha re&uacute;ne los <strong>datos m&aacute;s importantes</strong> del jard&iacute;n infantil en un solo lugar: desde matr&iacute;cula y asistencia hasta convivencia escolar y registros administrativos. La informaci&oacute;n se presenta de forma <strong>clara y accesible</strong>, con actualizaciones peri&oacute;dicas para apoyar la toma de decisiones del equipo directivo y el SLEP.</p>
+                </div>
+                <div class="stats-col">
+                    <div class="stat-box">
+                        <span class="num">32</span>
+                        <span class="label">Jardines</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="num">12</span>
+                        <span class="label">Secciones</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="num">4</span>
+                        <span class="label">Comunas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="slep-stripe">
+        <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+        <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+    </div>
+
+    <div class="controls-section" id="jardines">
+        <div class="container">
+            <div class="controls-row">
+                <div class="search-wrap">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="searchInput" placeholder="Buscar por nombre o RBD..." autocomplete="off">
+                    <button class="clear-btn" id="clearBtn" onclick="clearSearch()">&times;</button>
+                </div>
+                <div class="filters" id="filters"></div>
+            </div>
+            <div class="results-line">Mostrando <strong id="visibleCount">32</strong> de <strong>32</strong> jardines infantiles</div>
+        </div>
+    </div>
+
+    <section class="grid-section">
+        <div class="container">
+            <div class="jardines-grid" id="jardinesGrid"></div>
+        </div>
+    </section>
+
+    <section class="secciones-section" id="secciones">
+        <div class="container">
+            <div class="slep-stripe" style="margin-bottom:40px; border-radius:3px; overflow:hidden;">
+                <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+                <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+            </div>
+            <h2>12 secciones disponibles en cada ficha</h2>
+            <p class="sub">Haz clic en el logo de cada jard&iacute;n infantil para acceder a su ficha individual con todos sus indicadores, datos de matr&iacute;cula y registros administrativos.</p>
+
+            <div class="secciones-grid">
+                <div class="seccion-item"><div class="icon c1">&#x1F3EB;</div><div><div class="sec-num">01</div><div class="sec-name">Resumen Institucional</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x1F465;</div><div><div class="sec-num">02</div><div class="sec-name">Matr&iacute;cula y Asistencia</div></div></div>
+                <div class="seccion-item"><div class="icon c2">&#x1F46A;</div><div><div class="sec-num">03</div><div class="sec-name">Dotaci&oacute;n de Personal</div></div></div>
+                <div class="seccion-item"><div class="icon c4">&#x1F4BA;</div><div><div class="sec-num">04</div><div class="sec-name">Ocupaci&oacute;n de Salas</div></div></div>
+                <div class="seccion-item"><div class="icon c5">&#x1F504;</div><div><div class="sec-num">05</div><div class="sec-name">An&aacute;lisis de Retiros</div></div></div>
+                <div class="seccion-item"><div class="icon c6">&#x1F4CA;</div><div><div class="sec-num">06</div><div class="sec-name">DID Diagn&oacute;stico Integral</div></div></div>
+                <div class="seccion-item"><div class="icon c1">&#x1F9E0;</div><div><div class="sec-num">07</div><div class="sec-name">DID Estrat&eacute;gico</div></div></div>
+                <div class="seccion-item"><div class="icon c3">&#x1F4D6;</div><div><div class="sec-num">08</div><div class="sec-name">DID Profundiza</div></div></div>
+                <div class="seccion-item"><div class="icon c4">&#x1F4E2;</div><div><div class="sec-num">09</div><div class="sec-name">Circulares y Comunicaciones</div></div></div>
+                <div class="seccion-item"><div class="icon c2">&#x26A0;</div><div><div class="sec-num">10</div><div class="sec-name">Registro de Denuncias</div></div></div>
+                <div class="seccion-item"><div class="icon c5">&#x1F6A8;</div><div><div class="sec-num">11</div><div class="sec-name">Robos y Delitos</div></div></div>
+                <div class="seccion-item"><div class="icon c6">&#x1F9D1;</div><div><div class="sec-num">12</div><div class="sec-name">Funcionarios del JI</div></div></div>
+            </div>
+        </div>
+    </section>
+
+<script>
+var jardines = [
+    { rbd:"13116009", nombre:"Jardín Infantil Estrellitas De La Mañana", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116009-jardin-infantil-estrellitas-de-la-ma%C3%B1ana?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116010", nombre:"Jardín Infantil Pequeños Gigantes", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116010-jardin-infantil-peque%C3%B1os-gigantes?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116011", nombre:"Jardín Infantil Mis Primeros Pasos", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116011-jardin-infantil-mis-primeros-pasos?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116014", nombre:"Jardín Infantil Mi Mundo En Miniaturas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116014-jardin-infantil-mi-mundo-en-miniaturas?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116015", nombre:"Jardín Infantil Huelemu", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116015-jardin-infantil-huelemu?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116016", nombre:"Jardín Infantil Manitos De Colores", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116016-jardin-infantil-manitos-de-colores?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116024", nombre:"Jardín Infantil Renacer Por Un Sueño", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116024-renacer-por-un-sue%C3%B1o?authuser=2", ext:"none", comuna:"Lo Espejo" },
+    { rbd:"13116025", nombre:"Jardín Infantil La Sonrisa", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116025-la-sonrisa?authuser=2", ext:"none", comuna:"Lo Espejo" },
+    { rbd:"13116026", nombre:"Jardín Infantil Jesús Pescador", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116026-jes%C3%BAs-pescador?authuser=2", ext:"jpeg", comuna:"Lo Espejo" },
+    { rbd:"13116027", nombre:"Jardín Infantil Cardenal Caro", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116027-cardenal-caro?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13116028", nombre:"Jardín Infantil Santa Adriana", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13116028-santa-adriana?authuser=2", ext:"png", comuna:"Lo Espejo" },
+    { rbd:"13121016", nombre:"Jardín Infantil La Marina", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121016-jardin-infantil-la-marina?authuser=2", ext:"jpg", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121017", nombre:"Jardín Infantil Ochagavía", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121017-jardin-infantil-ochagavia?authuser=2", ext:"jpg", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121018", nombre:"Jardín Infantil Rukawe", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121018-jard%C3%ADn-infantil-rukawe?authuser=2", ext:"jpg", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121019", nombre:"Jardín Infantil Parque Las Americas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121019-jardin-infantil-parque-las-americas?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121020", nombre:"Jardín Infantil Pequeño Aymara", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121020-jardin-infantil-peque%C3%B1o-aymara?authuser=2", ext:"jpg", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121021", nombre:"Jardín Infantil Mi Trencito De Lo Ovalle", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121021-jardin-infantil-mi-trencito-de-lo-ovalle?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121022", nombre:"Jardín Infantil Ciudad De Barcelona", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121022-jardin-infantil-ciudad-de-barcelona?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121023", nombre:"Jardín Infantil Enrique Backausse", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121023-jardin-infantil-enrique-backausse?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121024", nombre:"Jardín Infantil Poetas De Chile", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121024-jardin-infantil-poetas-de-chile?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13121025", nombre:"Jardín Infantil Eugenio Pereira Salas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13121025-jardin-infantil-eugenio-pereira-salas?authuser=2", ext:"png", comuna:"Pedro Aguirre Cerda" },
+    { rbd:"13130003", nombre:"Jardín Infantil Villa San Miguel", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13130003-jardin-infantil-villa-san-miguel?authuser=2", ext:"png", comuna:"San Miguel" },
+    { rbd:"13130004", nombre:"Jardín Infantil Santa Fe", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13130004-jardin-infantil-santa-fe?authuser=2", ext:"png", comuna:"San Miguel" },
+    { rbd:"13130006", nombre:"Jardín Infantil Sala Cuna Andrés Bello", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13130006-jardin-infantil-sala-cuna-andres-bello?authuser=2", ext:"jpg", comuna:"San Miguel" },
+    { rbd:"13130007", nombre:"Jardín Infantil Territorio Antártico", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13130007-jardin-infantil-territorio-antartico?authuser=2", ext:"png", comuna:"San Miguel" },
+    { rbd:"13130008", nombre:"Jardín Infantil Llano Subercaseaux", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13130008-jardin-infantil-llano-subercaseaux?authuser=2", ext:"png", comuna:"San Miguel" },
+    { rbd:"13131005", nombre:"Jardín Infantil Las Hormiguitas", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131005-jardin-infantil-las-hormiguitas?authuser=2", ext:"png", comuna:"San Ramón" },
+    { rbd:"13131009", nombre:"Jardín Infantil Príncipes Del Reino", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131009-jardin-infantil-principes-del-reino?authuser=2", ext:"png", comuna:"San Ramón" },
+    { rbd:"13131010", nombre:"Jardín Infantil Semillitas De Esperanza", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131010-jardin-infantil-semillitas-de-esperanza?authuser=2", ext:"jpg", comuna:"San Ramón" },
+    { rbd:"13131014", nombre:"Jardín Infantil Caballito Feliz", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131014-jardin-infantil-caballito-feliz?authuser=2", ext:"JPG", comuna:"San Ramón" },
+    { rbd:"13131015", nombre:"Jardín Infantil Akun Pichiwentxu", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131015-jardin-infantil-akun-pichiwentxu?authuser=2", ext:"png", comuna:"San Ramón" },
+    { rbd:"13131016", nombre:"Jardín Infantil Modelo", link:"https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas_jardines/13131016-jardin-infantil-modelo?authuser=2", ext:"png", comuna:"San Ramón" }
+];
+
+var LOGO_BASE = "../../07_graficas_instituciones/02_logos_jardines/";
+var FALLBACK_IMG = "../../07_graficas_instituciones/02_logos_jardines/imagen-no-disponible.c3ae8808.jpg";
+
+var COMUNAS = {
+    todos:   { label: "Todos", dot: "" },
+    "Lo Espejo":          { label: "Lo Espejo",          dot: "lo-espejo" },
+    "Pedro Aguirre Cerda":{ label: "Pedro Aguirre Cerda", dot: "pac" },
+    "San Miguel":         { label: "San Miguel",         dot: "san-miguel" },
+    "San Ramón":          { label: "San Ramón",          dot: "san-ramon" }
+};
+
+function normalize(s) {
+    return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+var grid = document.getElementById("jardinesGrid");
+var searchInput = document.getElementById("searchInput");
+var clearBtn = document.getElementById("clearBtn");
+var visibleCount = document.getElementById("visibleCount");
+var filtersEl = document.getElementById("filters");
+var activeFilter = "todos";
+
+var counts = { todos: jardines.length };
+jardines.forEach(function(j) { counts[j.comuna] = (counts[j.comuna] || 0) + 1; });
+
+Object.keys(COMUNAS).forEach(function(key) {
+    var btn = document.createElement("button");
+    btn.className = "filter-btn" + (key === "todos" ? " active" : "");
+    btn.setAttribute("data-filter", key);
+    btn.innerHTML = COMUNAS[key].label + ' <span class="count">' + (counts[key] || 0) + '</span>';
+    filtersEl.appendChild(btn);
+});
+
+function renderGrid() {
+    grid.innerHTML = "";
+    var query = normalize(searchInput.value.trim());
+    var count = 0;
+
+    jardines.forEach(function(j) {
+        var matchF = activeFilter === "todos" || j.comuna === activeFilter;
+        var matchS = !query || normalize(j.nombre).includes(query) || j.rbd.includes(query);
+        if (!matchF || !matchS) return;
+
+        count++;
+        var card = document.createElement("a");
+        card.className = "jardin-card";
+        card.href = j.link;
+        card.target = "_blank";
+        card.rel = "noopener";
+        card.style.animationDelay = (count * 0.025) + "s";
+
+        var imgSrc = j.ext === "none" ? FALLBACK_IMG : LOGO_BASE + j.rbd + "." + j.ext;
+        var dotClass = COMUNAS[j.comuna] ? COMUNAS[j.comuna].dot : "";
+
+        card.innerHTML =
+            '<div class="logo-wrap">' +
+                '<img src="' + imgSrc + '" alt="' + j.nombre + '" loading="lazy" ' +
+                'onerror="this.src=\'' + FALLBACK_IMG + '\'">' +
+            '</div>' +
+            '<div class="rbd-tag">RBD ' + j.rbd + '</div>' +
+            '<div class="nombre">' + j.nombre + '</div>' +
+            '<div class="meta">' +
+                '<span class="comuna-dot ' + dotClass + '"></span>' +
+                '<span>' + j.comuna + '</span>' +
+            '</div>';
+
+        grid.appendChild(card);
+    });
+
+    if (count === 0) {
+        grid.innerHTML =
+            '<div class="no-results">' +
+                '<svg width="48" height="48" fill="none" stroke="#a89bb8" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/></svg>' +
+                '<p style="font-size:1.1rem;font-weight:600;color:#1d2d35;">No se encontraron jardines infantiles</p>' +
+                '<p>Intenta con otro nombre o RBD</p>' +
+            '</div>';
+    }
+
+    visibleCount.textContent = count;
+}
+
+filtersEl.addEventListener("click", function(ev) {
+    var btn = ev.target.closest(".filter-btn");
+    if (!btn) return;
+    filtersEl.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    activeFilter = btn.getAttribute("data-filter");
+    renderGrid();
+});
+
+searchInput.addEventListener("input", function() {
+    clearBtn.classList.toggle("visible", searchInput.value.length > 0);
+    renderGrid();
+});
+
+function clearSearch() {
+    searchInput.value = "";
+    clearBtn.classList.remove("visible");
+    renderGrid();
+    searchInput.focus();
+}
+
+renderGrid();
+</script>
+
+</body>
+</html>
