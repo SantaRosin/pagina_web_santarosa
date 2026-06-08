@@ -353,70 +353,6 @@
         }
         .no-results svg { margin: 0 auto 16px; opacity: 0.5; }
 
-        /* SECCIONES */
-        .secciones-section {
-            padding: 70px 0 80px;
-            background: var(--bg-alt);
-            border-top: 1px solid var(--border-color);
-        }
-        .secciones-section h2 {
-            font-size: clamp(22px, 3.5vw, 32px);
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .secciones-section .sub {
-            text-align: center;
-            font-size: 0.95rem;
-            max-width: 620px;
-            margin: 0 auto 40px;
-        }
-
-        .secciones-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 14px;
-        }
-
-        .seccion-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: var(--white);
-            padding: 14px 18px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .seccion-item:hover {
-            border-color: var(--ji-purple-light);
-            box-shadow: var(--shadow-sm);
-        }
-        .seccion-item .icon {
-            width: 38px; height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.15rem;
-            flex-shrink: 0;
-        }
-        .seccion-item .icon.c1 { background: rgba(91,45,142,0.08); }
-        .seccion-item .icon.c2 { background: rgba(192,57,43,0.08); }
-        .seccion-item .icon.c3 { background: rgba(240,180,41,0.08); }
-        .seccion-item .icon.c4 { background: rgba(39,174,96,0.08); }
-        .seccion-item .icon.c5 { background: rgba(41,128,185,0.08); }
-        .seccion-item .icon.c6 { background: rgba(124,77,171,0.08); }
-
-        .seccion-item .sec-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        .seccion-item .sec-num {
-            font-size: 0.68rem;
-            color: var(--text-secondary);
-        }
-
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .info-banner .inner { flex-direction: column; gap: 24px; text-align: center; }
@@ -432,7 +368,6 @@
             .info-banner .stats-col { gap: 12px; }
             .stat-box { padding: 12px 14px; min-width: 80px; }
             .stat-box .num { font-size: 1.5rem; }
-            .secciones-grid { grid-template-columns: 1fr; }
         }
 
         @keyframes fadeInUp {
@@ -463,10 +398,6 @@
                     <div class="stat-box">
                         <span class="num">32</span>
                         <span class="label">Jardines</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="num">12</span>
-                        <span class="label">Secciones</span>
                     </div>
                     <div class="stat-box">
                         <span class="num">4</span>
@@ -502,31 +433,6 @@
         </div>
     </section>
 
-    <section class="secciones-section" id="secciones">
-        <div class="container">
-            <div class="slep-stripe" style="margin-bottom:40px; border-radius:3px; overflow:hidden;">
-                <span class="s1"></span><span class="s2"></span><span class="s3"></span>
-                <span class="s4"></span><span class="s5"></span><span class="s6"></span>
-            </div>
-            <h2>12 secciones disponibles en cada ficha</h2>
-            <p class="sub">Haz clic en el logo de cada jard&iacute;n infantil para acceder a su ficha individual con todos sus indicadores, datos de matr&iacute;cula y registros administrativos.</p>
-
-            <div class="secciones-grid">
-                <div class="seccion-item"><div class="icon c1">&#x1F3EB;</div><div><div class="sec-num">01</div><div class="sec-name">Resumen Institucional</div></div></div>
-                <div class="seccion-item"><div class="icon c3">&#x1F465;</div><div><div class="sec-num">02</div><div class="sec-name">Matr&iacute;cula y Asistencia</div></div></div>
-                <div class="seccion-item"><div class="icon c2">&#x1F46A;</div><div><div class="sec-num">03</div><div class="sec-name">Dotaci&oacute;n de Personal</div></div></div>
-                <div class="seccion-item"><div class="icon c4">&#x1F4BA;</div><div><div class="sec-num">04</div><div class="sec-name">Ocupaci&oacute;n de Salas</div></div></div>
-                <div class="seccion-item"><div class="icon c5">&#x1F504;</div><div><div class="sec-num">05</div><div class="sec-name">An&aacute;lisis de Retiros</div></div></div>
-                <div class="seccion-item"><div class="icon c6">&#x1F4CA;</div><div><div class="sec-num">06</div><div class="sec-name">DID Diagn&oacute;stico Integral</div></div></div>
-                <div class="seccion-item"><div class="icon c1">&#x1F9E0;</div><div><div class="sec-num">07</div><div class="sec-name">DID Estrat&eacute;gico</div></div></div>
-                <div class="seccion-item"><div class="icon c3">&#x1F4D6;</div><div><div class="sec-num">08</div><div class="sec-name">DID Profundiza</div></div></div>
-                <div class="seccion-item"><div class="icon c4">&#x1F4E2;</div><div><div class="sec-num">09</div><div class="sec-name">Circulares y Comunicaciones</div></div></div>
-                <div class="seccion-item"><div class="icon c2">&#x26A0;</div><div><div class="sec-num">10</div><div class="sec-name">Registro de Denuncias</div></div></div>
-                <div class="seccion-item"><div class="icon c5">&#x1F6A8;</div><div><div class="sec-num">11</div><div class="sec-name">Robos y Delitos</div></div></div>
-                <div class="seccion-item"><div class="icon c6">&#x1F9D1;</div><div><div class="sec-num">12</div><div class="sec-name">Funcionarios del JI</div></div></div>
-            </div>
-        </div>
-    </section>
 
 <script>
 var jardines = [
