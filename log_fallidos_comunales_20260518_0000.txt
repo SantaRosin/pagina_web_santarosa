@@ -1,9 +1,0 @@
-Etapa: comunales
-Log generado: 18-05-2026 16:40:15
-Total fallidos: 5
-------------------------------------------------------------
-COMUNA: La Cisterna -> zip file 'C:\Users\BenjaminLangBustos\OneDrive - SERVICIO LOCAL DE EDUCACION PUBLICA SANTA ROSA\Equipo Estudio, Monitoreo y Datos - General\05_Datos_SR\02_bbdd_procesadas\retiros_eyl_20260515.xlsx' cannot be opened
-COMUNA: Lo Espejo -> zip file 'C:\Users\BenjaminLangBustos\OneDrive - SERVICIO LOCAL DE EDUCACION PUBLICA SANTA ROSA\Equipo Estudio, Monitoreo y Datos - General\05_Datos_SR\02_bbdd_procesadas\retiros_eyl_20260515.xlsx' cannot be opened
-COMUNA: Pedro Aguirre Cerda -> zip file 'C:\Users\BenjaminLangBustos\OneDrive - SERVICIO LOCAL DE EDUCACION PUBLICA SANTA ROSA\Equipo Estudio, Monitoreo y Datos - General\05_Datos_SR\02_bbdd_procesadas\retiros_eyl_20260515.xlsx' cannot be opened
-COMUNA: San Miguel -> zip file 'C:\Users\BenjaminLangBustos\OneDrive - SERVICIO LOCAL DE EDUCACION PUBLICA SANTA ROSA\Equipo Estudio, Monitoreo y Datos - General\05_Datos_SR\02_bbdd_procesadas\retiros_eyl_20260515.xlsx' cannot be opened
-COMUNA: San Ramón -> zip file 'C:\Users\BenjaminLangBustos\OneDrive - SERVICIO LOCAL DE EDUCACION PUBLICA SANTA ROSA\Equipo Estudio, Monitoreo y Datos - General\05_Datos_SR\02_bbdd_procesadas\retiros_eyl_20260515.xlsx' cannot be opened

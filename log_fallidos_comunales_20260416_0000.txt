@@ -1,9 +1,0 @@
-Etapa: comunales
-Log generado: 16-04-2026 17:01:15
-Total fallidos: 5
-------------------------------------------------------------
-COMUNA: La Cisterna -> No se encontraron archivos que coincidan con el patron indicado.
-COMUNA: Lo Espejo -> No se encontraron archivos que coincidan con el patron indicado.
-COMUNA: Pedro Aguirre Cerda -> No se encontraron archivos que coincidan con el patron indicado.
-COMUNA: San Miguel -> No se encontraron archivos que coincidan con el patron indicado.
-COMUNA: San Ramón -> No se encontraron archivos que coincidan con el patron indicado.
