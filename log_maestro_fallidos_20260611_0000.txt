@@ -1,5 +1,5 @@
 RENDER MAESTRO — Log consolidado de fallidos
-Generado: 11-06-2026 14:26:07
+Generado: 11-06-2026 16:54:57
 Total fallidos: 1
 ------------------------------------------------------------
-CIRCULARES: -> node stack overflow
+CIRCULARES: -> render: Total path length must be less than PATH_MAX: 260
