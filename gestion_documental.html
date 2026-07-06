@@ -283,7 +283,7 @@
         /* ------------------- */
         .viewers-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
@@ -295,6 +295,7 @@
             display: flex;
             align-items: flex-start;
             padding: 30px;
+            height: 100%;
         }
 
         .viewer-card:hover {
@@ -319,6 +320,12 @@
             font-weight: 600;
         }
 
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
         .card-content p {
             font-size: var(--fz-sm);
             margin-bottom: 20px;
@@ -326,6 +333,8 @@
         
         .card-content .btn {
             padding: 8px 20px;
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         /* ------------------- */
@@ -420,11 +429,15 @@
         /* ------------------- */
         @media (max-width: 992px) {
             .viewers-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 768px) {
+            .viewers-grid {
+                grid-template-columns: 1fr;
+            }
+
             .main-header { padding: 0 20px; height: 70px; }
 
             .logo img {
@@ -516,11 +529,11 @@
 
 
                     <div class="viewer-card">
-                        <div class="card-icon"><img src="pag_prin_plot/carta.png" alt="Icono de una niña sonriendo" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eaf0f3/5c6a72?text=Icono';"></div>
+                        <div class="card-icon"><img src="pag_prin_plot/carta.png" alt="Icono de circulares" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eaf0f3/5c6a72?text=Icono';"></div>
                         <div class="card-content">
                             <h3>Circulares</h3>
                             <p style="color: #333; line-height: 1.6;">
-                                Las Circulares del SLEP Santa Rosa son comunicaciones oficiales emitidas por el Director Ejecutivo hacia los establecimientos educacionales, jardines infantiles, salas cuna y unidades internas del servicio. Tienen caracter normativo, informativo o de instruccion, regulando procedimientos, plazos y lineamientos institucionales. Su cumplimiento es obligatorio para las comunidades educativas del SLEP.
+                                Este visor reúne las circulares oficiales del SLEP Santa Rosa dirigidas a establecimientos, jardines, salas cuna y equipos internos. Permite consultar instrucciones, plazos, lineamientos y comunicaciones formales emitidas por la Dirección Ejecutiva para apoyar la gestión institucional y el cumplimiento de procesos.
                             </p>
                             <a href="https://sites.google.com/slepsantarosa.cl/datos-usointerno/circulares?authuser=2" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ingresar</a>
                         </div>
@@ -528,13 +541,24 @@
                     
 
                     <div class="viewer-card">
-                        <div class="card-icon"><img src="pag_prin_plot/socios.png" alt="Icono de una niña sonriendo" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eaf0f3/5c6a72?text=Icono';"></div>
+                        <div class="card-icon"><img src="pag_prin_plot/socios.png" alt="Icono de convenios" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eaf0f3/5c6a72?text=Icono';"></div>
                         <div class="card-content">
                             <h3>Convenios</h3>
                             <p style="color: #333; line-height: 1.6;">
-                                Este visor muestra todos los convenios de colaboración que ha sostenido el Servicio Local con otras entidades.
+                                Este visor reúne los convenios de colaboración suscritos por el SLEP Santa Rosa con instituciones públicas y privadas. Permite revisar acuerdos vigentes, compromisos asociados y antecedentes relevantes para apoyar la gestión administrativa, la coordinación interinstitucional y el seguimiento de alianzas del servicio.
                             </p>
                             <a href="https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/convenios?authuser=2" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ingresar</a>
+                        </div>
+                    </div>
+
+                    <div class="viewer-card">
+                        <div class="card-icon"><img src="pag_prin_plot/calendario.png" alt="Icono de calendario" onerror="this.onerror=null;this.src='https://placehold.co/50x50/eaf0f3/5c6a72?text=Icono';"></div>
+                        <div class="card-content">
+                            <h3>Calendario</h3>
+                            <p style="color: #333; line-height: 1.6;">
+                                Este visor reúne el calendario institucional del SLEP Santa Rosa y facilita la consulta de fechas, hitos, plazos y actividades relevantes del servicio. Permite organizar la planificación de equipos y establecimientos, apoyar la coordinación interna y dar seguimiento oportuno a compromisos clave.
+                            </p>
+                            <a href="https://sites.google.com/slepsantarosa.cl/datos-usointerno/calendario" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ingresar</a>
                         </div>
                     </div>
 
