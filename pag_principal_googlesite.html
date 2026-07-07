@@ -186,6 +186,24 @@
             min-height: 88vh;
         }
 
+        /* Solo el logo, sobrepuesto sobre el azul (sin barra blanca que choque con Google Sites) */
+        .hero-brand {
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            z-index: 3;
+            display: inline-flex;
+        }
+
+        .hero-brand img {
+            height: 52px;
+            width: auto;
+            border-radius: 10px;
+            background: #ffffff;
+            padding: 6px;
+            box-shadow: 0 8px 20px rgba(14, 40, 67, 0.28);
+        }
+
         .hero-content {
             max-width: 760px;
             padding: 40px 20px 90px;
@@ -534,6 +552,15 @@
                 min-height: 82vh;
             }
 
+            .hero-brand {
+                top: 14px;
+                left: 16px;
+            }
+
+            .hero-brand img {
+                height: 42px;
+            }
+
             .hero .container {
                 min-height: 82vh;
             }
@@ -560,6 +587,9 @@
 <body>
     <main>
         <section class="hero" id="hero">
+            <a class="hero-brand" href="#hero" aria-label="SLEP Santa Rosa - inicio">
+                <img src="pag_prin_plot/20250429_logo_santarosa_original.png" alt="Logo SLEP Santa Rosa">
+            </a>
             <div class="container">
                 <div class="hero-content">
                     <h1>Un Portal de Datos para Nuestra Comunidad Educativa</h1>
