@@ -976,6 +976,20 @@
             }
         ];
 
+        // Orden de aparición preferido en la grilla; el resto conserva su orden original.
+        const preferredOrder = [
+            "Matrícula y Asistencia",
+            "Resultados educativos",
+            "Fichas Escuelas",
+            "Fichas Jardines",
+            "Caracterización"
+        ];
+        viewers.sort((a, b) => {
+            const ia = preferredOrder.indexOf(a.title);
+            const ib = preferredOrder.indexOf(b.title);
+            return (ia === -1 ? preferredOrder.length : ia) - (ib === -1 ? preferredOrder.length : ib);
+        });
+
         const categories = [
             { id: "all", label: "Todos" },
             { id: "panorama", label: "Caracterización y trayectorias" },
