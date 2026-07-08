@@ -6,29 +6,21 @@
     <title>Nosotros | Estudios, Monitoreo y Datos - SLEP Santa Rosa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #fbfdff;
-            --bg-alt: #eef5fb;
-            --bg-soft: #f5f9fd;
-            --surface: rgba(255, 255, 255, 0.88);
-            --surface-strong: #ffffff;
-            --text-primary: #18344b;
-            --text-secondary: #536979;
-            --border-color: rgba(24, 52, 75, 0.1);
-            --shadow-color: rgba(34, 65, 94, 0.14);
-            --accent: #2f72ff;
-            --accent-dark: #174ea6;
-            --accent-soft: rgba(47, 114, 255, 0.12);
-            --teal: #0f9ca6;
-            --warm: #e8735a;
-            --ink: #103966;
-            --white: #ffffff;
+            --bg: #f6f8fb;
+            --surface: #ffffff;
+            --surface-soft: #f0f5fa;
+            --text: #173247;
+            --text-soft: #5b6d79;
+            --line: #d9e3eb;
+            --accent: #1c5fb8;
+            --accent-soft: #e8f0fb;
+            --shadow: rgba(20, 42, 60, 0.06);
+            --radius: 18px;
             --font-main: "Work Sans", sans-serif;
-            --font-display: "Fraunces", serif;
-            --border-radius: 24px;
-            --transition: all 0.28s ease;
+            --transition: all 0.24s ease;
         }
 
         html {
@@ -37,14 +29,11 @@
 
         body {
             margin: 0;
-            background:
-                radial-gradient(circle at top left, rgba(47, 114, 255, 0.12), transparent 28%),
-                radial-gradient(circle at top right, rgba(15, 156, 166, 0.12), transparent 24%),
-                linear-gradient(180deg, #fdfefe 0%, #f6fbff 100%);
-            color: var(--text-secondary);
+            background: var(--bg);
+            color: var(--text-soft);
             font-family: var(--font-main);
-            font-size: 1rem;
-            line-height: 1.7;
+            line-height: 1.65;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -62,12 +51,8 @@
         }
 
         a {
-            color: var(--accent);
+            color: inherit;
             text-decoration: none;
-        }
-
-        a:hover {
-            opacity: 0.92;
         }
 
         button {
@@ -75,46 +60,42 @@
         }
 
         .container {
-            width: min(1180px, calc(100% - 40px));
+            width: min(1120px, calc(100% - 40px));
             margin: 0 auto;
         }
 
         .main-header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 82px;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 38px;
-            background: rgba(255, 255, 255, 0.92);
-            border-bottom: 1px solid rgba(24, 52, 75, 0.08);
-            backdrop-filter: blur(14px);
-            z-index: 100;
+            height: 78px;
+            padding: 0 28px;
+            background: rgba(246, 248, 251, 0.94);
+            border-bottom: 1px solid rgba(23, 50, 71, 0.08);
+            backdrop-filter: blur(12px);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 14px;
-            color: var(--text-primary);
+            color: var(--text);
             font-weight: 700;
             min-width: 0;
         }
 
         .logo img {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: var(--white);
-            box-shadow: 0 10px 22px rgba(24, 52, 75, 0.1);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--surface);
         }
 
         .logo-text {
-            line-height: 1.18;
-            min-width: 0;
+            line-height: 1.15;
         }
 
         .logo-text span {
@@ -125,50 +106,35 @@
         .main-nav ol {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 0;
+            gap: 24px;
             margin: 0;
+            padding: 0;
             list-style: none;
         }
 
         .main-nav a {
-            display: inline-flex;
-            align-items: center;
-            min-height: 42px;
-            padding: 0 14px;
-            border-radius: 999px;
-            color: var(--text-secondary);
+            color: var(--text-soft);
+            font-size: 0.95rem;
             font-weight: 600;
             transition: var(--transition);
         }
 
         .main-nav a:hover,
         .main-nav a:focus-visible {
-            background: var(--bg-alt);
-            color: var(--text-primary);
+            color: var(--text);
             outline: none;
-            opacity: 1;
         }
 
-        .main-nav .nav-cta {
-            background: linear-gradient(135deg, var(--accent), #5b95ff);
-            color: var(--white);
-            box-shadow: 0 12px 24px rgba(47, 114, 255, 0.22);
-        }
-
-        .main-nav .nav-cta:hover,
-        .main-nav .nav-cta:focus-visible {
-            background: linear-gradient(135deg, #2668eb, #4e8eff);
-            color: var(--white);
+        .main-nav .back-link {
+            color: var(--accent);
         }
 
         .menu-toggle {
             display: none;
+            padding: 10px;
             background: transparent;
             border: 0;
-            padding: 10px;
             cursor: pointer;
-            z-index: 101;
         }
 
         .hamburger,
@@ -176,9 +142,9 @@
         .hamburger::after {
             width: 24px;
             height: 2px;
-            background: var(--text-primary);
+            background: var(--text);
             border-radius: 999px;
-            transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+            transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
         }
 
         .hamburger {
@@ -216,93 +182,64 @@
         }
 
         main {
-            overflow: clip;
+            padding-bottom: 72px;
         }
 
         section {
-            padding: 110px 0;
+            padding: 72px 0 0;
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
+        .section-header {
+            display: grid;
             gap: 10px;
-            min-height: 38px;
-            padding: 0 16px;
-            border-radius: 999px;
-            color: var(--accent-dark);
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(47, 114, 255, 0.12);
-            box-shadow: 0 12px 28px rgba(27, 69, 120, 0.08);
-            font-size: 0.82rem;
+            margin-bottom: 28px;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.84rem;
             font-weight: 700;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
-        .section-heading {
-            margin: 0 0 18px;
-            color: var(--text-primary);
-            font-family: var(--font-display);
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .section-copy {
-            max-width: 760px;
+        h1,
+        h2,
+        h3 {
             margin: 0;
-            font-size: 1.08rem;
+            color: var(--text);
+            line-height: 1.15;
         }
 
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 52px;
-            padding: 0 24px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-size: 0.96rem;
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.4rem);
             font-weight: 700;
-            transition: var(--transition);
-            cursor: pointer;
+            letter-spacing: -0.04em;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #5b95ff);
-            color: var(--white);
-            box-shadow: 0 16px 30px rgba(47, 114, 255, 0.2);
+        h2 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.72);
-            border-color: rgba(24, 52, 75, 0.1);
-            color: var(--text-primary);
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
         }
 
-        .btn:hover,
-        .btn:focus-visible {
-            transform: translateY(-2px);
-            opacity: 1;
-            outline: none;
+        p {
+            margin: 0;
         }
 
         .hero {
-            padding-top: 150px;
-            padding-bottom: 76px;
+            padding-top: 54px;
         }
 
-        .hero-shell {
+        .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
-            gap: 42px;
+            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+            gap: 40px;
             align-items: center;
         }
 
@@ -311,588 +248,266 @@
             gap: 22px;
         }
 
-        .hero-copy h1 {
-            margin: 0;
-            color: var(--text-primary);
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5.1rem);
-            font-weight: 700;
-            line-height: 0.98;
-        }
-
         .hero-copy p {
-            margin: 0;
             max-width: 640px;
-            font-size: 1.12rem;
+            font-size: 1.08rem;
         }
 
-        .hero-metrics {
+        .hero-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 18px;
+            padding-top: 4px;
         }
 
-        .hero-metric {
-            min-width: 148px;
-            padding: 16px 18px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(24, 52, 75, 0.08);
-            box-shadow: 0 14px 30px rgba(24, 52, 75, 0.08);
+        .hero-links a {
+            font-weight: 600;
         }
 
-        .hero-metric strong {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--ink);
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-
-        .hero-metric span {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.84rem;
-            line-height: 1.45;
+        .hero-links a:first-child {
+            color: var(--accent);
         }
 
         .hero-art {
-            position: relative;
-            min-height: 600px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--surface);
+            box-shadow: 0 18px 38px var(--shadow);
         }
 
-        .hero-panel {
-            position: absolute;
-            inset: 18px 0 0 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 48px 28px 0;
-            border-radius: 36px;
-            background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.56), transparent 34%),
-                linear-gradient(145deg, #1d4f89 0%, #1b74b8 52%, #1aa6ac 100%);
-            box-shadow: 0 34px 54px rgba(24, 52, 75, 0.18);
+        .hero-art-frame {
+            border-radius: 18px;
+            background: linear-gradient(180deg, #edf3fb 0%, #e3edf8 100%);
             overflow: hidden;
         }
 
-        .hero-panel::before,
-        .hero-panel::after {
-            content: "";
-            position: absolute;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            filter: blur(1px);
+        .hero-art img {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
         }
 
-        .hero-panel::before {
-            width: 240px;
-            height: 240px;
-            top: -100px;
-            right: -30px;
-        }
-
-        .hero-panel::after {
-            width: 180px;
-            height: 180px;
-            left: -40px;
-            bottom: 70px;
-        }
-
-        .hero-illustration {
-            position: relative;
-            z-index: 1;
-            width: min(100%, 540px);
-            filter: drop-shadow(0 20px 34px rgba(10, 27, 42, 0.2));
-        }
-
-        .portrait-stack {
-            position: absolute;
-            right: -12px;
-            bottom: 34px;
-            z-index: 2;
-            display: flex;
-            gap: 12px;
-            align-items: flex-end;
-            padding: 18px 18px 18px 24px;
-            border-radius: 26px;
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 18px 34px rgba(22, 42, 59, 0.18);
-            backdrop-filter: blur(12px);
-        }
-
-        .portrait-chip {
+        .intro-grid {
             display: grid;
-            justify-items: center;
-            gap: 8px;
-            text-align: center;
-        }
-
-        .portrait-chip img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.96);
-            box-shadow: 0 10px 22px rgba(25, 54, 82, 0.16);
-        }
-
-        .portrait-chip span {
-            max-width: 82px;
-            color: var(--ink);
-            font-size: 0.76rem;
-            font-weight: 700;
-            line-height: 1.25;
-        }
-
-        .purpose-shell {
-            display: grid;
-            gap: 28px;
-        }
-
-        .purpose-copy {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.75fr);
+            grid-template-columns: minmax(0, 1fr) 320px;
             gap: 28px;
             align-items: start;
         }
 
-        .purpose-note,
+        .intro-note,
         .lead-card,
+        .team-card,
+        .contact-card,
         .scope-card,
-        .profile-card,
-        .contact-panel {
-            background: var(--surface);
-            border: 1px solid rgba(24, 52, 75, 0.08);
-            box-shadow: 0 18px 40px rgba(24, 52, 75, 0.08);
-            backdrop-filter: blur(12px);
-        }
-
-        .purpose-note {
-            padding: 28px;
-            border-radius: 28px;
-        }
-
-        .purpose-note strong {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--ink);
-            font-size: 1rem;
-        }
-
-        .purpose-note p {
-            margin: 0;
-            font-size: 0.96rem;
-        }
-
-        .mandate-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-        }
-
         .mandate-card {
-            position: relative;
-            padding: 28px 24px 26px;
-            border-radius: 28px;
-            background: var(--surface-strong);
-            border: 1px solid rgba(24, 52, 75, 0.08);
-            box-shadow: 0 18px 40px rgba(24, 52, 75, 0.08);
-            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: 0 16px 32px var(--shadow);
         }
 
-        .mandate-card::before {
-            content: "";
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 7px;
-            background: linear-gradient(180deg, var(--accent), var(--teal));
+        .intro-note {
+            padding: 22px;
         }
 
-        .mandate-card strong {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            margin-bottom: 18px;
-            border-radius: 16px;
-            background: rgba(47, 114, 255, 0.1);
-            color: var(--accent-dark);
-            font-size: 1.05rem;
+        .intro-note strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: 0.94rem;
         }
 
-        .mandate-card h3,
-        .scope-card h3,
-        .profile-card h3,
-        .lead-copy h3,
-        .contact-copy h3 {
-            margin: 0 0 10px;
-            color: var(--text-primary);
-            font-size: 1.28rem;
-            line-height: 1.22;
-        }
-
-        .mandate-card p,
-        .scope-card p,
-        .profile-card p,
-        .lead-copy p,
-        .contact-copy p {
-            margin: 0;
-        }
-
-        .scopes {
-            position: relative;
-            background:
-                linear-gradient(180deg, #f1f7fc 0%, #eaf3fb 100%);
-        }
-
-        .scopes-shell {
+        .mandate-grid,
+        .scope-grid,
+        .team-grid {
             display: grid;
-            gap: 34px;
+            gap: 18px;
         }
 
+        .mandate-grid,
         .scope-grid {
-            display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
         }
 
+        .mandate-card,
         .scope-card {
-            position: relative;
-            padding: 28px;
-            border-radius: 28px;
-            overflow: hidden;
+            padding: 24px;
         }
 
-        .scope-card::after {
-            content: "";
-            position: absolute;
-            inset: auto 24px 20px auto;
-            width: 86px;
-            height: 86px;
-            border-radius: 50%;
-            background: rgba(47, 114, 255, 0.08);
-        }
-
-        .scope-badge {
-            display: inline-flex;
-            align-items: center;
-            min-height: 34px;
-            margin-bottom: 18px;
-            padding: 0 14px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent-dark);
-            font-size: 0.8rem;
+        .mandate-card .number {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.9rem;
             font-weight: 700;
         }
 
-        .scope-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 18px;
-        }
-
-        .scope-tag,
-        .profile-tag {
-            display: inline-flex;
-            align-items: center;
-            min-height: 30px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(24, 52, 75, 0.06);
-            color: var(--text-secondary);
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-
-        .scopes-art {
-            position: absolute;
-            right: -70px;
-            bottom: -50px;
-            width: min(430px, 34vw);
-            opacity: 0.19;
-            pointer-events: none;
-        }
-
-        .team-shell {
+        .scopes-layout {
             display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
             gap: 28px;
+            align-items: start;
         }
 
-        .team-toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+        .scope-figure {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--surface-soft);
         }
 
-        .team-filter {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            padding: 0 18px;
-            border-radius: 999px;
-            border: 1px solid rgba(24, 52, 75, 0.08);
-            background: rgba(255, 255, 255, 0.74);
-            color: var(--text-secondary);
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .team-filter.is-active,
-        .team-filter:hover,
-        .team-filter:focus-visible {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--white);
-            outline: none;
+        .scope-figure img {
+            width: 100%;
         }
 
         .lead-card {
             display: grid;
-            grid-template-columns: 138px minmax(0, 1fr);
-            gap: 24px;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 22px;
             align-items: center;
-            padding: 28px;
-            border-radius: 32px;
+            padding: 24px;
+            margin-bottom: 18px;
         }
 
-        .lead-avatar {
-            position: relative;
+        .lead-card img {
             width: 120px;
             height: 120px;
-            margin: 0 auto;
-            border-radius: 28px;
-            padding: 8px;
-            background: linear-gradient(145deg, rgba(47, 114, 255, 0.2), rgba(15, 156, 166, 0.18));
-        }
-
-        .lead-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 22px;
+            border-radius: 16px;
             object-fit: cover;
-            box-shadow: 0 14px 28px rgba(24, 52, 75, 0.16);
         }
 
-        .role-pill {
-            display: inline-flex;
-            align-items: center;
-            min-height: 34px;
-            margin-bottom: 12px;
-            padding: 0 14px;
-            border-radius: 999px;
-            background: rgba(232, 115, 90, 0.12);
-            color: #bf543f;
-            font-size: 0.8rem;
+        .role {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 0.84rem;
             font-weight: 700;
-        }
-
-        .lead-copy h3 {
-            font-size: 1.72rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         .team-grid {
-            display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
         }
 
-        .profile-card {
-            display: grid;
-            gap: 18px;
-            padding: 24px;
-            border-radius: 28px;
-            transition: var(--transition);
+        .team-card {
+            padding: 22px;
         }
 
-        .profile-card:hover,
-        .profile-card:focus-within {
-            transform: translateY(-4px);
-            box-shadow: 0 24px 44px rgba(24, 52, 75, 0.1);
-        }
-
-        .profile-card[hidden] {
-            display: none;
-        }
-
-        .profile-header {
+        .team-card-header {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
+            margin-bottom: 14px;
         }
 
-        .profile-media {
-            width: 84px;
-            height: 84px;
-            border-radius: 26px;
-            overflow: hidden;
+        .team-card img,
+        .avatar-placeholder {
+            width: 72px;
+            height: 72px;
+            border-radius: 14px;
             flex-shrink: 0;
-            background: linear-gradient(145deg, rgba(47, 114, 255, 0.12), rgba(15, 156, 166, 0.14));
-            box-shadow: inset 0 0 0 1px rgba(24, 52, 75, 0.06);
         }
 
-        .profile-media img {
-            width: 100%;
-            height: 100%;
+        .team-card img {
             object-fit: cover;
         }
 
-        .profile-media.is-placeholder {
+        .avatar-placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            background: linear-gradient(145deg, #1c5fb8, #1798a7);
-            font-size: 1.7rem;
+            background: var(--surface-soft);
+            color: var(--accent);
             font-weight: 700;
             letter-spacing: 0.06em;
         }
 
-        .profile-meta {
-            min-width: 0;
+        .team-card p,
+        .lead-card p,
+        .mandate-card p,
+        .scope-card p,
+        .contact-card p,
+        .intro-note p {
+            font-size: 0.96rem;
         }
 
-        .profile-role {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--accent-dark);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-        }
-
-        .profile-meta h3 {
-            margin-bottom: 0;
-            font-size: 1.18rem;
-        }
-
-        .profile-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .contact {
-            padding-top: 34px;
-        }
-
-        .contact-panel {
+        .contact-card {
             display: grid;
-            grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
-            gap: 28px;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 24px;
             align-items: center;
-            padding: 32px;
-            border-radius: 34px;
-            overflow: hidden;
+            padding: 24px;
         }
 
-        .contact-visual {
-            position: relative;
-            border-radius: 28px;
-            padding: 36px 28px 0;
-            background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.28), transparent 34%),
-                linear-gradient(145deg, #164273 0%, #1c6fab 48%, #16a3aa 100%);
-            min-height: 330px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-
-        .contact-visual img {
-            width: min(100%, 400px);
-            filter: drop-shadow(0 20px 32px rgba(9, 24, 42, 0.24));
-        }
-
-        .contact-copy {
-            display: grid;
-            gap: 18px;
+        .contact-illustration {
+            padding: 14px;
+            border-radius: 18px;
+            background: var(--surface-soft);
         }
 
         .contact-details {
             display: grid;
             gap: 10px;
-        }
-
-        .contact-line {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: var(--text-secondary);
+            margin-top: 18px;
         }
 
         .contact-line strong {
-            color: var(--text-primary);
-            min-width: 94px;
-            font-size: 0.94rem;
+            display: block;
+            margin-bottom: 2px;
+            color: var(--text);
+            font-size: 0.9rem;
         }
 
         .main-footer {
-            padding: 52px 0 64px;
+            padding: 0 0 48px;
         }
 
-        .footer-card {
+        .footer-inner {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 28px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.86);
-            border: 1px solid rgba(24, 52, 75, 0.08);
-            box-shadow: 0 18px 40px rgba(24, 52, 75, 0.08);
+            gap: 18px;
+            padding-top: 40px;
+            border-top: 1px solid var(--line);
         }
 
-        .footer-card img {
-            width: 92px;
+        .footer-inner img {
+            width: 82px;
             flex-shrink: 0;
         }
 
-        .footer-copy p {
-            margin: 0 0 6px;
+        .footer-inner p {
+            margin: 0 0 4px;
+            font-size: 0.92rem;
         }
 
-        .footer-copy p:last-child {
+        .footer-inner p:last-child {
             margin-bottom: 0;
         }
 
-        @media (max-width: 1080px) {
-            .hero-shell,
-            .purpose-copy,
-            .contact-panel {
+        @media (max-width: 980px) {
+            .hero-grid,
+            .intro-grid,
+            .scopes-layout,
+            .contact-card {
                 grid-template-columns: 1fr;
             }
 
-            .hero-art {
-                min-height: 540px;
-            }
-
             .mandate-grid,
-            .scope-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
+            .scope-grid,
             .team-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
-            .contact-visual {
-                min-height: 280px;
-            }
         }
 
-        @media (max-width: 820px) {
+        @media (max-width: 760px) {
             .main-header {
-                height: 74px;
-                padding: 0 20px;
+                height: 72px;
+                padding: 0 18px;
             }
 
-            .logo-text .logo-long {
+            .logo-text .desktop-only {
                 display: none;
             }
 
@@ -902,16 +517,15 @@
 
             .main-nav {
                 position: fixed;
-                top: 0;
+                top: 72px;
                 right: 0;
-                width: min(82vw, 320px);
-                height: 100vh;
-                padding-top: 84px;
-                background: rgba(255, 255, 255, 0.98);
-                border-left: 1px solid rgba(24, 52, 75, 0.08);
+                width: min(82vw, 300px);
+                height: calc(100vh - 72px);
+                padding: 24px 18px;
+                background: rgba(246, 248, 251, 0.98);
+                border-left: 1px solid rgba(23, 50, 71, 0.08);
                 transform: translateX(100%);
-                transition: transform 0.3s ease;
-                box-shadow: -18px 0 34px rgba(24, 52, 75, 0.08);
+                transition: transform 0.28s ease;
             }
 
             .nav-open .main-nav {
@@ -920,59 +534,35 @@
 
             .main-nav ol {
                 flex-direction: column;
-                align-items: stretch;
-                padding: 0 18px;
-            }
-
-            .main-nav a {
-                width: 100%;
-                justify-content: flex-start;
-                min-height: 50px;
+                align-items: flex-start;
+                gap: 16px;
             }
 
             .hero {
-                padding-top: 126px;
-            }
-
-            .hero-copy h1 {
-                font-size: clamp(2.8rem, 12vw, 4.2rem);
-            }
-
-            .portrait-stack {
-                position: static;
-                margin-top: 18px;
-                justify-content: center;
-                padding-left: 18px;
+                padding-top: 38px;
             }
 
             .lead-card {
                 grid-template-columns: 1fr;
-                text-align: center;
+            }
+
+            .lead-card img {
+                margin: 0 auto;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
             }
         }
 
-        @media (max-width: 640px) {
-            section {
-                padding: 88px 0;
-            }
-
+        @media (max-width: 560px) {
             .container {
-                width: min(100% - 28px, 1180px);
+                width: min(100% - 24px, 1120px);
             }
 
-            .hero-art {
-                min-height: 460px;
-            }
-
-            .hero-panel {
-                inset: 0;
-                padding: 30px 18px 0;
-                border-radius: 28px;
-            }
-
-            .hero-metric {
-                width: calc(50% - 6px);
-                min-width: 0;
+            section {
+                padding-top: 56px;
             }
 
             .mandate-grid,
@@ -981,23 +571,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .profile-header {
-                align-items: flex-start;
-            }
-
-            .contact-panel,
-            .footer-card {
-                padding: 24px;
-            }
-
-            .footer-card {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .contact-line {
-                flex-direction: column;
-                gap: 4px;
+            h1 {
+                font-size: 2.45rem;
             }
         }
     </style>
@@ -1007,7 +582,7 @@
         <a href="pag_principal_interna_v3.html#hero" class="logo">
             <img src="pag_prin_plot/20250429_logo_santarosa_original.png" alt="Logo SLEP Santa Rosa">
             <div class="logo-text">
-                <span class="logo-long">Estudios, Monitoreo y Datos</span>
+                <span class="desktop-only">Estudios, Monitoreo y Datos</span>
                 <span>/</span> SLEP Santa Rosa
             </div>
         </a>
@@ -1019,7 +594,8 @@
                 <li><a href="#proposito">Propósito</a></li>
                 <li><a href="#ambitos">Ámbitos</a></li>
                 <li><a href="#equipo">Equipo</a></li>
-                <li><a href="pag_principal_interna_v3.html#visores" class="nav-cta">Volver al portal</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="pag_principal_interna_v3.html#visores" class="back-link">Volver al portal</a></li>
             </ol>
         </nav>
     </header>
@@ -1027,48 +603,22 @@
     <main>
         <section class="hero" id="hero">
             <div class="container">
-                <div class="hero-shell">
+                <div class="hero-grid">
                     <div class="hero-copy">
-                        <span class="eyebrow">Página propuesta · Nosotros</span>
-                        <h1>Un equipo que transforma datos en decisiones públicas.</h1>
-                        <p>El Departamento de Estudios, Monitoreo y Datos del SLEP Santa Rosa impulsa una cultura institucional basada en evidencia, seguimiento riguroso y uso estratégico de la información para fortalecer la educación pública.</p>
-                        <div class="btn-row">
-                            <a href="#equipo" class="btn btn-primary">Conocer al equipo</a>
-                            <a href="pag_principal_interna_v3.html#visores" class="btn btn-secondary">Volver al portal</a>
+                        <div class="section-header">
+                            <span class="section-label">Departamento de Estudios, Monitoreo y Datos</span>
+                            <h1>Trabajamos con información para apoyar mejores decisiones.</h1>
                         </div>
-                        <div class="hero-metrics">
-                            <div class="hero-metric">
-                                <strong>3</strong>
-                                <span>ámbitos de trabajo articulan la labor del departamento</span>
-                            </div>
-                            <div class="hero-metric">
-                                <strong>Ley 21.040</strong>
-                                <span>base normativa que orienta el seguimiento y monitoreo</span>
-                            </div>
-                            <div class="hero-metric">
-                                <strong>4</strong>
-                                <span>perfiles visibles para mostrar la estructura del equipo</span>
-                            </div>
+                        <p>El Departamento de Estudios, Monitoreo y Datos del Servicio Local de Educación Pública Santa Rosa promueve una cultura institucional basada en evidencia, seguimiento sistemático y uso responsable de la información para fortalecer la educación pública.</p>
+                        <div class="hero-links">
+                            <a href="#equipo">Conocer al equipo</a>
+                            <a href="pag_principal_interna_v3.html#visores">Ir al portal de datos</a>
                         </div>
                     </div>
 
                     <div class="hero-art" aria-hidden="true">
-                        <div class="hero-panel">
-                            <img class="hero-illustration" src="pag_prin_plot/nosotros-ilustracion-hero.png" alt="">
-                        </div>
-                        <div class="portrait-stack">
-                            <div class="portrait-chip">
-                                <img src="pag_prin_plot/nosotros-josefina.jpg" alt="Retrato de Josefina Abarzúa Varela">
-                                <span>Josefina</span>
-                            </div>
-                            <div class="portrait-chip">
-                                <img src="pag_prin_plot/nosotros-benjamin.jpg" alt="Retrato de Benjamín Lang Bustos">
-                                <span>Benjamín</span>
-                            </div>
-                            <div class="portrait-chip">
-                                <img src="pag_prin_plot/nosotros-camila.jpg" alt="Retrato de Camila Domínguez Muñoz">
-                                <span>Camila</span>
-                            </div>
+                        <div class="hero-art-frame">
+                            <img src="pag_prin_plot/nosotros-ilustracion-hero.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -1077,181 +627,152 @@
 
         <section id="proposito">
             <div class="container">
-                <div class="purpose-shell">
-                    <span class="eyebrow">Departamento de Estudios, Monitoreo y Datos</span>
-                    <div class="purpose-copy">
-                        <div>
-                            <h2 class="section-heading">Una unidad estratégica para la toma de decisiones basada en evidencia.</h2>
-                            <p class="section-copy">Nuestro propósito es cimentar una cultura institucional basada en el uso riguroso de la información y el monitoreo sistemático, entendidos como herramientas fundamentales para la mejora continua de la educación pública. Desde esta base, definimos y garantizamos la implementación de sistemas de seguimiento que permitan mirar procesos, resultados y capacidades de gestión con mayor claridad.</p>
-                        </div>
-                        <aside class="purpose-note">
-                            <strong>Marco de acción</strong>
-                            <p>La página original sitúa esta labor directamente en la Ley N° 21.040. En esta propuesta, ese mandato se traduce en una lectura más clara: seguimiento institucional, monitoreo de aprendizajes y fortalecimiento de capacidades para usar información de calidad.</p>
-                        </aside>
+                <div class="section-header">
+                    <span class="section-label">Propósito</span>
+                    <h2>Una unidad estratégica para el seguimiento, el análisis y la mejora continua.</h2>
+                </div>
+
+                <div class="intro-grid">
+                    <div>
+                        <p>Nuestro propósito es consolidar una cultura institucional basada en el uso riguroso de la información y el monitoreo sistemático como herramientas de mejora continua. Desde esa función, el departamento define, organiza y sostiene sistemas de seguimiento que permitan observar procesos, resultados y capacidades de gestión con mayor claridad.</p>
                     </div>
 
-                    <div class="mandate-grid">
-                        <article class="mandate-card">
-                            <strong>01</strong>
-                            <h3>Sistemas de seguimiento e información</h3>
-                            <p>Contar con sistemas alineados con las orientaciones nacionales para evaluar procesos y resultados de establecimientos y jardines, conforme a los artículos 18 y 61.</p>
-                        </article>
-                        <article class="mandate-card">
-                            <strong>02</strong>
-                            <h3>Monitoreo del progreso de los aprendizajes</h3>
-                            <p>Implementar seguimiento del avance de cada estudiante y promover una cultura de aprendizaje, autoevaluación y mejora continua basada en evidencia, de acuerdo con el artículo 19.</p>
-                        </article>
-                        <article class="mandate-card">
-                            <strong>03</strong>
-                            <h3>Capacidad institucional para usar evidencia</h3>
-                            <p>Generar, ordenar y difundir información clave para la gestión del servicio, fortaleciendo capacidades internas y de las comunidades educativas para tomar decisiones informadas.</p>
-                        </article>
-                    </div>
+                    <aside class="intro-note">
+                        <strong>Marco de trabajo</strong>
+                        <p>Esta labor se fundamenta en la Ley N° 21.040, que crea el Sistema de Educación Pública y establece la necesidad de monitorear procesos, aprendizajes y gestión con información confiable y oportuna.</p>
+                    </aside>
                 </div>
             </div>
         </section>
 
-        <section class="scopes" id="ambitos">
-            <img class="scopes-art" src="pag_prin_plot/nosotros-ilustracion-equipo.png" alt="">
+        <section>
             <div class="container">
-                <div class="scopes-shell">
-                    <span class="eyebrow">Cómo trabajamos</span>
-                    <div>
-                        <h2 class="section-heading">Tres ámbitos ordenan la propuesta del área.</h2>
-                        <p class="section-copy">La página actual del Google Sites ya define con claridad dónde se concentra la labor del departamento. En esta versión HTML, esos ámbitos pasan a ser un sistema de lectura más limpio y fácil de recorrer.</p>
-                    </div>
+                <div class="section-header">
+                    <span class="section-label">Mandato</span>
+                    <h2>Tres encargos estructuran el trabajo del área.</h2>
+                </div>
 
+                <div class="mandate-grid">
+                    <article class="mandate-card">
+                        <span class="number">01</span>
+                        <h3>Sistemas de seguimiento e información</h3>
+                        <p>Contar con sistemas alineados con las orientaciones nacionales para evaluar procesos y resultados de establecimientos y jardines, conforme a los artículos 18 y 61.</p>
+                    </article>
+
+                    <article class="mandate-card">
+                        <span class="number">02</span>
+                        <h3>Monitoreo del progreso de los aprendizajes</h3>
+                        <p>Implementar seguimiento del avance de cada estudiante y promover una cultura de aprendizaje, autoevaluación y mejora continua basada en evidencia, de acuerdo con el artículo 19.</p>
+                    </article>
+
+                    <article class="mandate-card">
+                        <span class="number">03</span>
+                        <h3>Uso institucional de evidencia</h3>
+                        <p>Generar, ordenar y difundir información clave para la gestión del servicio, fortaleciendo capacidades internas y de las comunidades educativas para tomar decisiones informadas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="ambitos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Ámbitos de trabajo</span>
+                    <h2>La labor del departamento se organiza en tres líneas principales.</h2>
+                </div>
+
+                <div class="scopes-layout">
                     <div class="scope-grid">
                         <article class="scope-card">
-                            <span class="scope-badge">Ámbito 1</span>
-                            <h3>Monitoreo a nivel de las comunidades educativas</h3>
+                            <h3>Monitoreo de las comunidades educativas</h3>
                             <p>Recopilamos, sistematizamos, analizamos y difundimos información sobre procesos y resultados de establecimientos educacionales y jardines infantiles, incluyendo trayectorias estudiantiles, desarrollo social y personal, resultados de aprendizaje e instrumentos de gestión.</p>
-                            <div class="scope-tags">
-                                <span class="scope-tag">Trayectorias</span>
-                                <span class="scope-tag">Resultados</span>
-                                <span class="scope-tag">Gestión escolar</span>
-                            </div>
                         </article>
 
                         <article class="scope-card">
-                            <span class="scope-badge">Ámbito 2</span>
-                            <h3>Monitoreo a nivel del Servicio Local</h3>
-                            <p>Realizamos seguimiento a procesos y procedimientos internos del SLEP, especialmente en el apoyo técnico-pedagógico a escuelas y liceos, y contribuimos con análisis e información para la gestión estratégica y la rendición de cuentas del servicio.</p>
-                            <div class="scope-tags">
-                                <span class="scope-tag">Seguimiento interno</span>
-                                <span class="scope-tag">Gestión estratégica</span>
-                                <span class="scope-tag">Rendición de cuentas</span>
-                            </div>
+                            <h3>Monitoreo del Servicio Local</h3>
+                            <p>Realizamos seguimiento a procesos y procedimientos internos del SLEP, especialmente en el apoyo técnico-pedagógico a escuelas y liceos, y aportamos análisis para la gestión estratégica y la rendición de cuentas del servicio.</p>
                         </article>
 
                         <article class="scope-card">
-                            <span class="scope-badge">Ámbito 3</span>
                             <h3>Fortalecimiento de capacidades</h3>
-                            <p>Desarrollamos iniciativas para fomentar una cultura de uso de datos en la toma de decisiones, orientando a equipos y unidades educativas en el uso de plataformas, registro de información y aseguramiento de su calidad y disponibilidad.</p>
-                            <div class="scope-tags">
-                                <span class="scope-tag">Uso de datos</span>
-                                <span class="scope-tag">Plataformas</span>
-                                <span class="scope-tag">Calidad de información</span>
-                            </div>
+                            <p>Desarrollamos iniciativas para fomentar el uso de datos en la toma de decisiones, orientando a equipos y unidades educativas en el uso de plataformas, registro de información y resguardo de su calidad.</p>
                         </article>
                     </div>
+
+                    <figure class="scope-figure" aria-hidden="true">
+                        <img src="pag_prin_plot/nosotros-ilustracion-equipo.png" alt="">
+                    </figure>
                 </div>
             </div>
         </section>
 
         <section id="equipo">
             <div class="container">
-                <div class="team-shell">
-                    <span class="eyebrow">Quiénes somos</span>
+                <div class="section-header">
+                    <span class="section-label">Equipo</span>
+                    <h2>Un equipo interdisciplinario al servicio de la gestión pública.</h2>
+                </div>
+
+                <article class="lead-card">
+                    <img src="pag_prin_plot/nosotros-josefina.jpg" alt="Retrato de Josefina Abarzúa Varela">
                     <div>
-                        <h2 class="section-heading">Una presentación de equipo más consistente con el portal.</h2>
-                        <p class="section-copy">El departamento se constituye como un equipo interdisciplinario dirigido por su jefatura y orientado a garantizar sistemas de seguimiento y monitoreo para la toma de decisiones fundamentada en datos. La propuesta toma el orden editorial de páginas tipo “Nuestro equipo”, pero lo adapta al lenguaje visual del sitio del SLEP.</p>
+                        <span class="role">Jefatura</span>
+                        <h3>Josefina Abarzúa Varela</h3>
+                        <p>Dirige el Departamento de Estudios, Monitoreo y Datos como una unidad estratégica para la Dirección Ejecutiva, articulando seguimiento institucional, monitoreo de aprendizajes y uso de evidencia para apoyar la toma de decisiones.</p>
                     </div>
+                </article>
 
-                    <div class="team-toolbar" role="tablist" aria-label="Filtrar perfiles del equipo">
-                        <button class="team-filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">Todo</button>
-                        <button class="team-filter" type="button" data-filter="jefatura" role="tab" aria-selected="false">Jefatura</button>
-                        <button class="team-filter" type="button" data-filter="equipo" role="tab" aria-selected="false">Equipo</button>
-                    </div>
-
-                    <article class="lead-card" data-group="jefatura">
-                        <div class="lead-avatar">
-                            <img src="pag_prin_plot/nosotros-josefina.jpg" alt="Retrato de Josefina Abarzúa Varela">
+                <div class="team-grid">
+                    <article class="team-card">
+                        <div class="team-card-header">
+                            <img src="pag_prin_plot/nosotros-camila.jpg" alt="Retrato de Camila Domínguez Muñoz" loading="lazy" decoding="async">
+                            <div>
+                                <span class="role">Equipo</span>
+                                <h3>Camila Domínguez Muñoz</h3>
+                            </div>
                         </div>
-                        <div class="lead-copy">
-                            <span class="role-pill">Jefatura del departamento</span>
-                            <h3>Josefina Abarzúa Varela</h3>
-                            <p>Encabeza el Departamento de Estudios, Monitoreo y Datos como unidad estratégica para la Dirección Ejecutiva. En la propuesta, su perfil se presenta como el punto de articulación entre seguimiento institucional, monitoreo de aprendizajes y uso de evidencia para la gestión.</p>
-                        </div>
+                        <p>Cientista Política de la Universidad Diego Portales, con conocimientos avanzados en análisis de datos y estadística. Maneja herramientas como R, SPSS y Stata para análisis cuantitativos, con interés en investigación y enfoques interdisciplinarios.</p>
                     </article>
 
-                    <div class="team-grid">
-                        <article class="profile-card" data-group="equipo">
-                            <div class="profile-header">
-                                <div class="profile-media">
-                                    <img src="pag_prin_plot/nosotros-camila.jpg" alt="Retrato de Camila Domínguez Muñoz" loading="lazy" decoding="async">
-                                </div>
-                                <div class="profile-meta">
-                                    <span class="profile-role">Equipo</span>
-                                    <h3>Camila Domínguez Muñoz</h3>
-                                </div>
+                    <article class="team-card">
+                        <div class="team-card-header">
+                            <img src="pag_prin_plot/nosotros-benjamin.jpg" alt="Retrato de Benjamín Lang Bustos" loading="lazy" decoding="async">
+                            <div>
+                                <span class="role">Equipo</span>
+                                <h3>Benjamín Lang Bustos</h3>
                             </div>
-                            <p>Cientista Política de la Universidad Diego Portales, con conocimientos avanzados en análisis de datos y estadística. Maneja herramientas como R, SPSS y Stata para análisis cuantitativos, con interés en investigación y enfoques interdisciplinarios.</p>
-                            <div class="profile-tags">
-                                <span class="profile-tag">R</span>
-                                <span class="profile-tag">SPSS</span>
-                                <span class="profile-tag">Stata</span>
-                            </div>
-                        </article>
+                        </div>
+                        <p>Sociólogo con experiencia colaborando con instituciones como el Instituto Nacional de Estadísticas, el Centro de Estudios Públicos y diversas universidades. Su trabajo aporta análisis, lectura territorial y experiencia aplicada en investigación.</p>
+                    </article>
 
-                        <article class="profile-card" data-group="equipo">
-                            <div class="profile-header">
-                                <div class="profile-media">
-                                    <img src="pag_prin_plot/nosotros-benjamin.jpg" alt="Retrato de Benjamín Lang Bustos" loading="lazy" decoding="async">
-                                </div>
-                                <div class="profile-meta">
-                                    <span class="profile-role">Equipo</span>
-                                    <h3>Benjamín Lang Bustos</h3>
-                                </div>
+                    <article class="team-card">
+                        <div class="team-card-header">
+                            <div class="avatar-placeholder" aria-hidden="true">JD</div>
+                            <div>
+                                <span class="role">Equipo</span>
+                                <h3>Jhonatan Díaz Pérez</h3>
                             </div>
-                            <p>Sociólogo con 5 años de experiencia colaborando con instituciones como el Instituto Nacional de Estadísticas, el Centro de Estudios Públicos y diversas universidades. Su perfil aporta lectura territorial, análisis y experiencia aplicada en investigación.</p>
-                            <div class="profile-tags">
-                                <span class="profile-tag">Sociología</span>
-                                <span class="profile-tag">INE</span>
-                                <span class="profile-tag">CEP</span>
-                            </div>
-                        </article>
-
-                        <article class="profile-card" data-group="equipo">
-                            <div class="profile-header">
-                                <div class="profile-media is-placeholder" aria-hidden="true">JD</div>
-                                <div class="profile-meta">
-                                    <span class="profile-role">Equipo</span>
-                                    <h3>Jhonatan Díaz Pérez</h3>
-                                </div>
-                            </div>
-                            <p>Administrador Público con experiencia en gestión y análisis de datos en el sector educativo. Se desempeñó en la División de Implementación de los SLEP en la Dirección de Educación Pública y cuenta con diplomados en Ciencia de Datos y en Control y Gestión de Procesos.</p>
-                            <div class="profile-tags">
-                                <span class="profile-tag">Gestión pública</span>
-                                <span class="profile-tag">USACH</span>
-                                <span class="profile-tag">Ciencia de datos</span>
-                            </div>
-                        </article>
-                    </div>
+                        </div>
+                        <p>Administrador Público con experiencia en gestión y análisis de datos en el sector educativo. Cuenta con trayectoria en la implementación de los SLEP y formación en ciencia de datos y control de procesos aplicada a la gestión pública.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="contact">
+        <section id="contacto">
             <div class="container">
-                <div class="contact-panel">
-                    <div class="contact-visual" aria-hidden="true">
+                <div class="section-header">
+                    <span class="section-label">Contacto</span>
+                    <h2>Información institucional del departamento.</h2>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-illustration" aria-hidden="true">
                         <img src="pag_prin_plot/nosotros-ilustracion-equipo.png" alt="">
                     </div>
-                    <div class="contact-copy">
-                        <span class="eyebrow">Contacto institucional</span>
-                        <h3>La propuesta cierra con un bloque de contacto más claro y reutilizable.</h3>
-                        <p>Se mantiene la información institucional de la página actual, pero con una salida más consistente con el resto del portal y con mejor lectura en escritorio y móvil.</p>
+
+                    <div>
+                        <p>El equipo trabaja desde el Servicio Local de Educación Pública Santa Rosa, apoyando procesos de seguimiento, monitoreo y análisis para la gestión institucional y pedagógica.</p>
                         <div class="contact-details">
                             <div class="contact-line">
                                 <strong>Institución</strong>
@@ -1266,10 +787,6 @@
                                 <span>monitoreo.datos@slepsantarosa.gob.cl</span>
                             </div>
                         </div>
-                        <div class="btn-row">
-                            <a class="btn btn-primary" href="mailto:monitoreo.datos@slepsantarosa.gob.cl">Escribir al equipo</a>
-                            <a class="btn btn-secondary" href="pag_principal_interna_v3.html#visores">Ir al portal de datos</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1278,10 +795,10 @@
 
     <footer class="main-footer">
         <div class="container">
-            <div class="footer-card">
+            <div class="footer-inner">
                 <img src="pag_prin_plot/logo_st_rosa.svg" alt="Logo SLEP Santa Rosa">
-                <div class="footer-copy">
-                    <p>Hecho por el Departamento de Estudios, Monitoreo y Datos del SLEP Santa Rosa.</p>
+                <div>
+                    <p>Departamento de Estudios, Monitoreo y Datos del SLEP Santa Rosa.</p>
                     <p>Dirección de Educación Pública | Gobierno de Chile</p>
                     <p>Llano Subercaseaux 3629, San Miguel, Santiago</p>
                     <p>monitoreo.datos@slepsantarosa.gob.cl</p>
@@ -1294,21 +811,6 @@
         const body = document.body;
         const menuToggle = document.getElementById("menu-toggle");
         const mainNav = document.getElementById("main-nav");
-        const filters = Array.from(document.querySelectorAll(".team-filter"));
-        const profiles = Array.from(document.querySelectorAll("[data-group]"));
-
-        function setActiveFilter(nextFilter) {
-            filters.forEach((filterButton) => {
-                const isActive = filterButton.dataset.filter === nextFilter;
-                filterButton.classList.toggle("is-active", isActive);
-                filterButton.setAttribute("aria-selected", String(isActive));
-            });
-
-            profiles.forEach((profile) => {
-                const shouldShow = nextFilter === "all" || profile.dataset.group === nextFilter;
-                profile.hidden = !shouldShow;
-            });
-        }
 
         if (menuToggle) {
             menuToggle.addEventListener("click", () => {
@@ -1325,14 +827,6 @@
                 });
             });
         }
-
-        filters.forEach((filterButton) => {
-            filterButton.addEventListener("click", () => {
-                setActiveFilter(filterButton.dataset.filter);
-            });
-        });
-
-        setActiveFilter("all");
     </script>
 </body>
 </html>
