@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sites.google.com)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh api *)",
+      "PowerShell(gh api repos/SantaRosin/pagina_web_santarosa/pages 2>$null)",
+      "WebFetch(domain:santarosin.github.io)",
+      "Bash(curl -s -o /dev/null -L --max-time 25 -w \"%{http_code}\" \"https://sites.google.com/slepsantarosa.cl/datos-usointerno/esta-ruta-no-existe-xyz?authuser=2\")"
+    ]
+  }
+}
