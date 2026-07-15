@@ -82,7 +82,7 @@
         }
 
         section {
-            padding: 110px 0;
+            padding: 90px 0;
         }
 
         section.alt-bg {
@@ -152,132 +152,73 @@
             color: var(--white);
         }
 
-        .main-header {
+        /* ===== Barra blanca superior (logo + navegación), de lado a lado ===== */
+        .site-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
-            height: 80px;
-            position: fixed;
-            top: 0;
+            justify-content: space-between;
+            gap: 16px;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            z-index: 100;
-            transition: var(--transition);
+            padding: 12px 28px;
+            background: #ffffff;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .logo {
+        .site-header .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-weight: 700;
-            color: var(--text-primary);
+            gap: 14px;
+            min-width: 0;
             text-decoration: none;
-            min-width: 0;
         }
 
-        .logo img {
+        .site-header .brand img {
             height: 44px;
+            width: auto;
             border-radius: 10px;
-            transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(29, 45, 53, 0.08);
             background: #ffffff;
+            box-shadow: 0 8px 20px rgba(29, 45, 53, 0.08);
         }
 
-        .logo div {
-            font-size: 1.08rem;
+        .site-header .brand-text {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.02rem;
             line-height: 1.2;
-            min-width: 0;
         }
 
-        .logo span {
+        .site-header .brand-text .accent {
             color: var(--accent);
-            font-weight: 600;
         }
 
-        .main-nav ol {
+        .site-nav {
             display: flex;
             align-items: center;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .main-nav a {
+        .site-nav a {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: var(--fz-md);
-            padding: 8px 12px;
+            padding: 8px 16px;
             border-radius: 999px;
         }
 
-        .main-nav a:hover,
-        .main-nav a:focus-visible {
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
             color: var(--text-primary);
-            background-color: var(--bg-alt);
+            background: var(--bg-alt);
             outline: none;
             opacity: 1;
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 101;
-        }
-
-        .hamburger {
-            width: 24px;
-            height: 2px;
-            background-color: var(--text-primary);
-            position: relative;
-            transition: transform 0.3s;
-        }
-
-        .hamburger::before,
-        .hamburger::after {
-            content: "";
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background-color: var(--text-primary);
-            left: 0;
-            transition: transform 0.3s, top 0.3s;
-        }
-
-        .hamburger::before {
-            top: -7px;
-        }
-
-        .hamburger::after {
-            top: 7px;
-        }
-
-        .nav-open .hamburger {
-            background-color: transparent;
-        }
-
-        .nav-open .hamburger::before {
-            top: 0;
-            transform: rotate(45deg);
-        }
-
-        .nav-open .hamburger::after {
-            top: 0;
-            transform: rotate(-45deg);
-        }
-
+        /* ===== HERO (portada) ===== */
         .hero {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 80px 20px;
-            min-height: 88vh;
+            padding: 56px 20px 72px;
+            min-height: 800px;
             text-align: center;
             position: relative;
             color: var(--white);
@@ -291,8 +232,8 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(180deg, rgba(19, 56, 91, 0.6), rgba(20, 51, 75, 0.72)),
-                linear-gradient(90deg, rgba(16, 45, 84, 0.44), rgba(16, 45, 84, 0.44));
+                linear-gradient(180deg, rgba(19, 56, 91, 0.42), rgba(20, 51, 75, 0.52)),
+                linear-gradient(90deg, rgba(16, 45, 84, 0.28), rgba(16, 45, 84, 0.28));
             z-index: 1;
         }
 
@@ -302,12 +243,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(88vh - 80px);
+            min-height: auto;
         }
 
         .hero-content {
             max-width: 760px;
-            padding: 40px 20px 90px;
+            padding: 30px 20px 44px;
         }
 
         .hero-content h1,
@@ -362,53 +303,23 @@
         }
 
         .visores-shell {
-            padding-top: 84px;
+            padding-top: 70px;
         }
 
-        .stats-strip {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-            margin-bottom: 28px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            box-shadow: 0 14px 34px var(--shadow-color);
-            padding: 22px 20px;
-            text-align: center;
-        }
-
-        .stat-card strong {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--accent-dark);
-            font-size: 1.9rem;
-            line-height: 1;
-        }
-
-        .stat-card span {
-            display: block;
-            color: var(--text-secondary);
-            font-size: var(--fz-sm);
-            line-height: 1.45;
-        }
-
+        /* ===== Panel de control: buscador + filtros ===== */
         .control-panel {
             position: sticky;
-            top: 96px;
+            top: 0;
             z-index: 20;
             display: grid;
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.96);
+            padding: 16px 20px;
+            border-radius: 0 0 18px 18px;
+            background: var(--white);
             border: 1px solid var(--border-color);
-            box-shadow: 0 18px 38px rgba(29, 45, 53, 0.1);
-            backdrop-filter: blur(10px);
+            border-top: none;
+            box-shadow: 0 14px 26px rgba(29, 45, 53, 0.16);
         }
 
         .search-row {
@@ -518,29 +429,35 @@
             margin: 0;
         }
 
+        /* ===== Tarjetas: fondo claro para PNG + color de categoría en el marco ===== */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
+            gap: 22px;
         }
 
         .viewer-card {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-height: 100%;
             background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
+            border: 1.5px solid var(--border-color);
+            border-top: 5px solid var(--cat-color, var(--accent));
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 16px 38px var(--shadow-color);
+            box-shadow: 0 10px 26px var(--shadow-color);
             transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
         }
 
         .viewer-card:hover,
-        .viewer-card:focus-within {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 46px rgba(60, 90, 110, 0.16);
-            border-color: rgba(47, 114, 255, 0.16);
+        .viewer-card:focus-visible {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 44px rgba(60, 90, 110, 0.18);
+            border-color: var(--cat-color, var(--accent));
+            outline: none;
         }
 
         .card-media {
@@ -548,75 +465,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 210px;
-            padding: 22px;
-            background:
-                radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34%),
-                linear-gradient(135deg, var(--media-start), var(--media-end));
-        }
-
-        .card-media::after {
-            content: "";
-            position: absolute;
-            inset: 14px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            pointer-events: none;
+            height: 172px;
+            margin: 16px 16px 0;
+            padding: 16px;
+            border-radius: 14px;
+            background: var(--cat-soft, var(--bg-alt));
+            border: 1px solid var(--border-color);
         }
 
         .card-media img {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 220px;
-            max-height: 160px;
+            max-width: 190px;
+            max-height: 132px;
             object-fit: contain;
-            filter: drop-shadow(0 14px 24px rgba(18, 34, 49, 0.18));
         }
 
         .card-body {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            padding: 22px;
+            gap: 8px;
+            padding: 16px 20px 20px;
             flex: 1;
         }
 
-        .card-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            min-height: 30px;
-            padding: 0 12px;
-            border-radius: 999px;
-            font-size: 0.8rem;
+        .card-eyebrow {
+            font-size: 0.72rem;
             font-weight: 700;
-        }
-
-        .badge-category {
-            background: var(--accent-soft);
-            color: var(--accent-dark);
-        }
-
-        .badge-access {
-            background: rgba(16, 167, 167, 0.1);
-            color: #0f7f80;
-        }
-
-        .badge-access.is-alert {
-            background: rgba(213, 93, 73, 0.12);
-            color: #ae4638;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--cat-color, var(--accent));
         }
 
         .card-title {
             margin: 0;
-            font-size: 1.25rem;
-            line-height: 1.35;
+            font-size: 1.16rem;
+            line-height: 1.32;
             color: var(--text-primary);
         }
 
@@ -624,31 +509,29 @@
             margin: 0;
             color: var(--text-secondary);
             font-size: var(--fz-sm);
-            line-height: 1.72;
+            line-height: 1.62;
             flex: 1;
         }
 
-        .card-footer {
-            display: flex;
+        .card-cta {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: auto;
+            gap: 7px;
+            margin-top: 8px;
+            color: var(--cat-color, var(--accent));
+            font-weight: 700;
+            font-size: var(--fz-sm);
         }
 
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+        .card-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: var(--transition);
         }
 
-        .mini-tag {
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: var(--bg-alt);
-            color: var(--text-secondary);
-            font-size: 0.76rem;
-            font-weight: 600;
+        .viewer-card:hover .card-cta svg,
+        .viewer-card:focus-visible .card-cta svg {
+            transform: translateX(4px);
         }
 
         .empty-state {
@@ -669,67 +552,6 @@
         .empty-state h3 {
             margin-bottom: 10px;
             font-size: 1.25rem;
-        }
-
-        .reports-section {
-            padding-top: 90px;
-            padding-bottom: 90px;
-        }
-
-        .reports-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .report-card {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 22px;
-            border-radius: 22px;
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 14px 32px var(--shadow-color);
-            transition: var(--transition);
-        }
-
-        .report-card:hover,
-        .report-card:focus-within {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 42px rgba(60, 90, 110, 0.14);
-        }
-
-        .report-date {
-            display: inline-flex;
-            align-items: center;
-            align-self: flex-start;
-            min-height: 30px;
-            padding: 0 12px;
-            border-radius: 999px;
-            background: rgba(213, 93, 73, 0.12);
-            color: var(--warm);
-            font-size: 0.82rem;
-            font-weight: 700;
-        }
-
-        .report-card h3 {
-            margin: 0;
-            font-size: 1.06rem;
-            line-height: 1.45;
-        }
-
-        .report-card p {
-            margin: 0;
-            font-size: var(--fz-sm);
-            color: var(--text-secondary);
-            line-height: 1.65;
-            flex: 1;
-        }
-
-        .report-card a {
-            font-weight: 700;
-            color: var(--accent-dark);
         }
 
         .main-footer {
@@ -765,109 +587,43 @@
             .cards-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
-            .reports-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 900px) {
-            .stats-strip {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
         }
 
         @media (max-width: 768px) {
-            .main-header {
-                padding: 0 20px;
-                height: 70px;
+            .site-header {
+                padding: 10px 16px;
             }
 
-            .logo img {
+            .site-header .brand img {
                 height: 38px;
             }
 
-            .logo .logo-main-text {
-                display: none;
+            .site-header .brand-text {
+                font-size: 0.88rem;
             }
 
-            .logo div {
-                font-size: 1rem;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .main-nav {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: min(78vw, 320px);
-                height: 100vh;
-                background-color: var(--bg-main);
-                flex-direction: column;
-                justify-content: center;
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in-out;
-                border-left: 1px solid var(--border-color);
-                box-shadow: -10px 0 30px rgba(29, 45, 53, 0.12);
-            }
-
-            .nav-open .main-nav {
-                display: flex;
-                transform: translateX(0);
-            }
-
-            .main-nav ol {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
-            }
-
-            .main-nav li {
-                width: 100%;
-            }
-
-            .main-nav a {
-                display: block;
-                width: 100%;
-                border-radius: 12px;
-                padding: 12px 14px;
-                font-size: var(--fz-lg);
+            .site-nav a {
+                padding: 8px 12px;
             }
 
             .hero {
-                min-height: 82vh;
+                min-height: 740px;
             }
 
             .hero .container {
-                min-height: calc(82vh - 70px);
+                min-height: auto;
             }
 
             .search-row {
                 grid-template-columns: 1fr;
             }
 
-            .cards-grid,
-            .reports-grid,
-            .stats-strip {
+            .cards-grid {
                 grid-template-columns: 1fr;
             }
 
-            .card-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .btn,
             .ghost-btn {
                 width: 100%;
-            }
-
-            .control-panel {
-                top: 82px;
             }
 
             .footer-content {
@@ -878,22 +634,13 @@
     </style>
 </head>
 <body>
-    <header class="main-header">
-        <a href="#hero" class="logo">
+    <header class="site-header">
+        <a class="brand" href="#hero" aria-label="SLEP Santa Rosa - inicio">
             <img src="pag_prin_plot/20250429_logo_santarosa_original.png" alt="Logo SLEP Santa Rosa">
-            <div>
-                <span class="logo-main-text">Estudios, Monitoreo y Datos </span>
-                <span>/</span> SLEP Santa Rosa
-            </div>
+            <span class="brand-text"><span class="accent">Estudios, Monitoreo y Datos</span> / SLEP Santa Rosa</span>
         </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-            <div class="hamburger"></div>
-        </button>
-        <nav class="main-nav" id="main-nav">
-            <ol>
-                <li><a href="#visores">Visores</a></li>
-                <li><a href="#reportes">Reportes</a></li>
-            </ol>
+        <nav class="site-nav">
+            <a href="#visores">Visores</a>
         </nav>
     </header>
 
@@ -919,26 +666,7 @@
         <section class="alt-bg visores-shell" id="visores">
             <div class="container">
                 <h2 class="section-heading">Visores Disponibles</h2>
-                <p class="section-subheading">Mantuvimos la portada base y reorganizamos abajo todos los accesos en una grilla más útil, ahora con imágenes reales asociadas a cada visor, buscador y filtros para encontrarlos más rápido.</p>
-
-                <div class="stats-strip">
-                    <article class="stat-card">
-                        <strong>22</strong>
-                        <span>accesos disponibles en esta portada</span>
-                    </article>
-                    <article class="stat-card">
-                        <strong>6</strong>
-                        <span>categorías para ordenar la navegación</span>
-                    </article>
-                    <article class="stat-card">
-                        <strong>1</strong>
-                        <span>buscador para ubicar visores al instante</span>
-                    </article>
-                    <article class="stat-card">
-                        <strong>100%</strong>
-                        <span>enlaces de visores verificados en esta versión</span>
-                    </article>
-                </div>
+                <p class="section-subheading">Explore todos los accesos organizados por categoría. Use el buscador y los filtros para encontrar el visor que necesita al instante.</p>
 
                 <div class="control-panel" aria-label="Controles para explorar visores">
                     <div class="search-row">
@@ -968,14 +696,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="reports-section" id="reportes">
-            <div class="container">
-                <h2 class="section-heading">Reportes</h2>
-                <p class="section-subheading">Se mantienen accesos rápidos a reportes recientes para que la portada siga funcionando como puerta de entrada tanto a visores como a publicaciones mensuales.</p>
-                <div class="reports-grid" id="reports-grid"></div>
-            </div>
-        </section>
     </main>
 
     <footer class="main-footer">
@@ -999,7 +719,7 @@
                 category: "panorama",
                 categoryLabel: "Caracterización y trayectorias",
                 accessLabel: "Uso interno",
-                description: "Panorama general del servicio con información contextual y descriptiva para comprender mejor establecimientos, perfiles y territorio.",
+                description: "Panorama general del servicio con información contextual y descriptiva del territorio. Reúne perfiles de establecimientos, matrícula, dependencia y variables sociodemográficas para comprender el contexto en que trabajan las comunidades educativas.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/caracterizaci%C3%B3n?authuser=2",
                 tags: ["perfil", "territorio", "establecimientos"],
                 imageSrc: "pag_prin_plot/socios.png",
@@ -1012,7 +732,7 @@
                 category: "panorama",
                 categoryLabel: "Caracterización y trayectorias",
                 accessLabel: "Uso interno",
-                description: "Consulta composición del estudiantado, nivel de ocupación de cursos, indicadores de asistencia y variables relevantes para seguimiento escolar.",
+                description: "Consulta la composición del estudiantado, el nivel de ocupación de los cursos y los indicadores de asistencia. Permite identificar información específica de estudiantes del Programa de Integración Escolar (PIE) y hacer seguimiento a la evolución de la matrícula y la asistencia durante el año.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/matr%C3%ADcula-y-asistencia?authuser=2",
                 tags: ["estudiantes", "asistencia", "PIE"],
                 imageSrc: "pag_prin_plot/matricula_asistencia.png",
@@ -1025,7 +745,7 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Índice general",
-                description: "Puerta de entrada a resultados, trayectorias y evaluaciones para recorrer desde diagnósticos DIA hasta continuidad en educación superior.",
+                description: "Puerta de entrada a resultados, trayectorias y evaluaciones del servicio. Desde aquí puedes recorrer los diagnósticos DIA, las evaluaciones estandarizadas SIMCE, el rendimiento escolar y la continuidad hacia la educación superior, integrando la evidencia clave para la toma de decisiones pedagógicas.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos?authuser=2",
                 tags: ["resultados", "aprendizajes", "evaluaciones"],
                 imageSrc: "pag_prin_plot/resultados_educativos.png",
@@ -1038,11 +758,11 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Uso interno",
-                description: "Revisa resultados estandarizados, tendencias y comparaciones útiles para orientar decisiones pedagógicas y monitorear desempeño.",
+                description: "Revisa los resultados de las pruebas estandarizadas SIMCE, sus tendencias en el tiempo y las comparaciones entre establecimientos y niveles. Una herramienta útil para orientar decisiones pedagógicas y monitorear el desempeño de escuelas y liceos del territorio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos/simce?authuser=2",
                 tags: ["pruebas", "aprendizaje", "evaluación"],
-                imageSrc: "pag_prin_plot/simce.png",
-                imageAlt: "Ilustración asociada a resultados SIMCE",
+                imageSrc: "pag_prin_plot/simce_logo.svg",
+                imageAlt: "Logo SIMCE",
                 mediaStart: "#314fd0",
                 mediaEnd: "#6ea5ff"
             },
@@ -1051,7 +771,7 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Uso interno",
-                description: "Analiza aprobación, reprobación, promoción y otras señales de rendimiento para complementar la lectura pedagógica del servicio.",
+                description: "Analiza la aprobación, reprobación y promoción de los estudiantes, junto a otras señales de rendimiento escolar. Complementa la lectura pedagógica del servicio y ayuda a detectar establecimientos o niveles que requieren mayor apoyo.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos/rendimiento?authuser=2",
                 tags: ["rendimiento", "promoción", "trayectorias"],
                 imageSrc: "pag_prin_plot/rendimiento.png",
@@ -1064,7 +784,7 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Uso interno",
-                description: "Sigue el diagnóstico DIA 2026 para escuelas y liceos con foco en línea base y análisis inicial de aprendizajes.",
+                description: "Sigue el Diagnóstico Integral de Aprendizajes (DIA) 2026 para escuelas y liceos, con foco en la línea base del año. Entrega una lectura inicial de los aprendizajes para planificar apoyos y priorizar acciones desde el comienzo del ciclo escolar.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos/dia-diagn%C3%B3stico-2026-eyl?authuser=2",
                 tags: ["DIA", "diagnóstico", "escuelas"],
                 imageSrc: "pag_prin_plot/dia.png",
@@ -1077,7 +797,7 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Uso interno",
-                description: "Permite revisar los resultados de cierre DIA 2025 para contrastar avances, brechas y desempeño al término del ciclo evaluado.",
+                description: "Revisa los resultados del cierre del DIA 2025 para escuelas y liceos. Permite contrastar avances, brechas y desempeño al término del ciclo evaluado, y compararlos con la línea base para dimensionar el progreso alcanzado.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos/visor_dia?authuser=2",
                 tags: ["DIA", "cierre", "2025"],
                 imageSrc: "pag_prin_plot/dia.png",
@@ -1090,7 +810,7 @@
                 category: "resultados",
                 categoryLabel: "Resultados educativos",
                 accessLabel: "Uso interno",
-                description: "Visualiza trayectorias de continuidad hacia educación superior para apoyar seguimiento de egresados y análisis de transición.",
+                description: "Visualiza las trayectorias de continuidad de los egresados hacia la educación superior. Apoya el seguimiento de las cohortes y el análisis de la transición, mostrando cuántos estudiantes acceden y a qué tipo de instituciones ingresan.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/resultados_academicos/matricula_edu_superior?authuser=2",
                 tags: ["egresados", "continuidad", "trayectorias"],
                 imageSrc: "pag_prin_plot/edu_super.png",
@@ -1100,10 +820,10 @@
             },
             {
                 title: "Fichas Escuelas",
-                category: "fichas",
-                categoryLabel: "Fichas territoriales",
+                category: "panorama",
+                categoryLabel: "Caracterización y trayectorias",
                 accessLabel: "Uso interno",
-                description: "Accede a fichas por escuela o liceo con datos clave del establecimiento, su oferta educativa y antecedentes institucionales.",
+                description: "Accede a la ficha de cada escuela o liceo con sus datos clave: identificación, contacto, oferta de cursos y especialidades, Proyecto Educativo Institucional (PEI) e iniciativas de innovación. Una vista completa y ordenada de cada establecimiento del servicio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas-escuelas?authuser=2",
                 tags: ["fichas", "escuelas", "liceos"],
                 imageSrc: "pag_prin_plot/fichas_escuelas.png",
@@ -1113,10 +833,10 @@
             },
             {
                 title: "Fichas Jardines",
-                category: "fichas",
-                categoryLabel: "Fichas territoriales",
+                category: "panorama",
+                categoryLabel: "Caracterización y trayectorias",
                 accessLabel: "Uso interno",
-                description: "Consulta fichas de jardines infantiles con información útil para conocer perfiles, cobertura y atributos principales.",
+                description: "Consulta las fichas de los jardines infantiles del territorio con información útil para conocer sus perfiles, cobertura y principales atributos. Facilita una mirada rápida y comparable de la oferta de educación parvularia del servicio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/fichas-jardines?authuser=2",
                 tags: ["fichas", "jardines", "parvularia"],
                 imageSrc: "pag_prin_plot/fichas_jardines.svg",
@@ -1129,7 +849,7 @@
                 category: "panorama",
                 categoryLabel: "Caracterización y trayectorias",
                 accessLabel: "Enlace actualizado",
-                description: "Reemplaza el acceso caído de caracterización docente y permite revisar tramo, funciones y desarrollo profesional del cuerpo docente.",
+                description: "Revisa el tramo, las funciones y el desarrollo profesional del cuerpo docente del servicio. Reemplaza el acceso anterior de caracterización docente y entrega una mirada actualizada de la dotación y la carrera docente en el territorio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/carrera-docente?authuser=2",
                 tags: ["docentes", "tramos", "desarrollo"],
                 imageSrc: "pag_prin_plot/Personaje%20Reforma%20Tributaria-Astronoma.png",
@@ -1138,24 +858,11 @@
                 mediaEnd: "#7d9cff"
             },
             {
-                title: "Gestión de documentos",
-                category: "documentos",
-                categoryLabel: "Gestión documental",
-                accessLabel: "Índice general",
-                description: "Acceso central a circulares, calendario institucional y convenios, pensado como puerta de entrada documental del portal.",
-                url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/gesti%C3%B3n-de-documentos?authuser=2",
-                tags: ["documentos", "circulares", "convenios"],
-                imageSrc: "pag_prin_plot/carta.png",
-                imageAlt: "Ilustración asociada a gestión de documentos",
-                mediaStart: "#5c46bf",
-                mediaEnd: "#288dd8"
-            },
-            {
                 title: "Circulares",
                 category: "documentos",
                 categoryLabel: "Gestión documental",
                 accessLabel: "Uso interno",
-                description: "Repositorio de circulares para consulta rápida y seguimiento de comunicaciones institucionales del servicio.",
+                description: "Repositorio de circulares del servicio para consulta rápida y seguimiento de las comunicaciones institucionales. Reúne en un solo lugar las instrucciones y orientaciones oficiales enviadas a los establecimientos.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/gesti%C3%B3n-de-documentos/circulares?authuser=2",
                 tags: ["circulares", "oficios", "comunicaciones"],
                 imageSrc: "pag_prin_plot/carta.png",
@@ -1168,7 +875,7 @@
                 category: "documentos",
                 categoryLabel: "Gestión documental",
                 accessLabel: "Uso interno",
-                description: "Consulta hitos, fechas y organización temporal del trabajo institucional desde una ruta documental directa.",
+                description: "Consulta los hitos, fechas y la organización temporal del trabajo institucional. Una ruta directa para ubicar plazos, actividades y eventos relevantes de la gestión del servicio a lo largo del año.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/gesti%C3%B3n-de-documentos/calendario?authuser=2",
                 tags: ["calendario", "hitos", "planificación"],
                 imageSrc: "pag_prin_plot/calendario.png",
@@ -1181,7 +888,7 @@
                 category: "documentos",
                 categoryLabel: "Gestión documental",
                 accessLabel: "Uso interno",
-                description: "Accede a convenios y documentos asociados para apoyar revisión administrativa y consulta de respaldos.",
+                description: "Accede a los convenios y documentos asociados suscritos por el servicio. Apoya la revisión administrativa y la consulta de respaldos, facilitando el seguimiento de los acuerdos vigentes y sus antecedentes.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/gesti%C3%B3n-de-documentos/convenios?authuser=2",
                 tags: ["convenios", "acuerdos", "respaldo"],
                 imageSrc: "pag_prin_plot/socios.png",
@@ -1194,7 +901,7 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Uso interno",
-                description: "Herramienta para revisar patrones de licencias médicas, duración, frecuencia y otras señales útiles para gestión y seguimiento.",
+                description: "Herramienta para revisar los patrones de licencias médicas: duración, frecuencia y distribución por establecimiento. Entrega señales útiles para la gestión de personas y el seguimiento del ausentismo en el servicio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/licencias-m%C3%A9dicas?authuser=2",
                 tags: ["licencias", "ausentismo", "personas"],
                 imageSrc: "pag_prin_plot/Salud-Vacuna1.png",
@@ -1207,7 +914,7 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Uso interno",
-                description: "Brinda visibilidad del proceso presupuestario, ejecución, subtítulos y disponibilidades para seguimiento financiero.",
+                description: "Brinda visibilidad del proceso presupuestario del servicio: ejecución, subtítulos y disponibilidades. Facilita el seguimiento financiero y la comprensión de cómo se asignan y gastan los recursos a lo largo del año.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/presupuesto?authuser=2",
                 tags: ["presupuesto", "ejecución", "finanzas"],
                 imageSrc: "pag_prin_plot/Kit%20Fondo%20de%20Fortalecimiento%202022-Computador.png",
@@ -1220,7 +927,7 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Uso interno",
-                description: "Sigue licitaciones, facturas, contratos y plan anual de compras con foco en transparencia y gestión operativa.",
+                description: "Sigue las licitaciones —declaradas desiertas, en proceso y adjudicadas—, las facturas emitidas, los contratos vigentes y el Plan Anual de Compras con su estado de ejecución. Orientado a la transparencia y a la gestión operativa del abastecimiento.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/compras-p%C3%BAblicas?authuser=2",
                 tags: ["compras", "licitaciones", "contratos"],
                 imageSrc: "pag_prin_plot/Oficios%20y%20trabajo-Mujer-hogar-datos-compras.png",
@@ -1233,7 +940,7 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Uso interno",
-                description: "Concentra información sobre hechos delictuales que afectan establecimientos para apoyar seguimiento y respuesta institucional.",
+                description: "Concentra información sobre los hechos delictuales que afectan a los establecimientos del servicio. Apoya el seguimiento, la coordinación y la respuesta institucional frente a incidentes de seguridad.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/delitos?authuser=2",
                 tags: ["seguridad", "incidentes", "vigilancia"],
                 imageSrc: "pag_prin_plot/delitos.png",
@@ -1246,7 +953,7 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Uso interno",
-                description: "Monitorea recursos asignados y ejecutados en salidas pedagógicas para fortalecer seguimiento, rendición y planificación.",
+                description: "Monitorea los recursos asignados y ejecutados en salidas pedagógicas. Fortalece el seguimiento, la rendición y la planificación de estas actividades, entregando visibilidad sobre su uso a lo largo del año.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/presupuesto-de-salidas-pedag%C3%B3gicas?authuser=2",
                 tags: ["salidas", "presupuesto", "ejecución"],
                 imageSrc: "pag_prin_plot/school-bus.png",
@@ -1259,77 +966,55 @@
                 category: "administrativa",
                 categoryLabel: "Información administrativa",
                 accessLabel: "Dirección ejecutiva",
-                description: "Permite revisar incidentes y antecedentes para tomar decisiones oportunas de mitigación y seguimiento de riesgos.",
+                description: "Permite revisar incidentes y antecedentes de prevención de riesgos para tomar decisiones oportunas de mitigación. Apoya el seguimiento de la seguridad y salud en el trabajo dentro de los establecimientos del servicio.",
                 url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informaci%C3%B3n-administrativa/prevencion-riesgos?authuser=2",
                 tags: ["riesgos", "incidentes", "prevención"],
                 imageSrc: "pag_prin_plot/safety-helmet.png",
                 imageAlt: "Ilustración asociada a prevención de riesgos",
                 mediaStart: "#9e4c59",
                 mediaEnd: "#e9785e"
-            },
-            {
-                title: "Datos Abiertos",
-                category: "recursos",
-                categoryLabel: "Recursos externos",
-                accessLabel: "Sitio externo",
-                description: "Acceso directo al portal nacional de datos abiertos del Mineduc para complementar consultas con información pública.",
-                url: "https://datosabiertos.mineduc.cl/",
-                tags: ["externo", "mineduc", "datasets"],
-                imageSrc: "pag_prin_plot/datos_abiertos.svg",
-                imageAlt: "Logo de Datos Abiertos Mineduc",
-                mediaStart: "#0c5a7b",
-                mediaEnd: "#18b2ab"
             }
         ];
 
-        const reports = [
-            {
-                date: "Octubre 2025",
-                title: "Reporte Mensual de Asistencia y Matrícula de Escuelas y Liceos",
-                description: "Actualización mensual con foco en matrícula activa, asistencia promedio y seguimiento de retiros.",
-                url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informes-de-matr%C3%ADcula-y-asistencia/EYL-IMAR-102025?authuser=2"
-            },
-            {
-                date: "Septiembre 2025",
-                title: "Reporte Mensual de Asistencia y Matrícula de Escuelas y Liceos",
-                description: "Seguimiento del comportamiento de asistencia y movimiento de matrícula previo al cierre del tercer trimestre.",
-                url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informes-de-matr%C3%ADcula-y-asistencia/EYL-IMAR-092025?authuser=2"
-            },
-            {
-                date: "Agosto 2025",
-                title: "Reporte Mensual de Asistencia y Matrícula de Escuelas y Liceos",
-                description: "Resumen ejecutivo con cambios en matrícula, asistencia y alertas relevantes para el sistema escolar.",
-                url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informes-de-matr%C3%ADcula-y-asistencia/EYL-IMAR-082025?authuser=2"
-            },
-            {
-                date: "Julio 2025",
-                title: "Reporte Mensual de Asistencia y Matrícula de Escuelas y Liceos",
-                description: "Síntesis del repunte de asistencia de julio y de la evolución de matrícula activa en el sistema escolar.",
-                url: "https://sites.google.com/slepsantarosa.cl/datos-usointerno/informes-de-matr%C3%ADcula-y-asistencia/EYL-IMAR-072025?authuser=2"
-            }
+        // Orden de aparición preferido en la grilla; el resto conserva su orden original.
+        const preferredOrder = [
+            "Matrícula y Asistencia",
+            "Resultados educativos",
+            "Fichas Escuelas",
+            "Fichas Jardines",
+            "Caracterización"
         ];
+        viewers.sort((a, b) => {
+            const ia = preferredOrder.indexOf(a.title);
+            const ib = preferredOrder.indexOf(b.title);
+            return (ia === -1 ? preferredOrder.length : ia) - (ib === -1 ? preferredOrder.length : ib);
+        });
 
         const categories = [
             { id: "all", label: "Todos" },
             { id: "panorama", label: "Caracterización y trayectorias" },
             { id: "resultados", label: "Resultados educativos" },
-            { id: "fichas", label: "Fichas territoriales" },
             { id: "documentos", label: "Gestión documental" },
-            { id: "administrativa", label: "Información administrativa" },
-            { id: "recursos", label: "Recursos externos" }
+            { id: "administrativa", label: "Información administrativa" }
         ];
+
+        // Color por categoría: se aplica al marco de la tarjeta, badge, categoría y CTA.
+        // "soft" es el fondo claro del área de la imagen (ideal para PNG con transparencia).
+        const categoryColors = {
+            panorama:       { color: "#0e8a86", soft: "#e3f4f3" },
+            resultados:     { color: "#2f5fd0", soft: "#e8eefc" },
+            fichas:         { color: "#12996a", soft: "#e3f5ec" },
+            documentos:     { color: "#6a49be", soft: "#efeafb" },
+            administrativa: { color: "#cf5340", soft: "#fbeae6" }
+        };
 
         const state = {
             filter: "all",
             query: ""
         };
 
-        const body = document.body;
-        const menuToggle = document.getElementById("menu-toggle");
-        const mainNav = document.getElementById("main-nav");
         const filterBar = document.getElementById("filter-bar");
         const viewersGrid = document.getElementById("viewers-grid");
-        const reportsGrid = document.getElementById("reports-grid");
         const searchInput = document.getElementById("viewer-search");
         const clearSearchButton = document.getElementById("clear-search");
         const resultsCopy = document.getElementById("results-copy");
@@ -1340,7 +1025,7 @@
             return value
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
+                .replace(/[̀-ͯ]/g, "");
         }
 
         function getCategoryCount(categoryId) {
@@ -1388,28 +1073,25 @@
         }
 
         function viewerCardTemplate(viewer) {
-            const accessClass = viewer.accessLabel === "Dirección ejecutiva" ? " is-alert" : "";
+            const cat = categoryColors[viewer.category] || { color: "var(--accent)", soft: "var(--bg-alt)" };
 
             return `
-                <article class="viewer-card" style="--media-start:${viewer.mediaStart};--media-end:${viewer.mediaEnd};">
+                <a class="viewer-card" style="--cat-color:${cat.color};--cat-soft:${cat.soft};" href="${viewer.url}" target="_blank" rel="noopener noreferrer">
                     <div class="card-media">
                         <img src="${viewer.imageSrc}" alt="${viewer.imageAlt}" loading="lazy" decoding="async">
                     </div>
                     <div class="card-body">
-                        <div class="card-badges">
-                            <span class="badge badge-category">${viewer.categoryLabel}</span>
-                            <span class="badge badge-access${accessClass}">${viewer.accessLabel}</span>
-                        </div>
+                        <span class="card-eyebrow">${viewer.categoryLabel}</span>
                         <h3 class="card-title">${viewer.title}</h3>
                         <p class="card-description">${viewer.description}</p>
-                        <div class="card-footer">
-                            <div class="card-tags">
-                                ${viewer.tags.slice(0, 2).map((tag) => `<span class="mini-tag">${tag}</span>`).join("")}
-                            </div>
-                            <a class="btn btn-outline" href="${viewer.url}" target="_blank" rel="noopener noreferrer">Abrir visor</a>
-                        </div>
+                        <span class="card-cta">Abrir visor
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m13 6 6 6-6 6"></path>
+                            </svg>
+                        </span>
                     </div>
-                </article>
+                </a>
             `;
         }
 
@@ -1425,20 +1107,8 @@
             clearSearchButton.disabled = query.length === 0;
         }
 
-        function renderReports() {
-            reportsGrid.innerHTML = reports.map((report) => `
-                <article class="report-card">
-                    <span class="report-date">${report.date}</span>
-                    <h3>${report.title}</h3>
-                    <p>${report.description}</p>
-                    <a href="${report.url}" target="_blank" rel="noopener noreferrer">Abrir reporte</a>
-                </article>
-            `).join("");
-        }
-
         renderFilters();
         renderViewers();
-        renderReports();
 
         filterBar.addEventListener("click", (event) => {
             const button = event.target.closest("[data-filter]");
@@ -1462,24 +1132,6 @@
             renderViewers();
             searchInput.focus();
         });
-
-        if (menuToggle) {
-            menuToggle.addEventListener("click", () => {
-                body.classList.toggle("nav-open");
-                menuToggle.setAttribute("aria-expanded", body.classList.contains("nav-open") ? "true" : "false");
-            });
-        }
-
-        if (mainNav) {
-            mainNav.querySelectorAll("a").forEach((link) => {
-                link.addEventListener("click", () => {
-                    if (body.classList.contains("nav-open")) {
-                        body.classList.remove("nav-open");
-                        menuToggle.setAttribute("aria-expanded", "false");
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
