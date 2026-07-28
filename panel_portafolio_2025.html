@@ -79,6 +79,10 @@ nav.menu{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);
 .botonera{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px;max-width:1000px}
 .botonera a{display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,.96);color:var(--tinta);
   border-radius:14px;padding:15px 17px;text-decoration:none;box-shadow:0 10px 26px rgba(8,16,24,.35)}
+.botonera .ico{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;
+  justify-content:center;margin-bottom:7px}
+.botonera .ico svg{display:block}
+.botonera a.destacado .ico{background:rgba(255,255,255,.16);color:#fff}
 .botonera a:hover{background:#fff;transform:translateY(-2px)}
 .botonera a:focus-visible{outline:3px solid var(--celeste);outline-offset:2px}
 .botonera .rot{font-family:'Archivo';font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--azul)}
@@ -393,15 +397,25 @@ footer.pie{background:var(--sup);border-top:1px solid var(--linea);padding:32px 
       planificar la formación local.</p>
     <div class="kpis-portada" id="kpis-portada"></div>
     <nav class="botonera" aria-label="Ir a una sección">
-      <a class="destacado" href="#como-leer"><span class="rot">GUÍA</span><b>¿Cómo leer estos resultados?</b>
+      <a class="destacado" href="#como-leer">
+        <span class="ico" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5C10.2 4.1 8 3.5 5 3.5v13.8c3 0 5.2.7 7 2.1 1.8-1.4 4-2.1 7-2.1V3.5c-3 0-5.2.6-7 2z"/><path d="M12 5.5v13.9"/></svg></span>
+        <span class="rot">GUÍA</span><b>¿Cómo leer estos resultados?</b>
         <small>Qué es el Portafolio y qué significan las categorías</small></a>
-      <a href="#panorama"><span class="rot">01</span><b>Panorama del territorio</b>
+      <a href="#panorama">
+        <span class="ico" style="background:var(--azul-bg);color:var(--azul-os)" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20v-7"/><path d="M12 20V9"/><path d="M18 20v-4.5"/><path d="m18 9.5-1.9 2.8h3.8L18 9.5z" fill="currentColor" stroke-width="1.2"/></svg></span>
+        <span class="rot">01</span><b>Panorama del territorio</b>
         <small>El SLEP frente al país en las 5 tareas</small></a>
-      <a href="#comunas"><span class="rot">02</span><b>Resultados por comuna</b>
+      <a href="#comunas">
+        <span class="ico" style="background:#fdecee;color:#c3172c" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20V8.5l4-2v13.5"/><path d="M9 20V11h5v9"/><path d="M14 20V6l5 2.2V20"/></svg></span>
+        <span class="rot">02</span><b>Resultados por comuna</b>
         <small>Las cinco comunas comparadas</small></a>
-      <a href="#mapa-sec"><span class="rot">03</span><b>Mapa del territorio</b>
+      <a href="#mapa-sec">
+        <span class="ico" style="background:#ecf6e4;color:#3f7317" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-5.2-6.7-10.3a6.7 6.7 0 1 1 13.4 0C18.7 15.8 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></svg></span>
+        <span class="rot">03</span><b>Mapa del territorio</b>
         <small>Cada comunidad en su ubicación</small></a>
-      <a href="#establecimientos"><span class="rot">04</span><b>Establecimientos</b>
+      <a href="#establecimientos">
+        <span class="ico" style="background:#e5f5fd;color:#0f7fb6" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20v-8l7-5 7 5v8"/><path d="M10 20v-4.5h4V20"/><path d="M12 7V3.5h3.4v2H12"/></svg></span>
+        <span class="rot">04</span><b>Establecimientos</b>
         <small>Busca tu escuela, liceo o jardín y abre su ficha</small></a>
     </nav>
   </div>
